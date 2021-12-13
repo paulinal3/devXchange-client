@@ -48,9 +48,8 @@ const App = () => {
 
 	useEffect(() => {
 		getProblems(problems)
-		console.log('THIS IS:', problems)
-		// .then((res) => setProblems (res.data))
-		// console.log("This is: ", res.data)
+		.then((problems) => setProblems (problems.data))
+		.catch(err => console.error(err))
 	}, [])
 
 	return (
@@ -84,7 +83,7 @@ const App = () => {
 					<Route
 						path='/problems'
 						element={
-							<Problems />
+							<Problems problems={problems.problems} />
 						}
 					/>
 			</Routes>
