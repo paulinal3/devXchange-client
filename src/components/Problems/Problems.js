@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import Problem from './Problem'
 
-function Problems (props) {
+function Problems(props) {
 
-	const [currentProblem, setCurrentProblem] = useState({})
+    const [currentProblem, setCurrentProblem] = useState({})
 
     const changeCurrent = problem => {
         setCurrentProblem(problem)
@@ -12,16 +12,16 @@ function Problems (props) {
     const allProblems = props.problems.map((p, i) => {
         return (
             <li onClick={() => changeCurrent(p)} key={i}>
-                <Link to={`/problems/${p._id}`}>{p.title}</Link>
+                <Problem currentProblem={currentProblem} problem={p} key={i}/>
             </li>
         )
     })
     return (
         <div>
-        <h1>Problems page</h1>
-        <ol>
-            {allProblems}
-        </ol>
+            <h1>Problems page</h1>
+            <ol>
+                {allProblems}
+            </ol>
         </div>
     )
 }
