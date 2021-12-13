@@ -14,6 +14,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import Problems from './components/Problems/Problems'
+import Details from './components/Problems/Details'
 
 
 
@@ -46,10 +47,11 @@ const App = () => {
 
 	const [problems, setProblems] = useState([])
 
+
 	useEffect(() => {
 		getProblems(problems)
-		.then((problems) => setProblems (problems.data))
-		.catch(err => console.error(err))
+			.then((problems) => setProblems(problems.data))
+			.catch(err => console.error(err))
 	}, [])
 
 	return (
@@ -80,12 +82,18 @@ const App = () => {
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 				/>
-					<Route
-						path='/problems'
-						element={
-							<Problems problems={problems.problems} />
-						}
-					/>
+				<Route
+					path='/problems'
+					element={
+						<Problems problems={problems.problems} />
+					}
+				/>
+				<Route
+					path='/problems/:id'
+					element={
+						<Details />
+					}
+				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
