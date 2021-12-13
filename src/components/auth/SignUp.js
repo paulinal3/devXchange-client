@@ -49,7 +49,6 @@ const SignUp = (props) => {
             })
     }
 
-
     return (
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
@@ -117,7 +116,6 @@ const SignUp = (props) => {
             </div>
         </div>
     )
-
 }
 
 export default SignUp

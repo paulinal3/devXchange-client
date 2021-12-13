@@ -1,6 +1,29 @@
+# DevXchange - Client App
+Our goal is to create an app that allows developers of all ranges to debug, solve, and collaborate on coding problems.
+
+## RESTful Routes
+
+## Install
+
+## Tech Stack
+* React
+* MongoDB
+* Mongoose
+* CSS/Bootstrap
+
+## Wireframes
 ![Wireframes](public/wireframes.png)
 
+## Collections
 
+
+## MVP
+
+
+## Stretch Goals
+
+
+## Potential Roadblocks
 
 
 # Getting Started with Create React App
