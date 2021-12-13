@@ -8,16 +8,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const SignUp = (props) => {
-    // constructor(props) {
-    // 	super(props)
-
-    // 	this.state = {
-    // 		email: '',
-    // 		password: '',
-    // 		passwordConfirmation: '',
-    // 	}
-    // }    
+const SignUp = (props) => { 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -31,7 +22,7 @@ const SignUp = (props) => {
 
         const { msgAlert, setUser } = props
 
-        const credentials = { email, password, passwordConfirmation }
+        const credentials = { firstName, lastName, email, password, passwordConfirmation }
 
         signUp(credentials)
             .then(() => signIn(credentials))
@@ -45,6 +36,8 @@ const SignUp = (props) => {
             )
             .then(() => navigate('/'))
             .catch((error) => {
+                setFirstName('')
+                setLastName('')
                 setEmail('')
                 setPassword('')
                 setPasswordConfirmation('')
