@@ -59,8 +59,8 @@ const App = () => {
 	useEffect(() => {
 		getProblems(problems)
 		.then((problems) => {
-			setProblems(problems.data)
-			console.log('IS THIS WORKING????', problems.data)
+			console.log('this is problems from db', problems.data.problems)
+			setProblems(problems.data.problems)
 		})
 			.catch(err => console.error(err))
 	}, [])
@@ -96,7 +96,7 @@ const App = () => {
 				<Route
 					path='/problems'
 					element={
-						<IndexProblems problems={problems.problems} refreshProblems={getProblems} />
+						<IndexProblems problems={problems} />
 					}
 				/>
 				<Route
