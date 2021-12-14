@@ -1,4 +1,3 @@
-// import React, { Component, Fragment } from 'react'
 import React, { useState, useEffect, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
@@ -16,13 +15,16 @@ import ChangePassword from './components/auth/ChangePassword'
 import IndexProblems from './components/Problems/IndexProblems'
 import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
+import EditProblem from './components/Problems/EditProblem'
 
 const App = () => {
+	// ---------- USER STATES & HELPER METHOD ---------- //
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
+
 	const clearUser = () => {
 		console.log('clear user ran')
 		setUser(null)
@@ -43,13 +45,14 @@ const App = () => {
 		})
 	}
 
+	// ---------- PROBLEMS STATES & HELPER METHOD ---------- //
 	const [problems, setProblems] = useState([])
 
 	const refreshProblems = () => (
 		getProblems(problems)
 		.then((problems) => {
-			setProblems(problems.data)
-			console.log('IS THIS WORKING????', problems.data)
+			console.log('these are all the problems in the db\n', problems.data.probems)
+			setProblems(problems.data.problems)
 		})
 			.catch(err => console.error(err))
 	)
@@ -57,8 +60,8 @@ const App = () => {
 	useEffect(() => {
 		getProblems()
 		.then((problems) => {
+			console.log('these are all the problems in the db\n', problems.data.problems)
 			setProblems(problems.data.problems)
-			console.log('IS THIS WORKING????', problems.data)
 		})
 			.catch(err => console.error(err))
 	}, [])
@@ -68,6 +71,7 @@ const App = () => {
             <h1>Home</h1>
 			<Header user={user} />
 			<Routes>
+				{/* --------------- USER ROUTES --------------- */}
 				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} />
 				<Route
 					path='/sign-up'
@@ -92,6 +96,7 @@ const App = () => {
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 				/>
+				{/* --------------- PROBLEM ROUTES --------------- */}
 				<Route
 					path='/problems'
 					element={
@@ -110,6 +115,13 @@ const App = () => {
 						<ShowProblem problems={problems}/>
 					}
 				/>
+				<Route
+					path='/problems/edit'
+					element={
+						<EditProblem user={user} />
+					}
+				/>
+				{/* --------------- ANSWER ROUTES --------------- */}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
