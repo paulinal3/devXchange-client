@@ -17,8 +17,6 @@ import IndexProblems from './components/Problems/IndexProblems'
 import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
 
-
-
 const App = () => {
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
@@ -57,19 +55,20 @@ const App = () => {
 	)
 
 	useEffect(() => {
-		getProblems(problems)
+		getProblems()
 		.then((problems) => {
-			console.log('this is problems from db', problems.data.problems)
 			setProblems(problems.data.problems)
+			console.log('IS THIS WORKING????', problems.data)
 		})
 			.catch(err => console.error(err))
 	}, [])
 
 	return (
 		<Fragment>
+            <h1>Home</h1>
 			<Header user={user} />
 			<Routes>
-				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems.problems} user={user} />} />
+				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} />
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
@@ -96,7 +95,7 @@ const App = () => {
 				<Route
 					path='/problems'
 					element={
-						<IndexProblems problems={problems} />
+						<IndexProblems problems={problems}  />
 					}
 				/>
 				<Route
@@ -108,7 +107,7 @@ const App = () => {
 				<Route
 					path='/problems/:id'
 					element={
-						<ShowProblem problems={problems.problems}/>
+						<ShowProblem problems={problems}/>
 					}
 				/>
 			</Routes>
