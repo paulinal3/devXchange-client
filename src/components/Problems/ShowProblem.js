@@ -10,6 +10,8 @@ function ShowProblem(props) {
     return (
         <>
             <h3>{currentProblem.title}</h3>
+            <small>Asked by: {currentProblem.owner}</small>
+            <hr />
             <p>{currentProblem.description}</p>
             <p>{currentProblem.answers}</p>
             <p>Your Answer</p>
