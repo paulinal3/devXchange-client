@@ -13,8 +13,8 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import Problems from './components/Problems/Problems'
-import Details from './components/Problems/Details'
+import IndexProblems from './components/Problems/IndexProblems'
+import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
 
 
@@ -85,7 +85,7 @@ const App = () => {
 				<Route
 					path='/problems'
 					element={
-						<Problems problems={problems.problems} />
+						<IndexProblems problems={problems.problems} />
 					}
 				/>
 				<Route
@@ -97,7 +97,7 @@ const App = () => {
 				<Route
 					path='/problems/:id'
 					element={
-						<Details problems={problems.problems}/>
+						<ShowProblem problems={problems.problems}/>
 					}
 				/>
 			</Routes>
