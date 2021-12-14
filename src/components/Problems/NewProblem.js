@@ -5,7 +5,8 @@ import apiUrl from '../../apiConfig'
 import { Link } from 'react-router-dom'
 
 export default function NewProblem(props) {
-    // console.log('this is props\n', props)
+    console.log('this is props\n', props)
+    console.log('here is the current user id:', props.user._id)
     const [newProblem, setNewProblem] = useState({
         title: '',
         description: '',
@@ -18,6 +19,7 @@ export default function NewProblem(props) {
     }
 
     const postProblem = (user) => {
+        console.log('this is the current user id:', user._id)
         console.log('this is the new problem\n', newProblem)
         // e.preventDefault()
         return axios({
@@ -66,7 +68,7 @@ export default function NewProblem(props) {
                     <input id='img' type='file' name='img' value={newProblem.img} onChange={handleChange} />
                 </div>
 
-                <input type='submit' value='Post Problem' />
+                {/* <input type='submit' value='Post Problem' /> */}
                 <Link to='/problems' onClick={() => postProblem(props.user)}>Post Problem</Link>
             </Form>
         </div>
