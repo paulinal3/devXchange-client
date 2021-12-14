@@ -47,24 +47,23 @@ const App = () => {
 
 	const [problems, setProblems] = useState([])
 
-	const refreshProblems = (
+	const refreshProblems = () => {
 		getProblems(problems)
-		.then((problems) => {
-			setProblems(problems.data)
-			console.log('IS THIS WORKING????', problems.data)
-		})
+			.then((problems) => {
+				setProblems(problems.data)
+				console.log('IS THIS WORKING????', problems.data)
+			})
 			.catch(err => console.error(err))
-	)
-
-	useEffect(() => {
-		getProblems(problems)
-		.then((problems) => {
-			setProblems(problems.data)
-			console.log('IS THIS WORKING????', problems.data)
-		})
-			.catch(err => console.error(err))
-	}, [])
-
+		}
+		useEffect(() => {
+			getProblems(problems)
+				.then((problems) => {
+					setProblems(problems.data)
+					console.log('IS THIS WORKING????', problems.data)
+				})
+				.catch(err => console.error(err))
+		}, [])
+	
 	return (
 		<Fragment>
 			<Header user={user} />
@@ -108,7 +107,7 @@ const App = () => {
 				<Route
 					path='/problems/:id'
 					element={
-						<ShowProblem problems={problems.problems}/>
+						<ShowProblem problems={problems.problems} />
 					}
 				/>
 			</Routes>
