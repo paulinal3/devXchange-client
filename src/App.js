@@ -47,7 +47,7 @@ const App = () => {
 
 	const [problems, setProblems] = useState([])
 
-	const refreshProblems = (
+	const refreshProblems = () => (
 		getProblems(problems)
 		.then((problems) => {
 			setProblems(problems.data)
