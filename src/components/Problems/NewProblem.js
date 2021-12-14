@@ -2,8 +2,10 @@ import { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import { Link } from 'react-router-dom'
 
-export default function NewProblem() {
+export default function NewProblem(props) {
+    // console.log('this is props\n', props)
     const [newProblem, setNewProblem] = useState({
         title: '',
         description: '',
@@ -15,14 +17,14 @@ export default function NewProblem() {
         setNewProblem({ ...newProblem, [e.target.name]: e.target.value })
     }
 
-    const postProblem = (e, userToken) => {
+    const postProblem = (user) => {
         console.log('this is the new problem\n', newProblem)
-        e.preventDefault()
+        // e.preventDefault()
         return axios({
             method: 'POST',
             url: `${apiUrl}/problems`,
             headers: {
-                Authorization: `Bearer ${userToken}`,
+                Authorization: `Bearer ${user.token}`,
             },
             data: {
                 problems: {
@@ -49,7 +51,8 @@ export default function NewProblem() {
     return (
         <div>
             <h1>Post Your Problem!</h1>
-            <Form onSubmit={postProblem}>
+            {/* <Form onSubmit={() => postProblem(props.user)}> */}
+            <Form>
                 <div>
                     <label htmlFor='title'>Title: </label>
                     <input id='title' type='text' name='title' value={newProblem.title} onChange={handleChange} />
@@ -64,6 +67,7 @@ export default function NewProblem() {
                 </div>
 
                 <input type='submit' value='Post Problem' />
+                <Link to='/problems' onClick={() => postProblem(props.user)}>Post Problem</Link>
             </Form>
         </div>
     )

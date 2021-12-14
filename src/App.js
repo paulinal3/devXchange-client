@@ -20,7 +20,6 @@ import NewProblem from './components/Problems/NewProblem'
 
 
 const App = () => {
-
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 
@@ -92,7 +91,7 @@ const App = () => {
 				<Route
 					path='/problems/new'
 					element={
-						<NewProblem />
+						<NewProblem user={user} />
 					}
 				/>
 				<Route
