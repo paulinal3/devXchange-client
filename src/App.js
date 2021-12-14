@@ -58,7 +58,7 @@ const App = () => {
 		<Fragment>
 			<Header user={user} />
 			<Routes>
-				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems.problems} user={user} />} />
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
@@ -91,7 +91,7 @@ const App = () => {
 				<Route
 					path='/problems/:id'
 					element={
-						<Details />
+						<Details problems={problems.problems}/>
 					}
 				/>
 			</Routes>

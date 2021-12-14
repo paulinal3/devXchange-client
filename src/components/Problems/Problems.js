@@ -12,7 +12,7 @@ function Problems(props) {
     const allProblems = props.problems.map((p, i) => {
         return (
             <li onClick={() => changeCurrent(p)} key={i}>
-                <Problem currentProblem={currentProblem} problem={p} key={i}/>
+                <Problem currentProblem={currentProblem} problem={p} key={i} />
             </li>
         )
     })
