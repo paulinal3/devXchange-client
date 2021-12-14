@@ -24,6 +24,7 @@ export default function NewProblem(props) {
             // console.log('this is the current user id:', user._id)
             // console.log('this is the new problem\n', newProblem)
             .then(() => {
+                props.refreshProblems()
                 setNewProblem({
                     title: '',
                     description: '',

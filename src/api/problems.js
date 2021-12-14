@@ -7,12 +7,14 @@ export const getProblems = () => {
 		url: apiUrl + '/problems',
 	})
 }
+
 export const getOneProblem = (problemId) => {
     return axios({
         method: 'GET',
-        url: apiUrl + '/problems/' + problemId
+        url: `${apiUrl}/problems/${problemId}`
     })
 }
+
 export const postProblem = (user, newProblem) => {
 
     return axios({
