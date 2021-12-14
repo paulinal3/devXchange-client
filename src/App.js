@@ -47,6 +47,15 @@ const App = () => {
 
 	const [problems, setProblems] = useState([])
 
+	const refreshProblems = (
+		getProblems(problems)
+		.then((problems) => {
+			setProblems(problems.data)
+			console.log('IS THIS WORKING????', problems.data)
+		})
+			.catch(err => console.error(err))
+	)
+
 	useEffect(() => {
 		getProblems(problems)
 		.then((problems) => {
@@ -93,7 +102,7 @@ const App = () => {
 				<Route
 					path='/problems/new'
 					element={
-						<NewProblem user={user} refreshProblems={getProblems} />
+						<NewProblem user={user} refreshProblems={refreshProblems} />
 					}
 				/>
 				<Route
