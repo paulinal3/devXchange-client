@@ -18,6 +18,16 @@ const authenticatedOptions = (
 				Sign Out
 			</Link>
 		</Nav.Link>
+		<Nav.Link>
+			<Link to='/problems' style={linkStyle}>
+				Problems
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
+			<Link to='/problems/new' style={linkStyle}>
+				Post a Problem
+			</Link>
+		</Nav.Link>
 	</>
 )
 
@@ -29,6 +39,11 @@ const unauthenticatedOptions = (
         <Nav.Link>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Link>
+		<Nav.Link>
+			<Link to='/problems' style={linkStyle}>
+				Problems
+			</Link>
+		</Nav.Link>
 	</>
 )
 
