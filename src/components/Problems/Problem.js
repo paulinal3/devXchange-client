@@ -3,6 +3,7 @@ import ShowProblem from './ShowProblem'
 import moment from 'moment'
 
 function Problem(props) {
+    // <ShowProblem />
     return (
         <>
             <Link to={`/problems/${props.problem._id}`} state={props.currentProblem}>{props.problem.title}</Link>
