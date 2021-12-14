@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import Details from './Details'
+import ShowProblem from './ShowProblem'
 import moment from 'moment'
 
 function Problem(props) {
-    <Details />
+    <ShowProblem />
     return (
         <>
             <Link to={`/problems/${props.problem._id}`} state={props.currentProblem}>{props.problem.title}</Link>

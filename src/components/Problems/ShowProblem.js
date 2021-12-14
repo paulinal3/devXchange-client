@@ -1,7 +1,7 @@
 import { getOneProblem } from "../../api/problems"
 import { useLocation } from 'react-router-dom'
 
-function Details(props) {
+function ShowProblem(props) {
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
     console.log(problemId)
@@ -24,4 +24,4 @@ function Details(props) {
     )
 }
 
-export default Details
+export default ShowProblem

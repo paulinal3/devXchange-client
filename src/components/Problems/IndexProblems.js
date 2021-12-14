@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import Problem from './Problem'
 
-function Problems(props) {
+function IndexProblems(props) {
 
     const [currentProblem, setCurrentProblem] = useState({})
 
     const changeCurrent = problem => {
         setCurrentProblem(problem)
     }
+    // props.refreshProblems()
     console.log("THIS IS:", props.problems)
     const allProblems = props.problems.map((p, i) => {
         return (
@@ -26,4 +27,4 @@ function Problems(props) {
     )
 }
 
-export default Problems
+export default IndexProblems

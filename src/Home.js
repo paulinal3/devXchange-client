@@ -1,7 +1,3 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import { getProblems } from './api/problems'
-import Problems from './components/Problems/Problems'
 import Problem from './components/Problems/Problem'
 
 const Home = (props) => {

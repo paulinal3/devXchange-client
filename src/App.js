@@ -13,8 +13,8 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import Problems from './components/Problems/Problems'
-import Details from './components/Problems/Details'
+import IndexProblems from './components/Problems/IndexProblems'
+import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
 
 
@@ -47,10 +47,12 @@ const App = () => {
 
 	const [problems, setProblems] = useState([])
 
-
 	useEffect(() => {
 		getProblems(problems)
-			.then((problems) => setProblems(problems.data))
+		.then((problems) => {
+			setProblems(problems.data)
+			console.log('IS THIS WORKING????', problems.data)
+		})
 			.catch(err => console.error(err))
 	}, [])
 
@@ -85,19 +87,19 @@ const App = () => {
 				<Route
 					path='/problems'
 					element={
-						<Problems problems={problems.problems} />
+						<IndexProblems problems={problems.problems} refreshProblems={getProblems} />
 					}
 				/>
 				<Route
 					path='/problems/new'
 					element={
-						<NewProblem user={user} />
+						<NewProblem user={user} refreshProblems={getProblems} />
 					}
 				/>
 				<Route
 					path='/problems/:id'
 					element={
-						<Details problems={problems.problems}/>
+						<ShowProblem problems={problems.problems}/>
 					}
 				/>
 			</Routes>
