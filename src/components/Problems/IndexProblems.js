@@ -8,6 +8,7 @@ function IndexProblems(props) {
     const changeCurrent = problem => {
         setCurrentProblem(problem)
     }
+    // props.refreshProblems()
     console.log("THIS IS:", props.problems)
     const allProblems = props.problems.map((p, i) => {
         return (
