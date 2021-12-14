@@ -15,11 +15,11 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import Problems from './components/Problems/Problems'
 import Details from './components/Problems/Details'
+import NewProblem from './components/Problems/NewProblem'
 
 
 
 const App = () => {
-
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 
@@ -86,6 +86,12 @@ const App = () => {
 					path='/problems'
 					element={
 						<Problems problems={problems.problems} />
+					}
+				/>
+				<Route
+					path='/problems/new'
+					element={
+						<NewProblem user={user} />
 					}
 				/>
 				<Route
