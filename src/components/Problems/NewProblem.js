@@ -31,7 +31,6 @@ export default function NewProblem(props) {
                     img: ''
                 })
             })
-            props.refreshProblems()
             .then(() => navigate('/problems'))
             .catch(err => {
                 console.error(err)
