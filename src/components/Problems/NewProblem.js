@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function NewProblem(props) {
     console.log('this is props\n', props)
@@ -14,6 +14,8 @@ export default function NewProblem(props) {
         img: ''
     })
 
+    const navigate = useNavigate()
+
     const handleChange = (e) => {
         setNewProblem({ ...newProblem, [e.target.name]: e.target.value })
     }
@@ -21,23 +23,22 @@ export default function NewProblem(props) {
     const postProblem = (user) => {
         console.log('this is the current user id:', user._id)
         console.log('this is the new problem\n', newProblem)
-        // e.preventDefault()
+    
         return axios({
             method: 'POST',
-            url: `${apiUrl}/problems`,
+            url: apiUrl + '/problems',
             headers: {
-                Authorization: `Bearer ${user.token}`,
+                Authorization: `Token token=${user.token}`,
             },
             data: {
-                problems: {
+                problem: {
                     title: newProblem.title,
                     description: newProblem.description,
-                    solved: newProblem.solved,
                     img: newProblem.img
                 },
             },
         })
-        .then(postedProblem => {
+        .then(() => {
             setNewProblem({
                     title: '',
                     description: '',
@@ -45,6 +46,7 @@ export default function NewProblem(props) {
                     img: ''
             })
         })
+        .then(() => navigate('/problems'))
         .catch(err => {
             console.error(err)
         })
@@ -53,7 +55,6 @@ export default function NewProblem(props) {
     return (
         <div>
             <h1>Post Your Problem!</h1>
-            {/* <Form onSubmit={() => postProblem(props.user)}> */}
             <Form>
                 <div>
                     <label htmlFor='title'>Title: </label>
@@ -68,8 +69,7 @@ export default function NewProblem(props) {
                     <input id='img' type='file' name='img' value={newProblem.img} onChange={handleChange} />
                 </div>
 
-                {/* <input type='submit' value='Post Problem' /> */}
-                <Link to='/problems' onClick={() => postProblem(props.user)}>Post Problem</Link>
+                <input type='button' value='Post Problem' onClick={() => postProblem(props.user)}/>
             </Form>
         </div>
     )
