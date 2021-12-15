@@ -125,7 +125,7 @@ const App = () => {
 					}
 				/>
 				<Route
-					path='/problems/edit'
+					path='/problems/edit/:id'
 					element={
 						<EditProblem user={user} />
 					}
