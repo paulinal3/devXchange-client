@@ -1,10 +1,8 @@
-import { useLocation } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { destroyProblem } from '../../api/problems'
 
-
 function ShowProblem(props) {
-    const { pathname } = useLocation()
+    const { pathname} = useLocation()
     const problemId = pathname.split('/')[2]
     console.log('this is the problem id:', problemId)
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
@@ -32,6 +30,7 @@ return (
         <p>{currentProblem.description}</p>
         <p>{currentProblem.answers}</p>
         <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
+        <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
 
         <p>Your Answer</p>
         <form >

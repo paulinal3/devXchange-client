@@ -39,20 +39,20 @@ export const destroyProblem = (user, itemId) => {
         headers: { Authorization: `Token token=${user.token}` }
     })
 }
-// export const updateProblem = (user, problemId) => {
-//     return axios({
-//         method: 'POST',
-//         url: `${apiUrl}/${problemId}`,
-//         headers: {
-//             Authorization: `Token token=${user.token}`,
-//         },
-//     })
-// }
 
-// export const getOneProblem = (userToken, problemId) => {
-//     return axios({
-//         method: 'GET',
-//         Authorization: 'Bearer ' + userToken, 
-//         url: apiUrl + '/problems/' + problemId
-//     })
-// }
+export const updateProblem = (user, problemId, changeProblem) => {
+    console.log('THIS IS PROBLEM ID:', problemId)
+    return axios({
+        method: 'PATCH',
+        url: `${apiUrl}/problems/${problemId}`,
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
+        data: {
+            problem: {
+                description: changeProblem.description,
+                img: changeProblem.img
+            }
+        }
+    })
+}
