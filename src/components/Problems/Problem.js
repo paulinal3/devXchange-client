@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom'
-import ShowProblem from './ShowProblem'
 import moment from 'moment'
 
-function Problem(props) {
-    // <ShowProblem />
+export default function Problem(props) {
+    let firstName = props.problem.owner.firstName
+    let lastNameInit = props.problem.owner.lastName.charAt(0)
     return (
         <>
-            <Link to={`/problems/${props.problem._id}`} state={props.currentProblem}>{props.problem.title}</Link>
-            <p>Asked: {moment(props.problem.createdAt).fromNow()}</p>
-            <p>by {props.problem.owner.firstName}</p>
+            <Link to={`/problems/${props.problem._id}`} 
+                state={props.currentProblem}>{props.problem.title}</Link> <small>by {firstName} {lastNameInit}.</small>
+            <p>Asked {moment(props.problem.createdAt).fromNow()}</p>
         </>
     )
 }
-
-export default Problem
