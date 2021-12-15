@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom"
 import { getOneProblem, updateProblem } from "../../api/problems"
 import { useState, useEffect } from "react"
 
-
 export default function EditProblem(props) {
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[3]
@@ -34,7 +33,6 @@ export default function EditProblem(props) {
             .then(() => navigate(`/problems/${problemId}`))
             .catch(err => console.log(err))
     }
-
 
     return (
         <div>
