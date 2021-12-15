@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap"
 import { useNavigate, useLocation } from "react-router-dom"
-import { updateProblem } from "../../api/problems"
-import { useState } from "react"
+import { getOneProblem, updateProblem } from "../../api/problems"
+import { useState, useEffect } from "react"
 
 
 export default function EditProblem(props) {
@@ -10,7 +10,16 @@ export default function EditProblem(props) {
     console.log('this is the problem id:', problemId)
     const navigate = useNavigate()
     const [changeProblem, setChangeProblem] = useState ({})
-    
+
+    useEffect(() => {
+        getOneProblem(problemId)
+        .then((problem) => {
+            console.log('these are all the problems in the db\n', problem.data)
+            setChangeProblem(problem.data.problem)
+        })
+            .catch(err => console.error(err))
+    }, [])
+
     const handleChange = (e) => {
         setChangeProblem({
             ...changeProblem, [e.target.name]: e.target.value
@@ -25,13 +34,17 @@ export default function EditProblem(props) {
             .catch(err => console.log(err))
     }
 
+
     return (
         <div>
             <h1>Edit Your Problem</h1>
             <Form>
                 <div>
+                    <h3>{changeProblem.title}</h3>
+                </div>
+                <div>
                     <label htmlFor='description'>Description: </label>
-                    <input id='description' type='text' name='description' onChange={handleChange}/>
+                    <input id='description' type='text' name='description' value={changeProblem.description} onChange={handleChange}/>
                 </div>
                 <div>
                     <label htmlFor='img'>Post a screenshot: </label>

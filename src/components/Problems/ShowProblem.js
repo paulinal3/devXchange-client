@@ -2,7 +2,7 @@ import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { destroyProblem } from '../../api/problems'
 
 function ShowProblem(props) {
-    const { pathname } = useLocation()
+    const { pathname} = useLocation()
     const problemId = pathname.split('/')[2]
     console.log('this is the problem id:', problemId)
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
