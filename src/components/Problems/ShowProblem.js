@@ -1,5 +1,7 @@
-import { getOneProblem } from "../../api/problems"
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { destroyProblem } from '../../api/problems'
+
 
 function ShowProblem(props) {
     const { pathname } = useLocation()
@@ -8,43 +10,39 @@ function ShowProblem(props) {
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
     let lastNameInit = currentProblem.owner.lastName.charAt(0)
-    
-     function deleteProblem(problemId)
-    {
-        fetch('/problems/' + problemId ,{
-            method: 'DELETE'
-        })
-        .then((result) => {
-            result.json().then((resp) => {
-                console.log(resp)
+    const navigate = useNavigate()
+
+    const deleteProblem = () => {
+        destroyProblem(props.user, currentProblem._id)
+        // console.log('THIS IS:', `${apiUrl}/problems/${itemId}`)
+            .then(() => {
+                props.refreshProblems()
+                navigate('/problems')
             })
-        })
+            .catch(err => {
+                console.error(err)
+            })
     }
-  
-    return (
-        <>
-            <h3>{currentProblem.title}</h3>
-            <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-            <hr />
-            <p>{currentProblem.description}</p>
-            <p>{currentProblem.answers}</p>
-            {/* ternary conditional to show/hide edit and delete buttons if I'm the owner of the problem  */}
-            {/* {currentProblem.owner===currentProblem ? */}
-                {/* <div> */}
-                    {/* <input type="button" value="Edit" onClick={() => props.editProblem()} />
-                    <input type="button" value="Delete" onClick={() => props.deleteProblem()} /> */}
-                    <button onClick={() => deleteProblem(problemId)}>Delete</button>
-                {/* </div> : null } */}
-            <p>Your Answer</p>
-            <form >
-                <label>
-                    <textarea rows="5" cols="50" autofocus />
-                </label>
-                <br />
-                <input type="submit" value="Post Your Answer" />
-            </form>
-        </>
-    )
+
+return (
+    <>
+        <h3>{currentProblem.title}</h3>
+        <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+        <hr />
+        <p>{currentProblem.description}</p>
+        <p>{currentProblem.answers}</p>
+        <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
+
+        <p>Your Answer</p>
+        <form >
+            <label>
+                <textarea rows="5" cols="50" autofocus />
+            </label>
+            <br />
+            <input type="submit" value="Post Your Answer" />
+        </form>
+    </>
+)
 }
 
 export default ShowProblem
