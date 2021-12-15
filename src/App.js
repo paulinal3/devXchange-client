@@ -71,6 +71,7 @@ const App = () => {
             return p.title.toLowerCase().includes(e.target.value.toLowerCase())
         })
         console.log('this is the new list of problems\n', filteredProblemsList)
+		setProblems(filteredProblemsList)
     }
 
 	return (
