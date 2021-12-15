@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
+import FilterProblem from './FilterProblem'
 import Problem from './Problem'
 
-function IndexProblems(props) {
-
+export default function IndexProblems(props) {
     const [currentProblem, setCurrentProblem] = useState({})
 
     const changeCurrent = problem => {
         setCurrentProblem(problem)
     }
-    // props.refreshProblems()
-    console.log("THIS IS:", props.problems)
+
+    console.log("this is props.problems\n", props.problems)
     const allProblems = props.problems.map((p, i) => {
         return (
             <li onClick={() => changeCurrent(p)} key={i}>
@@ -17,14 +17,15 @@ function IndexProblems(props) {
             </li>
         )
     })
+    
     return (
         <div>
-            <h1>Problems page</h1>
+            <h1>Problems Page</h1>
+            <FilterProblem filterProblems={props.handleFilter} />
+            <br />
             <ol>
                 {allProblems}
             </ol>
         </div>
     )
 }
-
-export default IndexProblems

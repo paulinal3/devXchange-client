@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
 
 export default function NewProblem(props) {
-    console.log('this is props\n', props)
-    console.log('here is the current user id:', props.user._id)
+    // console.log('this is props\n', props)
+    // console.log('here is the current user id:', props.user._id)
     const [newProblem, setNewProblem] = useState({
         title: '',
         description: '',
@@ -19,7 +19,7 @@ export default function NewProblem(props) {
         setNewProblem({ ...newProblem, [e.target.name]: e.target.value })
     }
 
-    const createANewProblem = () => {
+    const createNewProblem = () => {
         postProblem(props.user, newProblem)
             // console.log('this is the current user id:', user._id)
             // console.log('this is the new problem\n', newProblem)
@@ -55,7 +55,7 @@ export default function NewProblem(props) {
                     <input id='img' type='file' name='img' value={newProblem.img} onChange={handleChange} />
                 </div>
 
-                <input type='button' value='Post Problem' onClick={() => createANewProblem()}/>
+                <input type='button' value='Post Problem' onClick={() => createNewProblem()}/>
             </Form>
         </div>
     )

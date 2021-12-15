@@ -1,9 +1,7 @@
-// import React, { Component, Fragment } from 'react'
 import React, { useState, useEffect, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import { getProblems } from './api/problems'
-
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
@@ -16,13 +14,16 @@ import ChangePassword from './components/auth/ChangePassword'
 import IndexProblems from './components/Problems/IndexProblems'
 import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
+import EditProblem from './components/Problems/EditProblem'
 
 const App = () => {
+	// ---------- USER STATES & HELPER METHOD ---------- //
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
+
 	const clearUser = () => {
 		console.log('clear user ran')
 		setUser(null)
@@ -43,13 +44,14 @@ const App = () => {
 		})
 	}
 
+	// ---------- PROBLEMS STATES & HELPER METHOD ---------- //
 	const [problems, setProblems] = useState([])
 
 	const refreshProblems = () => (
-		getProblems(problems)
+		getProblems()
 		.then((problems) => {
-			setProblems(problems.data)
-			console.log('IS THIS WORKING????', problems.data)
+			console.log('these are all the problems in the db\n', problems.data.probems)
+			setProblems(problems.data.problems)
 		})
 			.catch(err => console.error(err))
 	)
@@ -57,17 +59,27 @@ const App = () => {
 	useEffect(() => {
 		getProblems()
 		.then((problems) => {
+			console.log('these are all the problems in the db\n', problems.data.problems)
 			setProblems(problems.data.problems)
-			console.log('IS THIS WORKING????', problems.data)
 		})
 			.catch(err => console.error(err))
 	}, [])
 
+	const handleFilterChange = (e) => {
+		console.log('is this function being called')
+        const filteredProblemsList = problems.filter(p => {
+            return p.title.toLowerCase().includes(e.target.value.toLowerCase())
+        })
+        console.log('this is the new list of problems\n', filteredProblemsList)
+		setProblems(filteredProblemsList)
+    }
+
 	return (
 		<Fragment>
             <h1>Home</h1>
-			<Header user={user} />
+			<Header user={user} refreshProblems={refreshProblems} />
 			<Routes>
+				{/* --------------- USER ROUTES --------------- */}
 				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} />
 				<Route
 					path='/sign-up'
@@ -92,10 +104,11 @@ const App = () => {
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 				/>
+				{/* --------------- PROBLEM ROUTES --------------- */}
 				<Route
 					path='/problems'
 					element={
-						<IndexProblems problems={problems}  />
+						<IndexProblems problems={problems} handleFilter={handleFilterChange} refreshProblems={refreshProblems}/>
 					}
 				/>
 				<Route
@@ -110,6 +123,13 @@ const App = () => {
 						<ShowProblem problems={problems}/>
 					}
 				/>
+				<Route
+					path='/problems/edit'
+					element={
+						<EditProblem user={user} />
+					}
+				/>
+				{/* --------------- ANSWER ROUTES --------------- */}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
