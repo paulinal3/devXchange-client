@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
 
 export default function NewProblem(props) {
-    console.log('this is props\n', props)
-    console.log('here is the current user id:', props.user._id)
+    // console.log('this is props\n', props)
+    // console.log('here is the current user id:', props.user._id)
     const [newProblem, setNewProblem] = useState({
         title: '',
         description: '',

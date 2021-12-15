@@ -48,7 +48,7 @@ const App = () => {
 	const [problems, setProblems] = useState([])
 
 	const refreshProblems = () => (
-		getProblems(problems)
+		getProblems()
 		.then((problems) => {
 			console.log('these are all the problems in the db\n', problems.data.probems)
 			setProblems(problems.data.problems)
@@ -77,7 +77,7 @@ const App = () => {
 	return (
 		<Fragment>
             <h1>Home</h1>
-			<Header user={user} />
+			<Header user={user} refreshProblems={refreshProblems} />
 			<Routes>
 				{/* --------------- USER ROUTES --------------- */}
 				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} />
@@ -108,7 +108,7 @@ const App = () => {
 				<Route
 					path='/problems'
 					element={
-						<IndexProblems problems={problems} handleFilter={handleFilterChange} />
+						<IndexProblems problems={problems} handleFilter={handleFilterChange} refreshProblems={refreshProblems}/>
 					}
 				/>
 				<Route

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import FilterProblem from './FilterProblem'
 import Problem from './Problem'
 
-function IndexProblems(props) {
+export default function IndexProblems(props) {
     const [currentProblem, setCurrentProblem] = useState({})
 
     const changeCurrent = problem => {
@@ -29,5 +29,3 @@ function IndexProblems(props) {
         </div>
     )
 }
-
-export default IndexProblems
