@@ -57,16 +57,17 @@ const App = () => {
 	)
 
 	useEffect(() => {
-		getProblems(problems)
+		getProblems()
 		.then((problems) => {
 			setProblems(problems.data.problems)
-			console.log('IS THIS WORKING????', problems.data.problems)
+			console.log('IS THIS WORKING????', problems.data)
 		})
 			.catch(err => console.error(err))
 	}, [])
 
 	return (
 		<Fragment>
+			<h1>Home</h1>
 			<Header user={user} />
 			<Routes>
 				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} />
@@ -96,7 +97,7 @@ const App = () => {
 				<Route
 					path='/problems'
 					element={
-						<IndexProblems problems={problems.problems}  />
+						<IndexProblems problems={problems} />
 					}
 				/>
 				<Route
@@ -108,7 +109,7 @@ const App = () => {
 				<Route
 					path='/problems/:id'
 					element={
-						<ShowProblem problems={problems.problems} />
+						<ShowProblem problems={problems} />
 					}
 				/>
 			</Routes>
