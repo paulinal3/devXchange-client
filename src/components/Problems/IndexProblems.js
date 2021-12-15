@@ -22,7 +22,11 @@ export default function IndexProblems(props) {
     return (
         <div>
             <h1>Problems Page</h1>
-            <FilterProblem filterProblems={props.handleFilter} />
+            <FilterProblem 
+                filterProblems={props.handleFilter}
+                searchVal={props.search} 
+                searchChange={props.handleSearch}
+            />
             <br />
             <ol>
                 {allProblems}

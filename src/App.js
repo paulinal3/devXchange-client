@@ -47,33 +47,42 @@ const App = () => {
 
 	// ---------- PROBLEMS STATES & HELPER METHOD ---------- //
 	const [problems, setProblems] = useState([])
+	const [search, setSearch] = useState('')
 
+	// refreshes problems index to include the new problem that was just posted
 	const refreshProblems = () => (
 		getProblems()
-		.then((problems) => {
-			console.log('these are all the problems in the db\n', problems.data.probems)
-			setProblems(problems.data.problems)
-		})
+			.then((problems) => {
+				console.log('these are all the problems in the db\n', problems.data.probems)
+				setProblems(problems.data.problems)
+			})
 			.catch(err => console.error(err))
 	)
 
 	useEffect(() => {
+		// axios call to find all problems in the db
 		getProblems()
-		.then((problems) => {
-			console.log('these are all the problems in the db\n', problems.data.problems)
-			setProblems(problems.data.problems)
-		})
+			.then((problems) => {
+				console.log('these are all the problems in the db\n', problems.data.problems)
+				// sets all problems in the db to state
+				setProblems(problems.data.problems)
+			})
 			.catch(err => console.error(err))
 	}, [])
 
-	const handleFilterChange = (e) => {
-		console.log('is this function being called')
-        const filteredProblemsList = problems.filter(p => {
-            return p.title.toLowerCase().includes(e.target.value.toLowerCase())
-        })
-        console.log('this is the new list of problems\n', filteredProblemsList)
-		setProblems(filteredProblemsList)
-    }
+	// passed down as prop to FilterProblem
+	const handleSearchChange = (e) => {
+		// console.log('this is the new search value\n', e.target.value)
+		// sets search state to whatever is typed in search bar
+		setSearch(e.target.value)
+	}
+
+	// filter through all problems based on what search is set to
+	const getFilteredProblems = () => {
+		return problems.filter(p => {
+			return p.title.toLowerCase().includes(search.toLowerCase())
+		})
+	}
 
 	return (
 		<Fragment>
@@ -109,7 +118,7 @@ const App = () => {
 				<Route
 					path='/problems'
 					element={
-						<IndexProblems problems={problems} handleFilter={handleFilterChange} refreshProblems={refreshProblems} />
+						<IndexProblems problems={getFilteredProblems()} search={search} handleSearch={handleSearchChange} />
 					}
 				/>
 				<Route
