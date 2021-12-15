@@ -16,6 +16,7 @@ export const getOneProblem = (problemId) => {
 }
 
 export const postProblem = (user, newProblem) => {
+
     return axios({
         method: 'POST',
         url: apiUrl + '/problems',
@@ -32,9 +33,15 @@ export const postProblem = (user, newProblem) => {
     })
 }
 
-export const updateProblem = (user) => {
-
-}
+// export const updateProblem = (user, problemId) => {
+//     return axios({
+//         method: 'POST',
+//         url: `${apiUrl}/${problemId}`,
+//         headers: {
+//             Authorization: `Token token=${user.token}`,
+//         },
+//     })
+// }
 
 // export const getOneProblem = (userToken, problemId) => {
 //     return axios({
