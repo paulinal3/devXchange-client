@@ -7,6 +7,7 @@ function ShowProblem(props) {
     console.log('this is the problem id:', problemId)
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
+    let lastNameInit = currentProblem.owner.lastName.charAt(0)
     
      function deleteProblem(problemId)
     {
@@ -23,7 +24,7 @@ function ShowProblem(props) {
     return (
         <>
             <h3>{currentProblem.title}</h3>
-            <small>Asked by: {currentProblem.owner.firstName}</small>
+            <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
             <hr />
             <p>{currentProblem.description}</p>
             <p>{currentProblem.answers}</p>
