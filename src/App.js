@@ -76,8 +76,8 @@ const App = () => {
 
 	return (
 		<Fragment>
-            <h1>Home</h1>
-			<Header user={user} refreshProblems={refreshProblems} />
+			<h1>Home</h1>
+			<Header user={user} />
 			<Routes>
 				{/* --------------- USER ROUTES --------------- */}
 				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} />
@@ -108,7 +108,7 @@ const App = () => {
 				<Route
 					path='/problems'
 					element={
-						<IndexProblems problems={problems} handleFilter={handleFilterChange} refreshProblems={refreshProblems}/>
+						<IndexProblems problems={problems} handleFilter={handleFilterChange} refreshProblems={refreshProblems} />
 					}
 				/>
 				<Route
@@ -120,7 +120,7 @@ const App = () => {
 				<Route
 					path='/problems/:id'
 					element={
-						<ShowProblem problems={problems}/>
+						<ShowProblem problems={problems} />
 					}
 				/>
 				<Route

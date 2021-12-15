@@ -14,7 +14,7 @@ const Home = (props) => {
     })
 
 	return (
-		<>
+		<>	
 			<div>
 				<h2>Latest Problems</h2>
 			</div>

@@ -4,6 +4,7 @@ import Problem from './Problem'
 
 export default function IndexProblems(props) {
     const [currentProblem, setCurrentProblem] = useState({})
+    const [deleteProblem, setDeleteProblem] = useState({})
 
     const changeCurrent = problem => {
         setCurrentProblem(problem)
@@ -17,7 +18,7 @@ export default function IndexProblems(props) {
             </li>
         )
     })
-    
+
     return (
         <div>
             <h1>Problems Page</h1>
