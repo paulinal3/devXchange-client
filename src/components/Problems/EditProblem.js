@@ -28,6 +28,7 @@ export default function EditProblem(props) {
     const editProblem = () => {
         updateProblem(props.user, problemId, changeProblem)
             .then(() => {
+                props.refreshProblems()
                 setChangeProblem({})
             })
             .then(() => navigate(`/problems/${problemId}`))

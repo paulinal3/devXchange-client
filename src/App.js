@@ -127,7 +127,7 @@ const App = () => {
 				<Route
 					path='/problems/edit/:id'
 					element={
-						<EditProblem user={user} />
+						<EditProblem user={user} refreshProblems={refreshProblems} />
 					}
 				/>
 				{/* --------------- ANSWER ROUTES --------------- */}
