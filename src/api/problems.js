@@ -2,10 +2,10 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 export const getProblems = () => {
-	return axios({
-		method: 'GET',
-		url: `${apiUrl}/problems`,
-	})
+    return axios({
+        method: 'GET',
+        url: `${apiUrl}/problems`,
+    })
 }
 
 export const getOneProblem = (problemId) => {
@@ -33,6 +33,13 @@ export const postProblem = (user, newProblem) => {
     })
 }
 
+export const destroyProblem = (user, itemId) => {
+    return axios({
+        method: 'DELETE',
+        url: `${apiUrl}/problems/${itemId}`,
+        headers: { Authorization: `Token token=${user.token}`, },
+    })
+}
 // export const updateProblem = (user, problemId) => {
 //     return axios({
 //         method: 'POST',

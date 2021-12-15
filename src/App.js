@@ -130,7 +130,7 @@ const App = () => {
 				<Route
 					path='/problems/:id'
 					element={
-						<ShowProblem problems={problems} />
+						<ShowProblem problems={problems} user={user} refreshProblems={refreshProblems} />
 					}
 				/>
 				<Route
