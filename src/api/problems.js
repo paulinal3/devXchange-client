@@ -4,7 +4,7 @@ import axios from 'axios'
 export const getProblems = () => {
 	return axios({
 		method: 'GET',
-		url: apiUrl + '/problems',
+		url: `${apiUrl}/problems`,
 	})
 }
 
@@ -33,6 +33,15 @@ export const postProblem = (user, newProblem) => {
     })
 }
 
+// export const updateProblem = (user, problemId) => {
+//     return axios({
+//         method: 'POST',
+//         url: `${apiUrl}/${problemId}`,
+//         headers: {
+//             Authorization: `Token token=${user.token}`,
+//         },
+//     })
+// }
 
 // export const getOneProblem = (userToken, problemId) => {
 //     return axios({
