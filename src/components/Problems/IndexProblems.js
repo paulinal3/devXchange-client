@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import FilterProblem from './FilterProblem'
 import Problem from './Problem'
 
 function IndexProblems(props) {
@@ -19,7 +20,8 @@ function IndexProblems(props) {
     })
     return (
         <div>
-            <h1>Problems page</h1>
+            <FilterProblem />
+            <br />
             <ol>
                 {allProblems}
             </ol>

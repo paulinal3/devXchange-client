@@ -1,7 +1,18 @@
 import { Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 
-export default function EditProblem() {
+export default function EditProblem(props) {    
+    // const navigate = useNavigate()
+
+    // const editProblem = () => {
+    //     const updateProblem = (props.user, props.problem._id)
+    //         .then(() => {
+    //             set
+    //         })
+    //         .then(() => navigate(`/problems/${props.problem._id}`))
+    //         .catch(err => console.log(err))
+    // }
+
     return (
         <div>
             <h1>Edit Your Problem</h1>
@@ -19,7 +30,7 @@ export default function EditProblem() {
                         <input id='img' type='file' name='img' />
                     </div>
 
-                    <input type='button' value='Update Problem' />
+                    {/* <input type='button' value='Update Problem' onClick={() => editProblem()}/> */}
             </Form>
         </div>
     )

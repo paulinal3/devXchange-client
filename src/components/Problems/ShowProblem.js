@@ -4,9 +4,9 @@ import { useLocation } from 'react-router-dom'
 function ShowProblem(props) {
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
-    console.log(problemId)
+    console.log('this is the problem id:', problemId)
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
-    console.log(currentProblem)
+    console.log('this is the current problem\n', currentProblem)
     return (
         <>
             <h3>{currentProblem.title}</h3>
