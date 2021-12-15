@@ -16,7 +16,6 @@ import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
 import EditProblem from './components/Problems/EditProblem'
 
-
 const App = () => {
 	// ---------- USER STATES & HELPER METHOD ---------- //
 	const [user, setUser] = useState(null)

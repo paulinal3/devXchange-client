@@ -1,9 +1,12 @@
+import { Form } from 'react-bootstrap'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { destroyProblem } from '../../api/problems'
-import apiUrl from '../../apiConfig'
+import { useState } from 'react'
+import { postAnswer } from '../../api/answers'
+
 
 function ShowProblem(props) {
-    // const [newSolution, setNewSolution] = useState('')
+    const [newSolution, setNewSolution] = useState('')
 
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
@@ -25,30 +28,19 @@ function ShowProblem(props) {
             })
     }
 
-    // const createAnswer = () => {
-    //     postAnswer(props.user, currentProblem._id)
-    //         .then(() => {
-    //             setNewSolution('')
-    //         })
-    //         .catch(err => {
-    //             console.error(err)
-    //         })
-    // }
+    const handleChange = (e) => {
+        setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
+    }
 
-    // const postAnswer = (user, currentProblem._id) => {
-    //     return axios({
-    //         method: 'POST',
-    //         url: `${apiUrl}/answers`,
-    //         headers: {
-    //             Authorization: `Token token=${user.token}`
-    //         },
-    //         data: {
-    //             answer: {
-    //                 solution: newSolution.title,
-    //             }
-    //         }
-    //     })
-    // }
+    const createAnswer = () => {
+        postAnswer(props.user, currentProblem._id, newSolution)
+            .then(() => {
+                setNewSolution('')
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
 
     return (
         <>
@@ -61,13 +53,13 @@ function ShowProblem(props) {
             <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
 
             <p>Your Answer</p>
-            <form >
-                <label>
-                    <textarea rows="5" cols="50" autofocus />
-                </label>
-                <br />
-                {/* <input type="button" value="Post Your Answer" onclick={() => createAnswer()} /> */}
-            </form>
+            <Form>
+                {/* <label>
+                    <textarea rows='5' cols='50' autofocus />
+                </label> */}
+                <input id='solution' type='text' name='solution' value={newSolution.solution} onChange={handleChange} />
+                <input type='button' value='Post Your Answer' onClick={() => createAnswer()} />
+            </Form>
         </>
     )
 }
