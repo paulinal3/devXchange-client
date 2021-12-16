@@ -35,7 +35,7 @@ export default function NewProblem(props) {
             .then(() => navigate('/problems'))
             .catch(err => {
                 console.error(err)
-            })
+            }) 
     }
 
     return (

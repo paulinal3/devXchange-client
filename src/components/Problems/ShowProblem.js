@@ -3,6 +3,7 @@ import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { destroyProblem } from '../../api/problems'
 import { useEffect, useState } from 'react'
 import { getProbAnswers, postAnswer } from '../../api/answers'
+import NewAnswer from '../Answers/NewAnswer'
 
 
 function ShowProblem(props) {
@@ -89,14 +90,15 @@ function ShowProblem(props) {
                 {getAllProbAnswers}
             </ol>
 
-            <p>Your Answer</p>
+            {/* <p>Your Answer</p>
             <Form>
-                {/* <label>
+                <label>
                     <textarea rows='5' cols='50' autofocus />
-                </label> */}
+                </label>
                 <input id='solution' type='text' name='solution' value={newSolution.solution} onChange={handleChange} />
                 <input type='button' value='Post Your Answer' onClick={() => createAnswer()} />
-            </Form>
+            </Form> */}
+            <NewAnswer handleChange={handleChange} newSolution={newSolution} createAnswer={createAnswer} />
         </>
     )
 }
