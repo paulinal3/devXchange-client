@@ -10,7 +10,7 @@ function ShowProblem(props) {
     console.log('this is the problem id:', problemId)
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
-    let lastNameInit = currentProblem.owner.lastName.charAt(0)
+    let lastNameInit = currentProblem && currentProblem.owner.lastName.charAt(0)
     const navigate = useNavigate()
 
     const deleteProblem = () => {
@@ -49,25 +49,33 @@ function ShowProblem(props) {
     //         }
     //     })
     // }
-
+    console.log('current user:', props.user)
+    console.log('current problem:', currentProblem)
     return (
         <>
-            <h3>{currentProblem.title}</h3>
-            <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-            <hr />
-            <p>{currentProblem.description}</p>
-            <p>{currentProblem.answers}</p>
-            <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
-            <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
-
-            <p>Your Answer</p>
-            <form >
-                <label>
-                    <textarea rows="5" cols="50" autofocus />
-                </label>
-                <br />
-                {/* <input type="button" value="Post Your Answer" onclick={() => createAnswer()} /> */}
-            </form>
+            {!currentProblem ? <h1>Loading...</h1> : (
+                <>
+                    <h3>{currentProblem.title}</h3>
+                    <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+                    <hr />
+                    <p>{currentProblem.description}</p>
+                    <p>{currentProblem.answers}</p>
+                    {props.user && props.user._id == currentProblem.owner._id &&
+                        <>
+                            <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
+                            <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
+                        </>
+                    }
+                    <p>Your Answer</p>
+                    <form >
+                        <label>
+                            <textarea rows="5" cols="50" autofocus />
+                        </label>
+                        <br />
+                        {/* <input type="button" value="Post Your Answer" onclick={() => createAnswer()} /> */}
+                    </form>
+                </>
+            )}
         </>
     )
 }

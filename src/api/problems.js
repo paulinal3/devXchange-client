@@ -27,7 +27,7 @@ export const postProblem = (user, newProblem) => {
             problem: {
                 title: newProblem.title,
                 description: newProblem.description,
-                img: newProblem.img
+                img: newProblem.img,
             },
         },
     })
