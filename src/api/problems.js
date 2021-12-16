@@ -48,8 +48,7 @@ export const updateProblem = (user, problemId, changeProblem) => {
         },
         data: {
             problem: {
-                description: changeProblem.description,
-                img: changeProblem.img
+                description: changeProblem
             }
         }
     })

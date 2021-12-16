@@ -13,7 +13,8 @@ export default function EditAnswer(props) {
         updateAnswer(props.currUser, props.currentAnswer._id, changeAnswer)
         .then(() => {
             props.refreshAnswers()
-            setChangeAnswer(props.currentAnswer.solution)
+            props.onHide()
+            setChangeAnswer(changeAnswer)
         })
         .catch(err => console.error(err))
     }

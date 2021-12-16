@@ -4,10 +4,13 @@ import { destroyProblem } from '../../api/problems'
 import { getProbAnswers, postAnswer } from '../../api/answers'
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
+import EditProblem from './EditProblem'
+import { Button } from "react-bootstrap"
 
 function ShowProblem(props) {
     const [newSolution, setNewSolution] = useState('')
     const [probAnswers, setProbAnswers] = useState([])
+    const [modalShow, setModalShow] = useState(false)
 
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
@@ -84,10 +87,24 @@ function ShowProblem(props) {
                     {props.user && props.user._id == currentProblem.owner._id &&
                         <>
                             <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
-                            <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
+                            {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
+                            <>
+                                <Button variant="primary" onClick={() => setModalShow(true)}>
+                                    Edit Problem
+                                </Button>
+
+                                <EditProblem
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+
+                                    currentProb={currentProblem}
+                                    currUser={props.user}
+                                    refreshProb={props.refreshProblems}
+                                />
+                            </>
                         </>
                     }
-                    
+
                     <ol>
                         {getAllProbAnswers}
                     </ol>
