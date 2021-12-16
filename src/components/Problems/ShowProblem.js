@@ -72,7 +72,7 @@ function ShowProblem(props) {
                 console.error(err)
             })
     }
-    
+
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
@@ -88,11 +88,12 @@ function ShowProblem(props) {
                             <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
                         </>
                     }
- <ol>
-                {getAllProbAnswers}
-            </ol>
+                    
+                    <ol>
+                        {getAllProbAnswers}
+                    </ol>
 
-            <NewAnswer handleChange={handleChange} newSolution={newSolution} createAnswer={createAnswer} />
+                    <NewAnswer handleChange={handleChange} newSolution={newSolution} createAnswer={createAnswer} />
                 </>
             )}
         </>
