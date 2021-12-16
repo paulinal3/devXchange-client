@@ -17,6 +17,7 @@ import NewProblem from './components/Problems/NewProblem'
 import EditProblem from './components/Problems/EditProblem'
 import EditAnswer from './components/Answers/EditAnswer'
 import Profile from './components/Profile/Profile'
+import Footer from './components/shared/Footer'
 
 const App = () => {
 	// ---------- USER STATES & HELPER METHOD ---------- //
@@ -142,6 +143,7 @@ const App = () => {
 					}
 				/>
 			</Routes>
+			<Footer />
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
 					key={msgAlert.id}
