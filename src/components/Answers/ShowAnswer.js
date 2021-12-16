@@ -1,6 +1,7 @@
 import EditAnswer from "./EditAnswer"
 import { useState } from "react"
 import { Button } from "react-bootstrap"
+import moment from 'moment'
 
 export default function ShowAnswer(props) {
     const [modalShow, setModalShow] = useState(false)
@@ -10,6 +11,9 @@ export default function ShowAnswer(props) {
     return (
         <div>
             {props.answer.solution}
+            <div>
+                <small>answered {moment(props.answer.updatedAt).fromNow()}</small>
+            </div>
             <div>
                 <small>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
             </div>
