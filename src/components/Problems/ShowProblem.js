@@ -81,7 +81,6 @@ function ShowProblem(props) {
                     <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
                     <hr />
                     <p>{currentProblem.description}</p>
-                    <p>{currentProblem.answers}</p>
                     {props.user && props.user._id == currentProblem.owner._id &&
                         <>
                             <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
