@@ -8,6 +8,7 @@ export default function EditProblem(props) {
     const problemId = pathname.split('/')[3]
     console.log('this is the problem id:', problemId)
     const navigate = useNavigate()
+    
     const [changeProblem, setChangeProblem] = useState ({})
 
     useEffect(() => {

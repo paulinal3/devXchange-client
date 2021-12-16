@@ -1,9 +1,13 @@
 import { useLocation, useNavigate, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { destroyProblem } from '../../api/problems'
-import apiUrl from '../../apiConfig'
+import { getProbAnswers, postAnswer } from '../../api/answers'
+import NewAnswer from '../Answers/NewAnswer'
+import ShowAnswer from '../Answers/ShowAnswer'
 
 function ShowProblem(props) {
-    // const [newSolution, setNewSolution] = useState('')
+    const [newSolution, setNewSolution] = useState('')
+    const [probAnswers, setProbAnswers] = useState([])
 
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
@@ -25,32 +29,50 @@ function ShowProblem(props) {
             })
     }
 
-    // const createAnswer = () => {
-    //     postAnswer(props.user, currentProblem._id)
-    //         .then(() => {
-    //             setNewSolution('')
-    //         })
-    //         .catch(err => {
-    //             console.error(err)
-    //         })
-    // }
+    useEffect(() => {
+        // axios call to find all answers connected to current problem's id
+        getProbAnswers(currentProblem._id)
+            .then(answers => {
+                console.log('these are all the problems answers\n', answers.data.foundAnswers)
+                // set the found answers in db to state
+                setProbAnswers(answers.data.foundAnswers)
+            })
+            .catch(err => console.error(err))
+    }, [])
 
-    // const postAnswer = (user, currentProblem._id) => {
-    //     return axios({
-    //         method: 'POST',
-    //         url: `${apiUrl}/answers`,
-    //         headers: {
-    //             Authorization: `Token token=${user.token}`
-    //         },
-    //         data: {
-    //             answer: {
-    //                 solution: newSolution.title,
-    //             }
-    //         }
-    //     })
-    // }
-    console.log('current user:', props.user)
-    console.log('current problem:', currentProblem)
+    // refresh answers to include posted and updated answers
+    const refreshProbAnswers = () => {
+        getProbAnswers(currentProblem._id)
+            .then(answers => {
+                console.log('these are all the problems answers\n', answers.data.foundAnswers)
+                setProbAnswers(answers.data.foundAnswers)
+            })
+            .catch(err => console.error(err))
+    }
+
+    const getAllProbAnswers = probAnswers.map((answer, i) => {
+        return (
+            <li key={i}>
+                <ShowAnswer answer={answer} key={i} currentProblemId={currentProblem._id} />
+            </li>
+        )
+    })
+
+    const handleChange = (e) => {
+        setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
+    }
+
+    const createAnswer = () => {
+        postAnswer(props.user, currentProblem._id, newSolution)
+            .then(() => {
+                refreshProbAnswers()
+                setNewSolution('')
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+    
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
@@ -66,14 +88,11 @@ function ShowProblem(props) {
                             <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
                         </>
                     }
-                    <p>Your Answer</p>
-                    <form >
-                        <label>
-                            <textarea rows="5" cols="50" autofocus />
-                        </label>
-                        <br />
-                        {/* <input type="button" value="Post Your Answer" onclick={() => createAnswer()} /> */}
-                    </form>
+ <ol>
+                {getAllProbAnswers}
+            </ol>
+
+            <NewAnswer handleChange={handleChange} newSolution={newSolution} createAnswer={createAnswer} />
                 </>
             )}
         </>

@@ -15,7 +15,7 @@ import IndexProblems from './components/Problems/IndexProblems'
 import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
 import EditProblem from './components/Problems/EditProblem'
-
+import EditAnswer from './components/Answers/EditAnswer'
 
 const App = () => {
 	// ---------- USER STATES & HELPER METHOD ---------- //
@@ -49,7 +49,7 @@ const App = () => {
 	const [problems, setProblems] = useState([])
 	const [search, setSearch] = useState('')
 
-	// refreshes problems index to include the new problem that was just posted
+	// refreshes problems index to include posted and updated problems
 	const refreshProblems = () => (
 		getProblems()
 			.then((problems) => {
@@ -140,6 +140,12 @@ const App = () => {
 					}
 				/>
 				{/* --------------- ANSWER ROUTES --------------- */}
+				<Route 
+					path='/problems/:id/edit/answers'
+					element={
+						<EditAnswer problems={problems} user={user} />
+					}
+				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
