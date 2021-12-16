@@ -16,7 +16,7 @@ import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
 import EditProblem from './components/Problems/EditProblem'
 import EditAnswer from './components/Answers/EditAnswer'
-import Profile from './components/auth/Profile'
+import Profile from './components/Profile/Profile'
 import Footer from './components/shared/Footer'
 
 const App = () => {
