@@ -11,17 +11,20 @@ export default function IndexProblems(props) {
     }
 
     console.log("this is props.problems\n", props.problems)
-    const allProblems = props.problems.map((p, i) => {
+    const allProblems = props.problems.sort((a, b) => {
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    }).reverse().map((p, i) => {
         return (
             <li onClick={() => changeCurrent(p)} key={i}>
                 <Problem currentProblem={currentProblem} problem={p} key={i} />
+                <br />
             </li>
         )
-    })
+        })
 
     return (
         <div>
-            <h1>Problems Page</h1>
+            <h1>Posted Problems</h1>
             <FilterProblem 
                 filterProblems={props.handleFilter}
                 searchVal={props.search} 
