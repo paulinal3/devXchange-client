@@ -148,12 +148,6 @@ const App = () => {
 					}
 				/>
 				{/* --------------- ANSWER ROUTES --------------- */}
-				<Route 
-					path='/problems/:id/edit/answers'
-					element={
-						<EditAnswer problems={problems} user={user} />
-					}
-				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

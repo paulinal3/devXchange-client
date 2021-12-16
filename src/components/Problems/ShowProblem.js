@@ -53,7 +53,7 @@ function ShowProblem(props) {
     const getAllProbAnswers = probAnswers.map((answer, i) => {
         return (
             <li key={i}>
-                <ShowAnswer answer={answer} key={i} currentProblemId={currentProblem._id} />
+                <ShowAnswer answer={answer} key={i} currentProblemId={currentProblem._id} refreshProbAnswers={refreshProbAnswers} currentUser={props.user} />
             </li>
         )
     })

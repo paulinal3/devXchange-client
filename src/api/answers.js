@@ -24,6 +24,7 @@ export const postAnswer = (user, problemId, newSolution) => {
 }
 
 export const updateAnswer = (user, answerId, changeAnswer) => {
+    console.log('this is user', user)
     return axios({
         method: 'PATCH',
         url: `${apiUrl}/answers/${answerId}`,
@@ -32,7 +33,7 @@ export const updateAnswer = (user, answerId, changeAnswer) => {
         },
         data: {
             answer: {
-                solution: changeAnswer.solution
+                solution: changeAnswer
             }
         }
     })
