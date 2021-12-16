@@ -22,3 +22,28 @@ export const postAnswer = (user, problemId, newSolution) => {
         }
     })
 }
+
+export const updateAnswer = (user, answerId, changeAnswer) => {
+    return axios({
+        method: 'PATCH',
+        url: `${apiUrl}/answers/${answerId}`,
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: {
+            answer: {
+                solution: changeAnswer.solution
+            }
+        }
+    })
+}
+
+export const destroyAnswer = (user, answerId) => {
+    return axios({
+        method: 'DELETE',
+        url: `${apiUrl}/answers/${answerId}`,
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+    })
+}

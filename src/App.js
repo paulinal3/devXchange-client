@@ -15,6 +15,7 @@ import IndexProblems from './components/Problems/IndexProblems'
 import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
 import EditProblem from './components/Problems/EditProblem'
+import EditAnswer from './components/Answers/EditAnswer'
 
 const App = () => {
 	// ---------- USER STATES & HELPER METHOD ---------- //
@@ -139,6 +140,12 @@ const App = () => {
 					}
 				/>
 				{/* --------------- ANSWER ROUTES --------------- */}
+				<Route 
+					path='/problems/:id/edit/answers'
+					element={
+						<EditAnswer />
+					}
+				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

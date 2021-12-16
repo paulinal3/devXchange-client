@@ -1,11 +1,9 @@
-import { Form } from 'react-bootstrap'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
-import { destroyProblem } from '../../api/problems'
 import { useEffect, useState } from 'react'
+import { destroyProblem } from '../../api/problems'
 import { getProbAnswers, postAnswer } from '../../api/answers'
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
-
 
 function ShowProblem(props) {
     const [newSolution, setNewSolution] = useState('')
@@ -53,10 +51,9 @@ function ShowProblem(props) {
     }
 
     const getAllProbAnswers = probAnswers.map((answer, i) => {
-        let contribLastNameInit = answer.contributor.lastName.charAt(0)
         return (
             <li key={i}>
-                <ShowAnswer answer={answer} key={i} />
+                <ShowAnswer answer={answer} key={i} currentProblemId={currentProblem._id} />
             </li>
         )
     })
@@ -84,18 +81,11 @@ function ShowProblem(props) {
             <p>{currentProblem.description}</p>
             <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
             <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
+            
             <ol>
                 {getAllProbAnswers}
             </ol>
 
-            {/* <p>Your Answer</p>
-            <Form>
-                <label>
-                    <textarea rows='5' cols='50' autofocus />
-                </label>
-                <input id='solution' type='text' name='solution' value={newSolution.solution} onChange={handleChange} />
-                <input type='button' value='Post Your Answer' onClick={() => createAnswer()} />
-            </Form> */}
             <NewAnswer handleChange={handleChange} newSolution={newSolution} createAnswer={createAnswer} />
         </>
     )
