@@ -143,7 +143,7 @@ const App = () => {
 				<Route 
 					path='/problems/:id/edit/answers'
 					element={
-						<EditAnswer />
+						<EditAnswer problems={problems} user={user} />
 					}
 				/>
 			</Routes>

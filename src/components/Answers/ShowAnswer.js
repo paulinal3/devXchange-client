@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 
 export default function ShowAnswer(props) {
     let contribLastNameInit = props.answer.contributor.lastName.charAt(0)
-    console.log('this is props', props.answer)
 
     return (
         <div>
