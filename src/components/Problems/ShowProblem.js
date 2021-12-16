@@ -4,6 +4,7 @@ import { destroyProblem } from '../../api/problems'
 import { useEffect, useState } from 'react'
 import { getProbAnswers, postAnswer } from '../../api/answers'
 import NewAnswer from '../Answers/NewAnswer'
+import ShowAnswer from '../Answers/ShowAnswer'
 
 
 function ShowProblem(props) {
@@ -52,13 +53,10 @@ function ShowProblem(props) {
     }
 
     const getAllProbAnswers = probAnswers.map((answer, i) => {
-        let contribLastNameInit = currentProblem.owner.lastName.charAt(0)
+        let contribLastNameInit = answer.contributor.lastName.charAt(0)
         return (
             <li key={i}>
-                {answer.solution}
-                <div>
-                <small>Submitted by: {answer.contributor.firstName} {contribLastNameInit}.</small>
-                </div>
+                <ShowAnswer answer={answer} key={i} />
             </li>
         )
     })
