@@ -143,7 +143,7 @@ const App = () => {
 					}
 				/>
 			</Routes>
-			{/* <Footer /> */}
+			<Footer />
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
 					key={msgAlert.id}

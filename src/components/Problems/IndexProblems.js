@@ -15,13 +15,14 @@ export default function IndexProblems(props) {
         return (
             <li onClick={() => changeCurrent(p)} key={i}>
                 <Problem currentProblem={currentProblem} problem={p} key={i} />
+                <br />
             </li>
         )
     })
 
     return (
         <div>
-            <h1>Problems Page</h1>
+            <h1>Posted Problems</h1>
             <FilterProblem 
                 filterProblems={props.handleFilter}
                 searchVal={props.search} 

@@ -11,9 +11,9 @@ export default function Problem(props) {
     let lastNameInit = props.problem.owner.lastName.charAt(0)
     return (
         <>
-            <Link to={`/problems/${props.problem._id}`}
+            {/* <Link to={`/problems/${props.problem._id}`}
                 currProblem={props.currentProblem}>{props.problem.title}</Link> <small>by {firstName} {lastNameInit}.</small>
-            <p>Asked {moment(props.problem.createdAt).fromNow()}</p>
+            <p>Asked {moment(props.problem.createdAt).fromNow()}</p> */}
             <Card>
                 <Card.Header>Asked by {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</Card.Header>
                 <Card.Body>
@@ -24,7 +24,7 @@ export default function Problem(props) {
                     {/* <Button variant="primary">Click for More!</Button> */}
                     <>
                         <Button variant="primary" onClick={() => setModalShow(true)}>
-                            Click for more!
+                            View Problem
                         </Button>
                     </>
                 </Card.Body>
