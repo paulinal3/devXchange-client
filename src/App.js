@@ -16,6 +16,7 @@ import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
 import EditProblem from './components/Problems/EditProblem'
 import EditAnswer from './components/Answers/EditAnswer'
+import Profile from './components/auth/Profile'
 
 const App = () => {
 	// ---------- USER STATES & HELPER METHOD ---------- //
@@ -112,6 +113,13 @@ const App = () => {
 					element={
 						<RequireAuth user={user}>
 							<ChangePassword msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+				/>
+				<Route
+					path='/profile'
+					element={
+						<RequireAuth user={user}>
+							<Profile msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 				/>
 				{/* --------------- PROBLEM ROUTES --------------- */}
