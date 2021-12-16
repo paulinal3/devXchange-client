@@ -9,6 +9,11 @@ const linkStyle = {
 const authenticatedOptions = (
 	<>
 		<Nav.Link>
+			<Link to='/problems/new' style={linkStyle}>
+				Post a Problem
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
@@ -16,16 +21,6 @@ const authenticatedOptions = (
 		<Nav.Link>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='/problems' style={linkStyle}>
-				Problems
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='/problems/new' style={linkStyle}>
-				Post a Problem
 			</Link>
 		</Nav.Link>
 	</>
@@ -39,11 +34,7 @@ const unauthenticatedOptions = (
         <Nav.Link>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Link>
-		<Nav.Link>
-			<Link to='/problems' style={linkStyle}>
-				Problems
-			</Link>
-		</Nav.Link>
+		
 	</>
 )
 
@@ -52,6 +43,11 @@ const alwaysOptions = (
 		<Nav.Link>
 			<Link to='/' style={linkStyle}>
 				Home
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
+			<Link to='/problems' style={linkStyle}>
+				Problems
 			</Link>
 		</Nav.Link>
 	</>
@@ -68,7 +64,7 @@ const Header = ({ user }) => (
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='navbar-text mr-2'>Welcome, {user.firstName}</span>
+					<span className='navbar-text mr-2'>Welcome, <Link to="/profile">{user.firstName}</Link></span>
 				)}
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
