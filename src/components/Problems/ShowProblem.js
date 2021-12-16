@@ -1,12 +1,13 @@
 import { Form } from 'react-bootstrap'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { destroyProblem } from '../../api/problems'
-import { useState } from 'react'
-import { postAnswer } from '../../api/answers'
+import { useEffect, useState } from 'react'
+import { getProbAnswers, postAnswer } from '../../api/answers'
 
 
 function ShowProblem(props) {
     const [newSolution, setNewSolution] = useState('')
+    const [probAnswers, setProbAnswers] = useState([])
 
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
@@ -28,6 +29,39 @@ function ShowProblem(props) {
             })
     }
 
+    useEffect(() => {
+        // axios call to find all answers connected to current problem's id
+        getProbAnswers(currentProblem._id)
+            .then(answers => {
+                console.log('these are all the problems answers\n', answers.data.foundAnswers)
+                // set the found answers in db to state
+                setProbAnswers(answers.data.foundAnswers)
+            })
+            .catch(err => console.error(err))
+    }, [])
+
+    // refresh answers to include posted and updated answers
+    const refreshProbAnswers = () => {
+        getProbAnswers(currentProblem._id)
+            .then(answers => {
+                console.log('these are all the problems answers\n', answers.data.foundAnswers)
+                setProbAnswers(answers.data.foundAnswers)
+            })
+            .catch(err => console.error(err))
+    }
+
+    const getAllProbAnswers = probAnswers.map((answer, i) => {
+        let contribLastNameInit = currentProblem.owner.lastName.charAt(0)
+        return (
+            <li key={i}>
+                {answer.solution}
+                <div>
+                <small>Submitted by: {answer.contributor.firstName} {contribLastNameInit}.</small>
+                </div>
+            </li>
+        )
+    })
+
     const handleChange = (e) => {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
     }
@@ -35,6 +69,7 @@ function ShowProblem(props) {
     const createAnswer = () => {
         postAnswer(props.user, currentProblem._id, newSolution)
             .then(() => {
+                refreshProbAnswers()
                 setNewSolution('')
             })
             .catch(err => {
@@ -48,9 +83,11 @@ function ShowProblem(props) {
             <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
             <hr />
             <p>{currentProblem.description}</p>
-            <p>{currentProblem.answers}</p>
             <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
             <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
+            <ol>
+                {getAllProbAnswers}
+            </ol>
 
             <p>Your Answer</p>
             <Form>

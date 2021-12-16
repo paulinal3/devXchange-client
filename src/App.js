@@ -48,7 +48,7 @@ const App = () => {
 	const [problems, setProblems] = useState([])
 	const [search, setSearch] = useState('')
 
-	// refreshes problems index to include the new problem that was just posted
+	// refreshes problems index to include posted and updated problems
 	const refreshProblems = () => (
 		getProblems()
 			.then((problems) => {
