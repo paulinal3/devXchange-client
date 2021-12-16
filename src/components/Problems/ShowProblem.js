@@ -1,16 +1,23 @@
 import { useLocation, useNavigate, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { destroyProblem } from '../../api/problems'
-import apiUrl from '../../apiConfig'
+import { getProbAnswers, postAnswer } from '../../api/answers'
+import NewAnswer from '../Answers/NewAnswer'
+import ShowAnswer from '../Answers/ShowAnswer'
+import EditProblem from './EditProblem'
+import { Button } from "react-bootstrap"
 
 function ShowProblem(props) {
-    // const [newSolution, setNewSolution] = useState('')
+    const [newSolution, setNewSolution] = useState('')
+    const [probAnswers, setProbAnswers] = useState([])
+    const [modalShow, setModalShow] = useState(false)
 
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
     console.log('this is the problem id:', problemId)
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
-    let lastNameInit = currentProblem.owner.lastName.charAt(0)
+    let lastNameInit = currentProblem && currentProblem.owner.lastName.charAt(0)
     const navigate = useNavigate()
 
     const deleteProblem = () => {
@@ -25,49 +32,86 @@ function ShowProblem(props) {
             })
     }
 
-    // const createAnswer = () => {
-    //     postAnswer(props.user, currentProblem._id)
-    //         .then(() => {
-    //             setNewSolution('')
-    //         })
-    //         .catch(err => {
-    //             console.error(err)
-    //         })
-    // }
+    useEffect(() => {
+        // axios call to find all answers connected to current problem's id
+        getProbAnswers(currentProblem._id)
+            .then(answers => {
+                console.log('these are all the problems answers\n', answers.data.foundAnswers)
+                // set the found answers in db to state
+                setProbAnswers(answers.data.foundAnswers)
+            })
+            .catch(err => console.error(err))
+    }, [])
 
-    // const postAnswer = (user, currentProblem._id) => {
-    //     return axios({
-    //         method: 'POST',
-    //         url: `${apiUrl}/answers`,
-    //         headers: {
-    //             Authorization: `Token token=${user.token}`
-    //         },
-    //         data: {
-    //             answer: {
-    //                 solution: newSolution.title,
-    //             }
-    //         }
-    //     })
-    // }
+    // refresh answers to include posted and updated answers
+    const refreshProbAnswers = () => {
+        getProbAnswers(currentProblem._id)
+            .then(answers => {
+                console.log('these are all the problems answers\n', answers.data.foundAnswers)
+                setProbAnswers(answers.data.foundAnswers)
+            })
+            .catch(err => console.error(err))
+    }
+
+    const getAllProbAnswers = probAnswers.map((answer, i) => {
+        return (
+            <li key={i}>
+                <ShowAnswer answer={answer} key={i} currentProblemId={currentProblem._id} refreshProbAnswers={refreshProbAnswers} currentUser={props.user} />
+            </li>
+        )
+    })
+
+    const handleChange = (e) => {
+        setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
+    }
+
+    const createAnswer = () => {
+        postAnswer(props.user, currentProblem._id, newSolution)
+            .then(() => {
+                refreshProbAnswers()
+                setNewSolution('')
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
 
     return (
         <>
-            <h3>{currentProblem.title}</h3>
-            <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-            <hr />
-            <p>{currentProblem.description}</p>
-            <p>{currentProblem.answers}</p>
-            <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
-            <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link>
+            {!currentProblem ? <h1>Loading...</h1> : (
+                <>
+                    <h3>{currentProblem.title}</h3>
+                    <small>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+                    <hr />
+                    <p>{currentProblem.description}</p>
+                    {props.user && props.user._id == currentProblem.owner._id &&
+                        <>
+                            <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
+                            {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
+                            <>
+                                <Button variant="primary" onClick={() => setModalShow(true)}>
+                                    Edit Problem
+                                </Button>
 
-            <p>Your Answer</p>
-            <form >
-                <label>
-                    <textarea rows="5" cols="50" autofocus />
-                </label>
-                <br />
-                {/* <input type="button" value="Post Your Answer" onclick={() => createAnswer()} /> */}
-            </form>
+                                <EditProblem
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+
+                                    currentProb={currentProblem}
+                                    currUser={props.user}
+                                    refreshProb={props.refreshProblems}
+                                />
+                            </>
+                        </>
+                    }
+
+                    <ol>
+                        {getAllProbAnswers}
+                    </ol>
+
+                    <NewAnswer handleChange={handleChange} newSolution={newSolution} createAnswer={createAnswer} />
+                </>
+            )}
         </>
     )
 }

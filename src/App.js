@@ -88,7 +88,6 @@ const App = () => {
 
 	return (
 		<Fragment>
-			<h1>Home</h1>
 			<Header user={user} />
 			<Routes>
 				{/* --------------- USER ROUTES --------------- */}
