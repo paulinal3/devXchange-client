@@ -24,7 +24,18 @@ li {
 /* <---------- PROBLEM.JS ----------> */
 #probCard {
   max-width: 85%;
+  margin-top: 1%;
 }
+
+.cardFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* .cardProblem {
+  max-width: 95%;
+} */
 
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
@@ -38,5 +49,9 @@ li {
 
 /* <---------- FOOTER.JS ----------> */
 footer {
-  margin-top: 10%;
+  margin-top: 20%;
+  /* position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%; */
 }

@@ -12,18 +12,25 @@ export default function Problem(props) {
     return (
         <>
             <Card id='probCard'>
-                <Card.Header className='name'>Asked by: {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</Card.Header>
-                <Card.Body>
-                    <Card.Title>{props.problem.title}</Card.Title>
+                {/* <Card.Header className='name'>Asked by: {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</Card.Header>
+                <Card.Header>
+                    <h3>{props.problem.title}</h3>
+                </Card.Header> */}
+                <div className='cardBody'>
+                <Card.Body className='cardProblem'>
+                    <h3>{props.problem.title}</h3>
                     <Card.Text>
                         {props.problem.description.slice(0, 500)}...
                     </Card.Text>
-                    <>
-                        <Button variant='primary' onClick={() => setModalShow(true)}>
-                            View Problem
-                        </Button>
-                    </>
                 </Card.Body>
+                <Card.Footer className='cardFooter'>
+                        <p className='name'>Asked by: {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</p>
+                        <Button variant='primary' onClick={() => setModalShow(true)}>
+                            Preview Problem
+                        </Button>
+                </Card.Footer>
+
+                </div>
             </Card>
                 <ModalProblem
                     show={modalShow}

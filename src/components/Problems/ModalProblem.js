@@ -35,7 +35,7 @@ export default function ModalProblem(props) {
                                 </> :
                                 <>
                                     <Link to={`/problems/${props.currentProblem._id}`}
-                                        currProblem={props.currentProblem}><Button onClick={props.onHide}>Answer Problem</Button></Link> 
+                                        currProblem={props.currentProblem}><Button onClick={props.onHide}>View Problem</Button></Link> 
                                 </>
                             }
                         </>
