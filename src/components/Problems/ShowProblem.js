@@ -61,14 +61,15 @@ function ShowProblem(props) {
     const getAllProbAnswers = probAnswers.map((answer, i) => {
         return (
             <li key={i}>
-                <ShowAnswer 
-                    answer={answer} 
-                    key={i} 
-                    currentProblemId={currentProblem._id} 
-                    refreshProbAnswers={refreshProbAnswers} 
-                    currentUser={props.user} 
+                <ShowAnswer
+                    answer={answer}
+                    key={i}
+                    currentProblemId={currentProblem._id}
+                    refreshProbAnswers={refreshProbAnswers}
+                    currentUser={props.user}
                 />
             </li>
+
         )
     })
 
@@ -97,7 +98,7 @@ function ShowProblem(props) {
                     <h3>{currentProblem.title}</h3>
                     <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
                     <hr />
-                    <p>{currentProblem.description}</p>
+                    <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p>
                     {props.user && props.user._id == currentProblem.owner._id &&
                         <>
                             <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
@@ -116,15 +117,17 @@ function ShowProblem(props) {
                         </>
                     }
 
-                    <ol>
-                        {getAllProbAnswers}
-                    </ol>
-
-                    <NewAnswer 
+                    <NewAnswer
                         handleAnswer={handleAnswerChange}
                         newSolution={newSolution}
                         createAnswer={createAnswer}
                     />
+
+                    <hr />
+
+                    <ol>
+                        {getAllProbAnswers}
+                    </ol>
                 </>
             )}
         </>
