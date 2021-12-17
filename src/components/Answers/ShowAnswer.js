@@ -9,29 +9,33 @@ export default function ShowAnswer(props) {
     let contribLastNameInit = props.answer.contributor.lastName.charAt(0)
 
     return (
-        <div>
-            {props.answer.solution}
-            <div>
-                <small>answered {moment(props.answer.updatedAt).fromNow()}</small>
-            </div>
-            <div>
-                <small>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
-            </div>
+        <>
+            {!props.answer.solution ? <h1>Loading...</h1> : (
+                <div>
+                    {props.answer.solution}
+                    <div>
+                        <small>answered {moment(props.answer.updatedAt).fromNow()}</small>
+                    </div>
+                    <div>
+                        <small>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
+                    </div>
+                        <>
+                            <Button variant="primary" onClick={() => setModalShow(true)}>
+                                Edit Answer
+                            </Button>
 
-            <>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Edit Answer
-                </Button>
+                            <EditAnswer
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
 
-                <EditAnswer
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
+                                currentAnswer={props.answer}
+                                currUser={props.currentUser}
+                                refreshAnswers={props.refreshProbAnswers}
+                            />
 
-                    currentAnswer={props.answer}
-                    currUser={props.currentUser}
-                    refreshAnswers={props.refreshProbAnswers}
-                />
-            </>
-        </div>
+                        </>
+                </div>
+            )}
+        </>
     )
 }
