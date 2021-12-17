@@ -14,7 +14,7 @@ const Home = (props) => {
 		})
 	// display them from newest to oldest
 	recentProblems.reverse()
-	
+
 	return (
 		<>
 			<div>
@@ -26,9 +26,7 @@ const Home = (props) => {
 				</div>
 				{/* Jumbotron */}
 			</div>
-
 				<h2>Latest Problems</h2>
-			</header>
 			<ol>
 				{recentProblems}
 			</ol>
