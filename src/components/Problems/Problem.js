@@ -24,8 +24,8 @@ export default function Problem(props) {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className='cardFooter'>
-                        <p className='name'>Asked by: {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</p>
-                        <Button variant='primary' onClick={() => setModalShow(true)}>
+                        <p id='name'>Asked by: {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</p>
+                        <Button className='cardBtn' onClick={() => setModalShow(true)}>
                             Preview Problem
                         </Button>
                 </Card.Footer>

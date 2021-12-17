@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300&display=swap');
+
 /* <---------- MULTIPLE FILES ----------> */
 body {
   margin: 0;
@@ -5,7 +7,14 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+/* .cardBtn {
+  color:#225B61;
+} */
+
+* {
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 code {

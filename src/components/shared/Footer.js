@@ -122,8 +122,8 @@ export default function Footer() {
                 {/* <!-- Section: Links --> */}
             </div>
             {/* <!-- Grid container --> */}
-
-            <div class='text-center p-3' styles='background-color: rgba(0, 0, 0, 0.2);'>
+            <hr />
+            <div class='text-center p-3' styles='background-color: rgba(0, 0, 0, 0);'>
                 Built By: Solo Tres
                 {/* <a class='text-white' href='https://mdbootstrap.com/'> Solo Tres</a> */}
             </div>
