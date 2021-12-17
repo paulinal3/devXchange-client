@@ -17,10 +17,7 @@ import NewProblem from './components/Problems/NewProblem'
 import EditProblem from './components/Problems/EditProblem'
 import EditAnswer from './components/Answers/EditAnswer'
 import Profile from './components/Profile/Profile'
-<<<<<<< HEAD
-=======
 import Footer from './components/shared/Footer'
->>>>>>> c047f5307b98eb4615c16f3c00faabfe396ed818
 
 const App = () => {
 	// ---------- USER STATES & HELPER METHOD ---------- //
