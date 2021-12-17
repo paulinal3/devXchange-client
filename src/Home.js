@@ -1,3 +1,4 @@
+import { InputGroup } from 'react-bootstrap'
 import Problem from './components/Problems/Problem'
 
 const Home = (props) => {
@@ -18,15 +19,20 @@ const Home = (props) => {
 	return (
 		<>
 			<div>
-				{/* Jumbotron */}
-				<div class="p-5 text-center bg-light">
-					<h1 class="mb-3">Hello</h1>
-					<h4 class="mb-3">Subheading</h4>
-					<a class="btn btn-primary " href="" role="button">Call to action</a>
+
+				<div class="container-fluid bg-dark text-light p-5">
+					<div class="container bg-dark p-5">
+						<h1 class="display-4">Welcome to DevXChange</h1>
+						<p>Learn more</p>
+						<div class="input-container">
+							<input class="input-field" type="text"></input>
+						</div>
+						<a href="#" class="btn btn-primary">search</a>
+					</div>
+
 				</div>
-				{/* Jumbotron */}
 			</div>
-				<h2>Latest Problems</h2>
+			<h2>Latest Problems</h2>
 			<ol>
 				{recentProblems}
 			</ol>

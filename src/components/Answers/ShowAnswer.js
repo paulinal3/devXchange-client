@@ -1,6 +1,6 @@
 import EditAnswer from "./EditAnswer"
 import { useState } from "react"
-import { Button } from "react-bootstrap"
+import { Button, Form, Accordion } from "react-bootstrap"
 import moment from 'moment'
 
 export default function ShowAnswer(props) {
@@ -10,7 +10,7 @@ export default function ShowAnswer(props) {
 
     return (
         <>
-            {!props.answer.solution ? <h1>Loading...</h1> : (
+            {/* {!props.answer.solution ? <h1>Loading...</h1> : (
                 <div>
                     {props.answer.solution}
                     <div>
@@ -19,21 +19,45 @@ export default function ShowAnswer(props) {
                     <div>
                         <small className='name'>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
                     </div>
-                        <>
-                            <Button variant="primary" onClick={() => setModalShow(true)}>
-                                Edit Answer
-                            </Button>
+                    <>
+                        <Button variant="primary" onClick={() => setModalShow(true)}>
+                            Edit Answer
+                        </Button>
 
-                <EditAnswer
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                    currentAnswer={props.answer}
-                    currUser={props.currentUser}
-                    refreshAnswers={props.refreshProbAnswers}
-                />
-            </>
-        </div>
-            )}
+                        <EditAnswer
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                            currentAnswer={props.answer}
+                            currUser={props.currentUser}
+                            refreshAnswers={props.refreshProbAnswers}
+                        />
+                    </>
+                </div>
+            )} */}
+            <div>
+                <Accordion id='newAnswer' defaultActiveKey="0">
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.
+                        </Accordion.Header>
+                        <Accordion.Body>
+                            {props.answer.solution}
+                            <>
+                                <Button variant="primary" onClick={() => setModalShow(true)}>
+                                    Edit Answer
+                                </Button>
+
+                                <EditAnswer
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+                                    currentAnswer={props.answer}
+                                    currUser={props.currentUser}
+                                    refreshAnswers={props.refreshProbAnswers}
+                                />
+                            </>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
+            </div>
         </>
     )
 }

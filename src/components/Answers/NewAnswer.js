@@ -3,8 +3,7 @@ import { Form, Accordion, Button } from 'react-bootstrap'
 export default function NewAnswer(props) {
     return (
         <div>
-            <p>Your answer</p>
-            <Accordion id='newAnswer'>
+            <Accordion id='newAnswer' defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Post Your Answer</Accordion.Header>
                     <Accordion.Body>
