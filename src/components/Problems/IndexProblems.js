@@ -1,5 +1,5 @@
 import { useState} from 'react'
-import FilterProblem from './FilterProblem'
+
 import Problem from './Problem'
 
 export default function IndexProblems(props) {
@@ -18,19 +18,18 @@ export default function IndexProblems(props) {
         return (
             <li onClick={() => changeCurrent(p)} key={i}>
                 <Problem currentProblem={currentProblem} problem={p} key={i} />
-                <br />
             </li>
         )
-        })
+    })
 
     return (
         <div>
-            <h1>Posted Problems</h1>
-            <FilterProblem 
+            <h1>Problems Page</h1>
+            {/* <FilterProblem 
                 filterProblems={props.handleFilter}
                 searchVal={props.search} 
                 searchChange={props.handleSearch}
-            />
+            /> */}
             <br />
             <ol>
                 {allProblems}

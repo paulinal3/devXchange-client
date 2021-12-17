@@ -9,19 +9,20 @@ export default function ShowAnswer(props) {
     let contribLastNameInit = props.answer.contributor.lastName.charAt(0)
 
     return (
-        <div>
-            {props.answer.solution}
-            <div>
-                <small>answered {moment(props.answer.updatedAt).fromNow()}</small>
-            </div>
-            <div>
-                <small className='name'>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
-            </div>
-
-            <>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Edit Answer
-                </Button>
+        <>
+            {!props.answer.solution ? <h1>Loading...</h1> : (
+                <div>
+                    {props.answer.solution}
+                    <div>
+                        <small>answered {moment(props.answer.updatedAt).fromNow()}</small>
+                    </div>
+                    <div>
+                        <small className='name'>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
+                    </div>
+                        <>
+                            <Button variant="primary" onClick={() => setModalShow(true)}>
+                                Edit Answer
+                            </Button>
 
                 <EditAnswer
                     show={modalShow}
@@ -32,5 +33,7 @@ export default function ShowAnswer(props) {
                 />
             </>
         </div>
+            )}
+        </>
     )
 }
