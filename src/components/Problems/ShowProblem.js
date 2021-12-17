@@ -1,31 +1,19 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { destroyProblem } from '../../api/problems'
-import { getProbAnswers, postAnswer } from '../../api/answers'
-import NewAnswer from '../Answers/NewAnswer'
-import ShowAnswer from '../Answers/ShowAnswer'
-import EditProblem from './EditProblem'
-import { Button } from "react-bootstrap"
+import apiUrl from '../../apiConfig'
 
 function ShowProblem(props) {
-    const [newSolution, setNewSolution] = useState('')
-    const [probAnswers, setProbAnswers] = useState([])
-    const [modalShow, setModalShow] = useState(false)
+    // const [newSolution, setNewSolution] = useState('')
 
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
-    // console.log('this is the problem id:', problemId)
-
+    console.log('this is the problem id:', problemId)
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
-
-    let lastNameInit = currentProblem && currentProblem.owner.lastName.charAt(0)
-
+    let lastNameInit = currentProblem.owner.lastName.charAt(0)
     const navigate = useNavigate()
 
-    // helper method attached to delete button
     const deleteProblem = () => {
-        // axios call to delete problem from db
         destroyProblem(props.user, currentProblem._id)
             // console.log('THIS IS:', `${apiUrl}/problems/${itemId}`)
             .then(() => {
@@ -36,7 +24,7 @@ function ShowProblem(props) {
                 console.error(err)
             })
     }
-
+    
     useEffect(() => {
         // axios call to find all answers connected to current problem's id
         getProbAnswers(currentProblem._id)
@@ -130,6 +118,7 @@ function ShowProblem(props) {
                     </ol>
                 </>
             )}
+
         </>
     )
 }

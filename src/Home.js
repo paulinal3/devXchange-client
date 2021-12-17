@@ -19,6 +19,7 @@ const Home = (props) => {
 	return (
 		<>
 			<div>
+
 				<div class="container-fluid bg-dark text-light p-5">
 					<div class="container bg-dark p-5">
 						<h1 class="display-4">Welcome to DevXChange</h1>
@@ -28,6 +29,7 @@ const Home = (props) => {
 						</div>
 						<a href="#" class="btn btn-primary">search</a>
 					</div>
+
 				</div>
 			</div>
 			<h2>Latest Problems</h2>
