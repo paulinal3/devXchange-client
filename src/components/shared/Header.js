@@ -3,6 +3,7 @@ import { InputGroup, FormControl } from 'react-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+import FilterProblem from '../Problems/FilterProblem'
 const linkStyle = {
 	color: 'white',
 	textDecoration: 'none'
@@ -55,7 +56,7 @@ const alwaysOptions = (
 	</>
 )
 
-const Header = ({ user }) => (
+const Header = ({ user }, props) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
 			<Link to='/' style={linkStyle}>
@@ -63,17 +64,6 @@ const Header = ({ user }) => (
 			</Link>
 		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
-		<Nav>
-			<Link to='/problems' style={linkStyle}>
-				<InputGroup className="mb-3">
-					<FormControl
-						placeholder="Search for a problem"
-						aria-label="Recipient's username"
-						aria-describedby="basic-addon2"
-					/>
-				</InputGroup>
-			</Link>
-		</Nav>
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
@@ -82,6 +72,13 @@ const Header = ({ user }) => (
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
+			<Link to="/problems">
+			<FilterProblem 
+                filterProblems={props.handleFilter}
+                searchVal={props.search} 
+                searchChange={props.handleSearch}
+            />
+			</Link>
 		</Navbar.Collapse>
 	</Navbar>
 )
