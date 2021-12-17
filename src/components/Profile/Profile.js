@@ -20,9 +20,6 @@ function Profile(props) {
             </Row>
 
         </Container>
-        // <div>
-        //     
-        // </div>
     )
 }
 
