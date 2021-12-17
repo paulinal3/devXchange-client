@@ -27,10 +27,11 @@ const Home = (props) => {
 				{/* Jumbotron */}
 			</div>
 
-			<div>
 				<h2>Latest Problems</h2>
-			</div>
-			{recentProblems}
+			</header>
+			<ol>
+				{recentProblems}
+			</ol>
 		</>
 	)
 }

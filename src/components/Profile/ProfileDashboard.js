@@ -17,7 +17,7 @@ function ProfileDashboard(props) {
 
         return (
             <ListGroup as="ul">
-                <ListGroup.Item as="li" active>
+                <ListGroup.Item as="li" active className='name'>
                     {props.user.firstName}'s Dashboard
                 </ListGroup.Item>
                 <ListGroup.Item as="li">

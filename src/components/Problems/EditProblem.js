@@ -1,30 +1,17 @@
 import { Form, Modal, Button, InputGroup, FormControl } from "react-bootstrap"
-import { useNavigate, useLocation } from "react-router-dom"
-import { getOneProblem, updateProblem } from "../../api/problems"
-import { useState, useEffect } from "react"
+import { updateProblem } from "../../api/problems"
+import { useState } from "react"
 
 export default function EditProblem(props) {
-    const { pathname } = useLocation()
-    const problemId = pathname.split('/')[3]
-    console.log('this is the problem id:', problemId)
-    const navigate = useNavigate()
-    
     const [changeProblem, setChangeProblem] = useState (props.currentProb.description)
 
-    useEffect(() => {
-        getOneProblem(problemId)
-        .then((problem) => {
-            console.log('these are all the problems in the db\n', problem.data)
-            setChangeProblem(problem.data.problem)
-        })
-            .catch(err => console.error(err))
-    }, [])
-
-    const handleChange = (e) => {
+    const handleProblemChange = (e) => {
         setChangeProblem(e.target.value)
     }
     
+    // helper method
     const editProblem = () => {
+        // axios call to update the current problem in db
         updateProblem(props.currUser, props.currentProb._id, changeProblem)
             .then(() => {
                 props.refreshProb()
@@ -56,7 +43,7 @@ export default function EditProblem(props) {
                     <h3>{props.currentProb.title}</h3>
                 <Form>
                     <InputGroup>
-                        <FormControl as="textarea" aria-label="With textarea" name='description' value={changeProblem} onChange={handleChange} />
+                        <FormControl as="textarea" aria-label="With textarea" name='description' value={changeProblem} onChange={handleProblemChange} />
                     </InputGroup>
                 </Form>
             </Modal.Body>

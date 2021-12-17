@@ -1,5 +1,5 @@
-import { Modal, Button, InputGroup } from 'react-bootstrap'
-import { useLocation, Link } from 'react-router-dom'
+import { Modal, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 // console.log('A:', user)
 // console.log('B:', currentProblem)

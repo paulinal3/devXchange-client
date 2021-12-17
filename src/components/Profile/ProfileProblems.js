@@ -21,7 +21,7 @@ function ProfileProblems(props) {
         let descSnippet = p.description.slice(0, 80) + "..."
         return (
             <Card >
-                <Card.Header>{moment(p.createdAt).fromNow()}</Card.Header>
+                <Card.Header>Asked {moment(p.createdAt).fromNow()}</Card.Header>
                 <Card.Body>
                     <Card.Title>{p.title}</Card.Title>
                     <Card.Text>

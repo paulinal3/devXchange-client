@@ -1,4 +1,4 @@
-/* ---------- MULTIPLE FILES ---------- */
+/* <---------- MULTIPLE FILES ----------> */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -17,22 +17,26 @@ li {
   list-style: none;
 }
 
-/* ---------- PROBLEM.JS ---------- */
+.name {
+  text-transform: capitalize;
+}
+
+/* <---------- PROBLEM.JS ----------> */
 #probCard {
   max-width: 85%;
 }
 
-/* ---------- NEWPROBBLEM.JS ---------- */
+/* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
   max-width: 75%;
 }
 
-/* ---------- NEWANSWER.JS ---------- */
+/* <---------- NEWANSWER.JS ----------> */
 #newAnswer {
   max-width: 85%;
 }
 
-/* ---------- FOOTER.JS ---------- */
+/* <---------- FOOTER.JS ----------> */
 footer {
   margin-top: 10%;
 }
