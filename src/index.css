@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ---------- PROBLEM.JS ---------- */
+#probCard {
+  max-width: 85%;
+}
+
+/* ---------- NEWPROBBLEM.JS ---------- */
+#newProbForm {
+  max-width: 75%;
+}
+
+/* ---------- NEWANSWER.JS ---------- */
+#newAnswer {
+  max-width: 85%;
+}

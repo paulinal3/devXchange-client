@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Form from 'react-bootstrap/Form'
+import { Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
 
@@ -35,13 +35,24 @@ export default function NewProblem(props) {
             .then(() => navigate('/problems'))
             .catch(err => {
                 console.error(err)
-            }) 
+            })
     }
 
     return (
         <div>
             <h1>Post Your Problem!</h1>
-            <Form>
+            <Form id='newProbForm'>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control type="text" name='title' value={newProblem.title} onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control as="textarea" rows={3} type='text' name='description' value={newProblem.description} onChange={handleChange} />
+                </Form.Group>
+                <Button onClick={() => createNewProblem()}>Post Problem</Button>
+            </Form>
+            {/* <Form>
                 <div>
                     <label htmlFor='title'>Title: </label>
                     <input id='title' type='text' name='title' value={newProblem.title} onChange={handleChange} />
@@ -55,8 +66,8 @@ export default function NewProblem(props) {
                     <input id='img' type='file' name='img' value={newProblem.img} onChange={handleChange} />
                 </div>
 
-                <input type='button' value='Post Problem' onClick={() => createNewProblem()}/>
-            </Form>
+                <input type='button' value='Post Problem' onClick={() => createNewProblem()} />
+            </Form> */}
         </div>
     )
 }

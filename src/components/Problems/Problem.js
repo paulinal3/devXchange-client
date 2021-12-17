@@ -14,7 +14,7 @@ export default function Problem(props) {
             {/* <Link to={`/problems/${props.problem._id}`}
                 currProblem={props.currentProblem}>{props.problem.title}</Link> <small>by {firstName} {lastNameInit}.</small>
             <p>Asked {moment(props.problem.createdAt).fromNow()}</p> */}
-            <Card>
+            <Card id='probCard'>
                 <Card.Header>Asked by {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</Card.Header>
                 <Card.Body>
                     <Card.Title>{props.problem.title}</Card.Title>
