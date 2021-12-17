@@ -17,6 +17,7 @@ export default function Problem(props) {
                     <h3>{props.problem.title}</h3>
                 </Card.Header> */}
                 <div className='cardBody'>
+
                     <Card.Body className='cardProblem'>
                         <h3>{props.problem.title}</h3>
                         <Card.Text>

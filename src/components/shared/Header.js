@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { InputGroup, FormControl } from 'react-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
@@ -59,7 +58,7 @@ const alwaysOptions = (
 )
 
 const Header = ({user , handleFilter, search, handleSearch}) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar bg='dark' variant='dark' expand='md' id='navBar'>
 		<Navbar.Brand className='mx-4'>
 			<Link to='/' style={linkStyle}>
 				DevXchange
@@ -84,7 +83,6 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 				/>
 				</Link>
 			</Nav.Link>
-			
 	</Navbar>
 )
 
