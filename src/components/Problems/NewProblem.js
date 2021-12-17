@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import { useCallback, useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
+import TextEditor from '../shared/TextEditor'
+import Quill from "quill"
+import "quill/dist/quill.snow.css"
 
 export default function NewProblem(props) {
     // console.log('this is props\n', props)
     // console.log('here is the current user id:', props.user._id)
+    const [quill, setQuill] = useState()
+
     const [newProblem, setNewProblem] = useState({
         title: '',
-        description: '',
+        description: {},
         solved: false,
         img: ''
     })
@@ -27,7 +32,7 @@ export default function NewProblem(props) {
                 props.refreshProblems()
                 setNewProblem({
                     title: '',
-                    description: '',
+                    description: {},
                     solved: false,
                     img: ''
                 })
@@ -38,19 +43,62 @@ export default function NewProblem(props) {
             })
     }
 
+   
+
+    let toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    ]
+
+    useEffect(() => {
+        if (quill == null) return
+
+        const handler = (delta, oldDelta, source) => {
+            if (source !== 'user') return
+            setNewProblem({description: delta})
+        }
+        quill.on('text-change', handler)
+
+        return () => {
+            quill.off('text-change', handler)
+        }
+    }, [quill])
+
+
+    const wrapperRef = useCallback((wrapper) => {
+        if (wrapper === null) return
+
+        wrapper.innerHTML = ""
+        const editor = document.createElement('div')
+        wrapper.append(editor)
+
+        const q = new Quill(editor, {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow',
+
+        })
+        setQuill(q)
+    }, [])
+
+
     return (
         <div>
-            <h1>Post Your Problem!</h1>
+            <h1 className='mx-4'>Post Your Problem!</h1>
             <Form id='newProbForm'>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" name='title' value={newProblem.title} onChange={handleChange} />
+                <Form.Group className="mb-3 mx-3" controlId="exampleForm.ControlInput1">
+                    
+                    <Form.Control type="text" name='title' value={newProblem.title} onChange={handleChange} placeholder="Title"/>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control as="textarea" rows={3} type='text' name='description' value={newProblem.description} onChange={handleChange} />
+                <Form.Group className="mb-3 mx-4" controlId="exampleForm.ControlTextarea1">
+                    {/* <Form.Label>Description</Form.Label>
+                    <Form.Control as="textarea" rows={3} type='text' name='description' value={newProblem.description} onChange={handleChange} /> */}
+                    <div id="container" ref={wrapperRef}></div>
                 </Form.Group>
-                <Button onClick={() => createNewProblem()}>Post Problem</Button>
+                <Button onClick={() => createNewProblem()} className='mx-4 mt-3 float-end'>Post Problem</Button>
             </Form>
             {/* <Form>
                 <div>
