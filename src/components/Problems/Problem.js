@@ -17,27 +17,30 @@ export default function Problem(props) {
                     <h3>{props.problem.title}</h3>
                 </Card.Header> */}
                 <div className='cardBody'>
-                <Card.Body className='cardProblem'>
-                    <h3>{props.problem.title}</h3>
-                    <Card.Text>
-                        {props.problem.description.slice(0, 500)}...
-                    </Card.Text>
-                </Card.Body>
-                <Card.Footer className='cardFooter'>
-                        <p id='name'>Asked by: {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</p>
-                        <Button className='cardBtn' onClick={() => setModalShow(true)}>
+
+                    <Card.Body className='cardProblem'>
+                        <h3>{props.problem.title}</h3>
+                        <Card.Text>
+                            {props.problem.description.slice(0, 500)}...
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer className='cardFooter'>
+                        <p className='name'>Asked by: {firstName} {lastNameInit}.
+                            <span class="badge rounded-pill bg-dark"> {moment(props.problem.createdAt).fromNow()} </span>
+                        </p>
+                        <Button variant='primary' onClick={() => setModalShow(true)}>
                             Preview Problem
                         </Button>
-                </Card.Footer>
+                    </Card.Footer>
 
                 </div>
             </Card>
-                <ModalProblem
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                    currentProblem={props.problem}
-                    
-                />
+            <ModalProblem
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                currentProblem={props.problem}
+
+            />
         </>
     )
 }

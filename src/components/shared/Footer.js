@@ -24,7 +24,7 @@ export default function Footer() {
                 {/* <!-- Section: Text --> */}
                 <section class='mb-4'>
                     <p>
-                        Three software engineers came together to develop a full-stack CRUD application that provides users the ability to post coding probelms they may be having and/or offer their coding knowlodege to help those who've hit a wall.
+                        Three software engineers came together to develop a full-stack CRUD application that provides users the ability to post coding problems they may be having and/or offer their coding knowledge to help those who've hit a wall.
                     </p>
                 </section>
                 {/* <!-- Section: Text --> */}

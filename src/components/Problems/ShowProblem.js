@@ -199,7 +199,9 @@ function ShowProblem(props) {
 
         )
     })
-
+    
+    // display them from newest to oldest
+    getAllProbAnswers.reverse()
     // passed down as a prop to NewAnswer
     const handleAnswerChange = (e) => {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })

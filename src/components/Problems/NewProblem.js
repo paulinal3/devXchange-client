@@ -40,7 +40,18 @@ export default function NewProblem(props) {
 
     return (
         <div>
-            <h1>Post Your Problem!</h1>
+            {/* Jumbotron */}
+            <div class="container-fluid bg-dark text-light p-5">
+                <h1 class="mb-3">Tips on posting a problem</h1>
+                <h4 class="mb-3">
+                    <ol>
+                        <li>Summarize the problem</li>
+                        <li>Describe what you've tried</li>
+                        <li>When appropriate, show some code</li>
+                    </ol>
+                </h4>
+            </div>
+            {/* Jumbotron */}
             <Form id='newProbForm'>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
