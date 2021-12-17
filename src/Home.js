@@ -12,7 +12,7 @@ const Home = (props) => {
 				</li>
 			)
 		})
-
+	recentProblems.reverse()
 	return (
 		<>
 			<div>
@@ -24,7 +24,7 @@ const Home = (props) => {
 				</div>
 				{/* Jumbotron */}
 			</div>
-			
+
 			<div>
 				<h2>Latest Problems</h2>
 			</div>
