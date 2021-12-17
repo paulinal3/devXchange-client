@@ -60,7 +60,7 @@ const alwaysOptions = (
 
 const Header = ({user , handleFilter, search, handleSearch}) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand>
+		<Navbar.Brand className='mx-4'>
 			<Link to='/' style={linkStyle}>
 				DevXchange
 			</Link>
@@ -75,13 +75,15 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
-			<Link to="/problems">
-			<FilterProblem 
-                filterProblems={handleFilter}
-                searchVal={search} 
-                searchChange={handleSearch}
-            />
-			</Link>
+			<Nav.Link className='mx-4'>
+				<Link to="/problems">
+				<FilterProblem 
+					filterProblems={handleFilter}
+					searchVal={search} 
+					searchChange={handleSearch}
+				/>
+				</Link>
+			</Nav.Link>
 			
 	</Navbar>
 )

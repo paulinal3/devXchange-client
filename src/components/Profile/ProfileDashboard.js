@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ListGroup } from "react-bootstrap"
+import { ListGroup, Badge } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import moment from 'moment'
 
@@ -17,14 +17,19 @@ function ProfileDashboard(props) {
 
         return (
             <ListGroup as="ul">
-                <ListGroup.Item as="li" active className='name'>
+                <ListGroup.Item as="li" className='name'  style={{'background-color':'darkgrey'}}>
                     {props.user.firstName}'s Dashboard
                 </ListGroup.Item>
                 <ListGroup.Item as="li">
                     <small>Member since: {moment(memberDate).format("MMMM YYYY ")}</small>
                     </ListGroup.Item>
                 <ListGroup.Item as="li" disabled>
-                <small>Problems Posted: {problemsPosted}</small>
+                <small>Problems Posted: </small>
+                    <div>
+                        <Badge variant="primary" pill>
+                        {problemsPosted}
+                        </Badge> 
+                    </div>
                 </ListGroup.Item>
                 <ListGroup.Item as="li" disabled>
                     <small>Answers Posted: {answersPosted}</small>
