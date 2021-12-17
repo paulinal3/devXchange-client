@@ -9,7 +9,7 @@ function Profile(props) {
 
         <Container fluid="md">
             <Row>
-                <Col sm={8}><h3> Welcome, {props.user.firstName}</h3></Col>
+                <Col sm={8}><h3 className='name'> Welcome, {props.user.firstName}</h3></Col>
             </Row>
             <Row>
                 <Col>   </Col>

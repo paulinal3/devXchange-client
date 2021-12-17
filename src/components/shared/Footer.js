@@ -56,7 +56,7 @@ export default function Footer() {
 
                         {/* <!--Grid column--> */}
                         <div class='col-lg-3 col-md-6 mb-4 mb-md-0'>
-                            <h5 class='text-uppercase'>Christos M.</h5>
+                            <h5 class='text-uppercase'>Christos Miltiadou</h5>
 
                             <ul class='list-unstyled mb-0'>
                                 <li>
@@ -77,7 +77,7 @@ export default function Footer() {
 
                         {/* <!--Grid column--> */}
                         <div class='col-lg-3 col-md-6 mb-4 mb-md-0'>
-                            <h5 class='text-uppercase'>Galyver A.</h5>
+                            <h5 class='text-uppercase'>Galyver Asi</h5>
 
                             <ul class='list-unstyled mb-0'>
                                 <li>
@@ -98,7 +98,7 @@ export default function Footer() {
 
                         {/* <!--Grid column--> */}
                         <div class='col-lg-3 col-md-6 mb-4 mb-md-0'>
-                            <h5 class='text-uppercase'>Paulina L.</h5>
+                            <h5 class='text-uppercase'>Paulina Le</h5>
 
                             <ul class='list-unstyled mb-0'>
                                 <li>

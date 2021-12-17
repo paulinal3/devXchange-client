@@ -15,7 +15,7 @@ export default function ShowAnswer(props) {
                 <small>answered {moment(props.answer.updatedAt).fromNow()}</small>
             </div>
             <div>
-                <small>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
+                <small className='name'>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
             </div>
 
             <>
@@ -26,7 +26,6 @@ export default function ShowAnswer(props) {
                 <EditAnswer
                     show={modalShow}
                     onHide={() => setModalShow(false)}
-
                     currentAnswer={props.answer}
                     currUser={props.currentUser}
                     refreshAnswers={props.refreshProbAnswers}

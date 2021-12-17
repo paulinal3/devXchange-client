@@ -14,13 +14,11 @@ import ChangePassword from './components/auth/ChangePassword'
 import IndexProblems from './components/Problems/IndexProblems'
 import ShowProblem from './components/Problems/ShowProblem'
 import NewProblem from './components/Problems/NewProblem'
-import EditProblem from './components/Problems/EditProblem'
-import EditAnswer from './components/Answers/EditAnswer'
 import Profile from './components/Profile/Profile'
 import Footer from './components/shared/Footer'
 
 const App = () => {
-	// ---------- USER STATES & HELPER METHOD ---------- //
+	// <---------- USER STATES & HELPER METHOD ----------> //
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 
@@ -47,10 +45,22 @@ const App = () => {
 		})
 	}
 
-	// ---------- PROBLEMS STATES & HELPER METHOD ---------- //
+	// <---------- PROBLEMS STATES & HELPER METHOD ----------> //
 	const [problems, setProblems] = useState([])
 	const [search, setSearch] = useState('')
 
+	
+	useEffect(() => {
+		// axios call to find all problems in the db
+		getProblems()
+		.then((problems) => {
+			console.log('these are all the problems in the db\n', problems.data.problems)
+			// sets all problems in the db to state
+			setProblems(problems.data.problems)
+		})
+		.catch(err => console.error(err))
+	}, [])
+	
 	// refreshes problems index to include posted and updated problems
 	const refreshProblems = () => (
 		getProblems()
@@ -60,17 +70,6 @@ const App = () => {
 			})
 			.catch(err => console.error(err))
 	)
-
-	useEffect(() => {
-		// axios call to find all problems in the db
-		getProblems()
-			.then((problems) => {
-				console.log('these are all the problems in the db\n', problems.data.problems)
-				// sets all problems in the db to state
-				setProblems(problems.data.problems)
-			})
-			.catch(err => console.error(err))
-	}, [])
 
 	// passed down as prop to FilterProblem
 	const handleSearchChange = (e) => {
@@ -90,8 +89,9 @@ const App = () => {
 		<Fragment>
 			<Header user={user} />
 			<Routes>
-				{/* --------------- USER ROUTES --------------- */}
-				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} />
+				{/* <--------------- USER ROUTES ---------------> */}
+				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} 
+				/>
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
@@ -122,7 +122,7 @@ const App = () => {
 							<Profile msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 				/>
-				{/* --------------- PROBLEM ROUTES --------------- */}
+				{/* <--------------- PROBLEM ROUTES ---------------> */}
 				<Route
 					path='/problems'
 					element={

@@ -19,10 +19,12 @@ const Home = (props) => {
 
 	return (
 		<>	
-			<div>
+			<header>
 				<h2>Latest Problems</h2>
-			</div>
-			{recentProblems}
+			</header>
+			<ol>
+				{recentProblems}
+			</ol>
 		</>
 	)
 }

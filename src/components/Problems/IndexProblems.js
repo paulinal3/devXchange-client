@@ -4,14 +4,15 @@ import Problem from './Problem'
 
 export default function IndexProblems(props) {
     const [currentProblem, setCurrentProblem] = useState({})
-    const [deleteProblem, setDeleteProblem] = useState({})
 
     const changeCurrent = problem => {
         setCurrentProblem(problem)
     }
 
     console.log("this is props.problems\n", props.problems)
+    // sort through all problems
     const allProblems = props.problems.sort((a, b) => {
+        // return all problems from newest to oldest
         return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     }).reverse().map((p, i) => {
         return (
