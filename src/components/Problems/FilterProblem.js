@@ -1,14 +1,16 @@
+import { InputGroup, FormControl } from "react-bootstrap";
+
 export default function FilterProblem(props) {
         return (
-            <div>
-                <label htmlFor='problemFilter'>Search Questions: </label>
-                <input
-                    id='problemFilter'
-                    type='text'
-                    value={props.searchVal}
-                    onChange={props.searchChange}
-                />
-            </div>
+                <InputGroup className="mb-0">
+                    <FormControl
+                        placeholder="Search for a problem"
+                        aria-label="Search for a problem"
+                        value={props.searchVal}
+                        onChange={props.searchChange}
+                    />
+                    
+                </InputGroup>
         )
     }
     

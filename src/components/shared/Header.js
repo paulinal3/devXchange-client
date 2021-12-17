@@ -4,6 +4,8 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 import FilterProblem from '../Problems/FilterProblem'
+
+
 const linkStyle = {
 	color: 'white',
 	textDecoration: 'none'
@@ -56,7 +58,7 @@ const alwaysOptions = (
 	</>
 )
 
-const Header = ({ user }, props) => (
+const Header = ({user , handleFilter, search, handleSearch}) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
 			<Link to='/' style={linkStyle}>
@@ -72,14 +74,15 @@ const Header = ({ user }, props) => (
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
+		</Navbar.Collapse>
 			<Link to="/problems">
 			<FilterProblem 
-                filterProblems={props.handleFilter}
-                searchVal={props.search} 
-                searchChange={props.handleSearch}
+                filterProblems={handleFilter}
+                searchVal={search} 
+                searchChange={handleSearch}
             />
 			</Link>
-		</Navbar.Collapse>
+			
 	</Navbar>
 )
 
