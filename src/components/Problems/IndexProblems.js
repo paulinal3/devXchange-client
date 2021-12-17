@@ -46,10 +46,11 @@ export default function IndexProblems(props) {
                 searchVal={props.search} 
                 searchChange={props.handleSearch}
             /> */}
-            <br />
-            <ol>
-                {allProblems}
-            </ol>
+            <div className='problemCard'>
+                <ol>
+                    {allProblems}
+                </ol>
+            </div>
             {/* {paginationBasic} */}
         </div>
     )
