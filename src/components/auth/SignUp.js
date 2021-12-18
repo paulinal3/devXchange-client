@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { signUp, signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Form, Button, FloatingLabel } from 'react-bootstrap'
 
 const SignUp = (props) => {
     const [firstName, setFirstName] = useState('')
@@ -51,31 +50,37 @@ const SignUp = (props) => {
     return (
         <div>
             <div>
-                {/* Jumbotron */}
-                <div class="container-fluid bg-dark text-light p-5">
-                    <h1 class="mb-3">Join the DevXChange community </h1>
-                    <h4 class="mb-3">Collaborate and share knowledge for free</h4>
+                {/* <----- JUMBOTRON -----> */}
+                <div class='container-fluid bg-dark text-light p-5'>
+                    <h1 class='mb-3'>Join the DevXChange community </h1>
+                    <h4 class='mb-3'>Collaborate and share knowledge for free</h4>
                 </div>
-                {/* Jumbotron */}
             </div>
 
             <div className='row'>
-                <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    {/* <h3>Sign Up</h3> */}
+                <div className='col-sm-10 col-md-8 mx-auto mt-5' id='signUpForm'>
                     <Form onSubmit={onSignUp}>
-                        <Form.Group controlId='firstName'>
-                            <Form.Label>First name</Form.Label>
+                        {/* <----- FIRST NAME -----> */}
+                        <FloatingLabel
+                            controlId='floatingInput'
+                            label='First name'
+                            className='mb-3'
+                        >
                             <Form.Control
                                 required
                                 type='firstName'
                                 name='firstName'
                                 value={firstName}
-                                placeholder='Enter first name'
+                                placeholder='First name'
                                 onChange={e => setFirstName(e.target.value)}
                             />
-                        </Form.Group>
-                        <Form.Group controlId='lastName'>
-                            <Form.Label>Last name</Form.Label>
+                        </FloatingLabel>
+                        {/* <----- LAST NAME -----> */}
+                        <FloatingLabel
+                            controlId='floatingInput'
+                            label='Last name'
+                            className='mb-3'
+                        >
                             <Form.Control
                                 required
                                 type='lastName'
@@ -84,9 +89,13 @@ const SignUp = (props) => {
                                 placeholder='Enter last name'
                                 onChange={e => setLastName(e.target.value)}
                             />
-                        </Form.Group>
-                        <Form.Group controlId='email'>
-                            <Form.Label>Email address</Form.Label>
+                        </FloatingLabel>
+                        {/* <----- EMAIL -----> */}
+                        <FloatingLabel
+                            controlId='floatingInput'
+                            label='Email address'
+                            className='mb-3'
+                        >
                             <Form.Control
                                 required
                                 type='email'
@@ -95,9 +104,13 @@ const SignUp = (props) => {
                                 placeholder='Enter email'
                                 onChange={e => setEmail(e.target.value)}
                             />
-                        </Form.Group>
-                        <Form.Group controlId='password'>
-                            <Form.Label>Password</Form.Label>
+                        </FloatingLabel>
+                        {/* <----- PASSWORD -----> */}
+                        <FloatingLabel
+                            controlId='floatingPassword'
+                            label='Password'
+                            className='mb-3'
+                        >
                             <Form.Control
                                 required
                                 name='password'
@@ -106,9 +119,13 @@ const SignUp = (props) => {
                                 placeholder='Password'
                                 onChange={e => setPassword(e.target.value)}
                             />
-                        </Form.Group>
-                        <Form.Group controlId='passwordConfirmation'>
-                            <Form.Label>Password Confirmation</Form.Label>
+                        </FloatingLabel>
+                        {/* <----- PASSWORD CONFIRMATION -----> */}
+                        <FloatingLabel
+                            controlId='floatingPassword'
+                            label='Confirm password'
+                            className='mb-3'
+                        >
                             <Form.Control
                                 required
                                 name='passwordConfirmation'
@@ -117,8 +134,8 @@ const SignUp = (props) => {
                                 placeholder='Confirm Password'
                                 onChange={e => setPasswordConfirmation(e.target.value)}
                             />
-                        </Form.Group>
-                        <Button variant='primary' type='submit'>
+                        </FloatingLabel>
+                        <Button id='signUpbtn' variant='primary' type='submit'>
                             Sign Up
                         </Button>
                     </Form>

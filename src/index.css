@@ -47,6 +47,15 @@ li {
   max-width: 95%;
 } */
 
+/* <---------- SIGNIN.JS ----------> */
+#signInForm, #signUpForm {
+  max-width: 50%;
+}
+
+#signUpBtn {
+  margin: auto;
+}
+
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
   max-width: 50%;

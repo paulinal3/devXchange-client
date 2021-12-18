@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Form, Button, FloatingLabel } from 'react-bootstrap'
 
 const SignIn = (props) => {
 
@@ -45,40 +44,48 @@ const SignIn = (props) => {
     return (
         <div>
             <div>
-                {/* Jumbotron */}
-                <div class="container-fluid bg-dark text-light p-5">
-                    <h1 class="mb-3">Welcome back</h1>
-                    <h4 class="mb-3">Collaborate and share knowledge for free</h4>
+                {/* <----- JUMBOTRON -----> */}
+                <div class='container-fluid bg-dark text-light p-5'>
+                    <h1 class='mb-3'>Welcome back</h1>
+                    <h4 class='mb-3'>Collaborate and share knowledge for free</h4>
                 </div>
-                {/* Jumbotron */}
             </div>
             <div className='row'>
-                <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    {/* <h3>Sign In</h3> */}
+                <div className='col-sm-10 col-md-8 mx-auto mt-5' id='signInForm'>
                     <Form onSubmit={onSignIn}>
-                        <Form.Group controlId='email'>
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
-                                required
-                                type='email'
-                                name='email'
-                                value={email}
-                                placeholder='Enter email'
-                                onChange={e => setEmail(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group controlId='password'>
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                required
-                                name='password'
-                                value={password}
-                                type='password'
-                                placeholder='Password'
-                                onChange={e => setPassword(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Button variant='primary' type='submit'>
+                        <>
+                            {/* <----- EMAIL -----> */}
+                            <FloatingLabel
+                                controlId='floatingInput'
+                                label='Email address'
+                                className='mb-3'
+                            >
+                                <Form.Control 
+                                    required
+                                    type='email'
+                                    name='email'
+                                    value={email}
+                                    placeholder='Email'
+                                    onChange={e => setEmail(e.target.value)}
+                                />
+                            </FloatingLabel>
+                            {/* <----- PASSWORD -----> */}
+                            <FloatingLabel 
+                                controlId='floatingPassword' 
+                                label='Password'  
+                                className='mb-3'
+                            >
+                                <Form.Control
+                                    required
+                                    name='password'
+                                    value={password}
+                                    type='password'
+                                    placeholder='Password'
+                                    onChange={e => setPassword(e.target.value)}
+                                />
+                            </FloatingLabel>
+                        </>
+                        <Button id='signInBtn' type='submit'>
                             Sign In
                         </Button>
                     </Form>
