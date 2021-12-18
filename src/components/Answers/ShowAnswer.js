@@ -5,7 +5,7 @@ import moment from 'moment'
 
 export default function ShowAnswer(props) {
     const [modalShow, setModalShow] = useState(false)
-
+    
     let contribLastNameInit = props.answer.contributor.lastName.charAt(0)
     return (
         <>
@@ -37,7 +37,7 @@ export default function ShowAnswer(props) {
                 <Accordion id='newAnswer' defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.
-                            <span class="badge rounded-pill bg-dark"> {moment(props.answer.contributor.createdAt).fromNow()} </span>
+                            <span class='badge rounded-pill bg-dark'> {moment(props.answer.createdAt).fromNow()} </span>
                         </Accordion.Header>
                         <Accordion.Body>
                             {props.answer.solution}
