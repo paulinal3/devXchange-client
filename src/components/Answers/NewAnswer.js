@@ -5,14 +5,15 @@ export default function NewAnswer(props) {
         <div>
             <Accordion id='newAnswer' defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>Post Your Answer</Accordion.Header>
-                    <Accordion.Body>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control as="textarea" rows={7} type="text" name='solution' value={props.newSolution.solution} onChange={props.handleAnswer} />
-                            </Form.Group>
-                            <Button onClick={() => props.createAnswer()}>Post Answer</Button>
-                            {/* <input
+                    <>
+                        <Accordion.Header>Post Your Answer</Accordion.Header>
+                        <Accordion.Body>
+                            <Form>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Control as="textarea" rows={7} type="text" name='solution' value={props.newSolution.solution} onChange={props.handleAnswer} />
+                                </Form.Group>
+                                <Button onClick={() => props.createAnswer()}>Post Answer</Button>
+                                {/* <input
                                 id='solution'
                                 type='text'
                                 name='solution'
@@ -24,8 +25,9 @@ export default function NewAnswer(props) {
                                 value='Post Your Answer'
                                 onClick={() => props.createAnswer()}
                             /> */}
-                        </Form>
-                    </Accordion.Body>
+                            </Form>
+                        </Accordion.Body>
+                    </>
                 </Accordion.Item>
             </Accordion>
         </div>
