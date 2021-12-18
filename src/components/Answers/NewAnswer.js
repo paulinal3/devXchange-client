@@ -14,18 +14,6 @@ export default function NewAnswer(props) {
                                         <Form.Control as="textarea" rows={7} type="text" name="solution" value={props.newSolution.solution} onChange={props.handleAnswer} />
                                     </Form.Group>
                                     <Button onClick={() => props.createAnswer()}>Post Answer</Button>
-                                    {/* <input
-                                id='solution'
-                                type='text'
-                                name='solution'
-                                value={props.newSolution.solution}
-                                onChange={props.handleChange}
-                            />
-                            <input
-                                type='button'
-                                value='Post Your Answer'
-                                onClick={() => props.createAnswer()}
-                            /> */}
                                 </Form>
                             </Accordion.Body>
                         </>

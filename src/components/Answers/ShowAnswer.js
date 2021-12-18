@@ -33,7 +33,7 @@ export default function ShowAnswer(props) {
                     </>
                 </div>
             )} */}
-            <div>
+            <div id='answerContainer'>
                 <Accordion id='newAnswer' defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.
