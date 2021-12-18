@@ -33,7 +33,8 @@ li {
 /* <---------- PROBLEM.JS ----------> */
 #probCard {
   max-width: 85%;
-  margin-top: 1%;
+  margin: auto;
+  margin-top: 2%;
 }
 
 .cardFooter {
@@ -48,12 +49,19 @@ li {
 
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
-  max-width: 75%;
+  max-width: 50%;
+  margin: auto;
 }
 
 /* <---------- NEWANSWER.JS ----------> */
 #newAnswer {
   max-width: 85%;
+  margin: auto;
+}
+
+/* <---------- SHOWANSWER.JS ----------> */
+#answerContainer {
+  margin: auto;
 }
 
 /* <---------- FOOTER.JS ----------> */
