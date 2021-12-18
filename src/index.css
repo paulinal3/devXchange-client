@@ -49,10 +49,6 @@ li {
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
   max-width: 75%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-items: center;
 }
 
 /* <---------- NEWANSWER.JS ----------> */

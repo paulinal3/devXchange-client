@@ -1,4 +1,3 @@
-import { InputGroup } from 'react-bootstrap'
 import Problem from './components/Problems/Problem'
 
 const Home = (props) => {

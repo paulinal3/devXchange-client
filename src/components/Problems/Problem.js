@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { Card, Button } from 'react-bootstrap'
 import { useState } from 'react'
@@ -39,7 +38,6 @@ export default function Problem(props) {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
                 currentProblem={props.problem}
-
             />
         </>
     )
