@@ -90,7 +90,7 @@ const App = () => {
 			<Header user={user} search={search} handleSearch={handleSearchChange} />
 			<Routes>
 				{/* <--------------- USER ROUTES ---------------> */}
-				<Route path='/' element={<Home msgAlert={msgAlert} problems={problems} user={user} />} 
+				<Route path='/' element={<Home msgAlert={msgAlert} problems={getFilteredProblems()} user={user} search={search} handleSearch={handleSearchChange}/>} 
 				/>
 				<Route
 					path='/sign-up'
