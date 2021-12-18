@@ -230,7 +230,7 @@ function ShowProblem(props) {
                     <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p>
                     {props.user && props.user._id == currentProblem.owner._id &&
                         <>
-                            <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
+                            <Button className="mr-1" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
                             {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
                             <>
                                 <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
@@ -250,6 +250,8 @@ function ShowProblem(props) {
                         handleAnswer={handleAnswerChange}
                         newSolution={newSolution}
                         createAnswer={createAnswer}
+                        user={props.user}
+                        currentProblem={currentProblem}
                     />
 
                     <hr />
