@@ -11,7 +11,13 @@ export default function NewAnswer(props) {
                             <Accordion.Body>
                                 <Form>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                        <Form.Control as="textarea" rows={7} type="text" name="solution" value={props.newSolution.solution} onChange={props.handleAnswer} />
+                                        <Form.Control 
+                                            as="textarea" rows={7} 
+                                            type="text" 
+                                            name="solution" 
+                                            value={props.newSolution.solution} 
+                                            onChange={props.handleAnswer} 
+                                        />
                                     </Form.Group>
                                     <Button onClick={() => props.createAnswer()}>Post Answer</Button>
                                 </Form>
