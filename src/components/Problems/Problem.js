@@ -28,7 +28,7 @@ export default function Problem(props) {
                         <p className='name'>Asked by: {firstName} {lastNameInit}.
                             <span class="badge rounded-pill bg-dark"> {moment(props.problem.createdAt).fromNow()} </span>
                         </p>
-                        <Button variant='primary' onClick={() => setModalShow(true)}>
+                        <Button id='cardBtn' onClick={() => setModalShow(true)}>
                             Preview Problem
                         </Button>
                     </Card.Footer>

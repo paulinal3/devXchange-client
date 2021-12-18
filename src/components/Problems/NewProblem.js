@@ -19,7 +19,9 @@ export default function NewProblem(props) {
         setNewProblem({ ...newProblem, [e.target.name]: e.target.value })
     }
 
+    // helper method attached to button
     const createNewProblem = () => {
+        // axios call to create the new problem in the db
         postProblem(props.user, newProblem)
             // console.log('this is the current user id:', user._id)
             // console.log('this is the new problem\n', newProblem)
@@ -40,10 +42,10 @@ export default function NewProblem(props) {
 
     return (
         <div>
-            {/* Jumbotron */}
-            <div class="container-fluid bg-dark text-light p-5">
-                <h1 class="mb-3">Tips on posting a problem</h1>
-                <h4 class="mb-3">
+            {/* <----- Jumbotron -----> */}
+            <div class='container-fluid bg-dark text-light p-5'>
+                <h1 class='mb-3'>Tips on posting a problem</h1>
+                <h4 class='mb-3'>
                     <ol>
                         <li>Summarize the problem</li>
                         <li>Describe what you've tried</li>
@@ -51,34 +53,34 @@ export default function NewProblem(props) {
                     </ol>
                 </h4>
             </div>
-            {/* Jumbotron */}
-            <Form id='newProbForm'>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" name='title' value={newProblem.title} onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control as="textarea" rows={3} type='text' name='description' value={newProblem.description} onChange={handleChange} />
-                </Form.Group>
-                <Button onClick={() => createNewProblem()}>Post Problem</Button>
-            </Form>
-            {/* <Form>
-                <div>
-                    <label htmlFor='title'>Title: </label>
-                    <input id='title' type='text' name='title' value={newProblem.title} onChange={handleChange} />
-                </div>
-                <div>
-                    <label htmlFor='description'>Description: </label>
-                    <input id='description' type='text' name='description' value={newProblem.description} onChange={handleChange} />
-                </div>
-                <div>
-                    <label htmlFor='img'>Post a screenshot: </label>
-                    <input id='img' type='file' name='img' value={newProblem.img} onChange={handleChange} />
-                </div>
+            {/* <----- Jumbotron -----> */}
 
-                <input type='button' value='Post Problem' onClick={() => createNewProblem()} />
-            </Form> */}
+            {/* <----- Form to Create a New Problem -----> */}
+            <Form id='newProbForm'>
+                <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+                    <Form.Label htmlFor='title'>Title</Form.Label>
+                    <Form.Control 
+                        id='title'
+                        type='text' 
+                        name='title' 
+                        value={newProblem.title} 
+                        onChange={handleChange} 
+                    />
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
+                    <Form.Label htmlFor='description'>Description</Form.Label>
+                    <Form.Control
+                        id='description' 
+                        as='textarea' rows={3} 
+                        type='text' 
+                        name='description' 
+                        value={newProblem.description} 
+                        onChange={handleChange} 
+                    />
+                </Form.Group>
+                <Button id='formBtn' onClick={() => createNewProblem()}>Post Problem</Button>
+            </Form>
+            {/* <----- Form to Create a New Problem -----> */}
         </div>
     )
 }
