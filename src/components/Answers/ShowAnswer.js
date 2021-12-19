@@ -5,7 +5,7 @@ import moment from 'moment'
 
 export default function ShowAnswer(props) {
     const [modalShow, setModalShow] = useState(false)
-    
+
     let contribLastNameInit = props.answer.contributor.lastName.charAt(0)
     return (
         <>
@@ -41,19 +41,21 @@ export default function ShowAnswer(props) {
                         </Accordion.Header>
                         <Accordion.Body>
                             {props.answer.solution}
-                            <>
-                                <Button id="cardBtn" style={{'display':'flex', 'margin-top':'20px'}} onClick={() => setModalShow(true)}>
-                                    Edit Answer
-                                </Button>
+                            {props.currentUser &&
+                                <>
+                                    <Button id="cardBtn" style={{ 'display': 'flex', 'margin-top': '20px' }} onClick={() => setModalShow(true)}>
+                                        Edit Answer
+                                    </Button>
 
-                                <EditAnswer
-                                    show={modalShow}
-                                    onHide={() => setModalShow(false)}
-                                    currentAnswer={props.answer}
-                                    currUser={props.currentUser}
-                                    refreshAnswers={props.refreshProbAnswers}
-                                />
-                            </>
+                                    <EditAnswer
+                                        show={modalShow}
+                                        onHide={() => setModalShow(false)}
+                                        currentAnswer={props.answer}
+                                        currUser={props.currentUser}
+                                        refreshAnswers={props.refreshProbAnswers}
+                                    />
+                                </>
+                            }
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
