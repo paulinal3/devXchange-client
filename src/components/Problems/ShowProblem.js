@@ -111,6 +111,7 @@ function ShowProblem(props) {
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
                 <div style={{width: '800px'}}>
+                <div style={{width: '800px', 'background-color': "white"}} className='mx-4 my-3'>
                     <h3>{currentProblem.title}</h3>
                     <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
                     <hr />
@@ -121,13 +122,14 @@ function ShowProblem(props) {
                         theme={"bubble"}
                         modules= {modules}
                     />
+                </div>
                     {props.user && props.user._id == currentProblem.owner._id &&
                         <>
-                            <Button className="mr-1" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+                            <Button className="mx-4 my-2" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
                             {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
                             <>
                                 <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
-                                
+
                                 <EditProblem
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}
@@ -138,7 +140,6 @@ function ShowProblem(props) {
                             </>
                         </>
                     }
-
                     <NewAnswer
                         handleAnswer={handleAnswerChange}
                         newSolution={newSolution}

@@ -68,7 +68,8 @@ export default function EditProblem(props) {
                                 modules={modules}
                                 value={changeProblem}
                                 onChange={setChangeProblem}
-                                name='description' 
+                                name='description'
+                                style={{"height": "90%"}} 
                             />
                         </InputGroup>
                     </Form>

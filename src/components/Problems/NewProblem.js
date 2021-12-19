@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Form , Button} from 'react-bootstrap'
+import { Form , Button, Container} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
 import ReactQuill from 'react-quill'
@@ -74,27 +74,20 @@ export default function NewProblem(props) {
 
             {/* <----- Form to Create a New Problem -----> */}
             <Form id='newProbForm' style={{'margin-top':'20px'}}>
-                <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-                    <Form.Label htmlFor='title'>Title</Form.Label>
+                <Form.Group className='mb-3'>
                     <Form.Control 
                         id='title'
                         type='text' 
                         name='title' 
+                        placeholder='Title'
                         value={newProblem.title} 
                         onChange={handleChange} 
                     />
                 </Form.Group>
-                {/* <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'> */}
-                    {/* <Form.Label htmlFor='description'>Description</Form.Label>
-                    <Form.Control
-                        id='description' 
-                        as='textarea' rows={3} 
-                        type='text' 
-                        name='description' 
-                        value={newProblem.description} 
-                        onChange={handleChange} 
-                    /> */}
+                <Form.Group className='mb-3'>
                     <ReactQuill 
+                    style={{'height':'100%'}}
+                    id = "textEditor"
                     theme="snow" 
                     name='description' 
                     modules = {modules}
@@ -104,7 +97,7 @@ export default function NewProblem(props) {
 
                     />
 
-                {/* </Form.Group> */}
+                </Form.Group>
                 <Button id='formBtn' onClick={() => createNewProblem()}>Post Problem</Button>
             </Form>
             {/* <----- Form to Create a New Problem -----> */}

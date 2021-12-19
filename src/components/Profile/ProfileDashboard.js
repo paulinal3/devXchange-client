@@ -5,11 +5,6 @@ import moment from 'moment'
 
 function ProfileDashboard(props) {
 
-    // const [currentProblem, setCurrentProblem] = useState({})
-
-    // const changeCurrent = problem => {
-    //     setCurrentProblem(problem)
-    // }
     let memberDate = props.user.createdAt
     let problemsPosted = props.user.problems.length
     let answersPosted = props.user.answers.length
@@ -31,7 +26,12 @@ function ProfileDashboard(props) {
                     </div>
                 </ListGroup.Item>
                 <ListGroup.Item as="li" disabled>
-                    <small>Answers Posted: {answersPosted}</small>
+                    <small>Answers Posted: </small>
+                    <div>
+                        <Badge style={{'background-color':'white'}}variant="primary" pill>
+                        {answersPosted}
+                        </Badge> 
+                    </div>
                 
                 </ListGroup.Item>
                 <ListGroup.Item as="li"><Link to='../change-password' >

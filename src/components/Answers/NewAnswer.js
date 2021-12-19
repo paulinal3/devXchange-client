@@ -3,9 +3,9 @@ import { Form, Accordion, Button } from 'react-bootstrap'
 export default function NewAnswer(props) {
     return (
         <div style={{'margin-left':'32px'}}>
+        {props.user && props.user._id != props.currentProblem.owner._id &&
             <Accordion id='newAnswer' defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
-                    {props.user && props.user._id != props.currentProblem.owner._id &&
                         <>
                             <Accordion.Header style={{'background-color':'black'}}>Post Your Answer</Accordion.Header>
                             <Accordion.Body>
@@ -23,9 +23,9 @@ export default function NewAnswer(props) {
                                 </Form>
                             </Accordion.Body>
                         </>
-                    }
                 </Accordion.Item>
             </Accordion>
+                    }
         </div>
     )
 }
