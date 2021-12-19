@@ -17,7 +17,7 @@ function ProfileDashboard(props) {
 
         return (
             <ListGroup as="ul">
-                <ListGroup.Item as="li" className='name'  style={{'background-color':'darkgrey'}}>
+                <ListGroup.Item as="li" className='name'  style={{'background-color':'#055861', 'color':'white', 'margin-top':'20px'}}>
                     {props.user.firstName}'s Dashboard
                 </ListGroup.Item>
                 <ListGroup.Item as="li">
@@ -26,15 +26,13 @@ function ProfileDashboard(props) {
                 <ListGroup.Item as="li" disabled>
                 <small>Problems Posted: </small>
                     <div>
-                        <Badge variant="primary" pill>
+                        <Badge style={{'background-color':'white'}}variant="primary" pill>
                         {problemsPosted}
                         </Badge> 
                     </div>
                 </ListGroup.Item>
                 <ListGroup.Item as="li" disabled>
                     <small>Answers Posted: {answersPosted}</small>
-                </ListGroup.Item>
-                <ListGroup.Item as="li" disabled>
                 
                 </ListGroup.Item>
                 <ListGroup.Item as="li"><Link to='../change-password' >

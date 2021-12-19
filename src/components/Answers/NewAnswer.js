@@ -2,12 +2,12 @@ import { Form, Accordion, Button } from 'react-bootstrap'
 
 export default function NewAnswer(props) {
     return (
-        <div>
+        <div style={{'margin-left':'32px'}}>
             <Accordion id='newAnswer' defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
                     {props.user && props.user._id != props.currentProblem.owner._id &&
                         <>
-                            <Accordion.Header>Post Your Answer</Accordion.Header>
+                            <Accordion.Header style={{'background-color':'black'}}>Post Your Answer</Accordion.Header>
                             <Accordion.Body>
                                 <Form>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -19,7 +19,7 @@ export default function NewAnswer(props) {
                                             onChange={props.handleAnswer} 
                                         />
                                     </Form.Group>
-                                    <Button onClick={() => props.createAnswer()}>Post Answer</Button>
+                                    <Button id="cardBtn" onClick={() => props.createAnswer()}>Post Answer</Button>
                                 </Form>
                             </Accordion.Body>
                         </>

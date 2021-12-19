@@ -76,6 +76,7 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 					filterProblems={handleFilter}
 					searchVal={search} 
 					searchChange={handleSearch}
+					
 				/>
 				</Link>
 			</Nav.Link>
