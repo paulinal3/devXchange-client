@@ -37,8 +37,8 @@ export default function Problem(props) {
                         
                     </Card.Body>
                     <Card.Footer className='cardFooter'>
-                        <p className='name'>Asked by: {firstName} {lastNameInit}.
-                            <span class='badge rounded-pill bg-dark'> {moment(props.problem.createdAt).fromNow()} </span>
+                        <p id='probCardFooter' className='name'>Asked by: {firstName} {lastNameInit}.
+                            <span id="momentPill" class='badge rounded-pill bg-dark'> {moment(props.problem.createdAt).fromNow()} </span>
                         </p>
                         <Button id='cardBtn' onClick={() => setModalShow(true)}>
                             Preview Problem

@@ -1,4 +1,5 @@
 import Problem from './components/Problems/Problem'
+import Typewriter from 'typewriter-effect'
 import { Link } from 'react-router-dom'
 import FilterProblem from './components/Problems/FilterProblem'
 
@@ -19,20 +20,35 @@ const Home = (props) => {
 	recentProblems.reverse()
 
 	return (
-		<>
-			<div>
-				<div class="container-fluid bg-dark text-light p-5">
-					<div class="container bg-dark p-5">
-						<h1 class="display-4">Welcome to DevXChange</h1>
-						<a href="/problems" class="btn btn-primary">see all problems</a>
-					</div>
+		<main id='homePage'>
+			<header id='homeHeader'>
+				<h1 id='welcome'>Welcome to</h1>
+				<h1 id='appTitle'>DevXchange</h1>
+			</header>
+			<Typewriter
+						options={{
+							strings: ['An open forum', 'Post coding questions', 'Offer your expertise', 'Connect with other devs'],
+							autoStart: true,
+							loop: true,
+						}}
+						id='homeTypewriter'
+					/>
+			<a id="cardBtn" href="/problems" class="btn btn-primary">Search Problems</a>
+			{/* <div class="container-fluid bg-dark text-light p-5">
+				<div class="container bg-dark p-5">
+					<h1 class="display-4">Welcome to DevXchange</h1>
+					<Typewriter
+						options={{
+							strings: ['An open forum', 'Post coding questions', 'Offer your expertise', 'Connect with other devs'],
+							autoStart: true,
+							loop: true,
+						}}
+						id='homeTypewriter'
+					/>
+					<a id="cardBtn" href="/problems" class="btn btn-primary">Search Problems</a>
 				</div>
-			</div>
-			<h2>Latest Problems</h2>
-			<ol>
-				{recentProblems}
-			</ol>
-		</>
+			</div> */}
+		</main>
 	)
 }
 

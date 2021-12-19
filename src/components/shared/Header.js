@@ -38,11 +38,11 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+		{/* <Nav.Link>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Link>
+		</Nav.Link> */}
 		<Nav.Link>
 			<Link to='/problems' style={linkStyle}>
 				Problems
@@ -56,6 +56,7 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 	<Navbar bg='dark' variant='dark' expand='md' id='navBar'>
 		<Navbar.Brand className='mx-4'>
 			<Link to='/' style={linkStyle}>
+				<img src="/favicon-16x16.png" alt="" />
 				DevXchange
 			</Link>
 		</Navbar.Brand>
@@ -63,7 +64,7 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='navbar-text mr-2'>Welcome, <Link to="/profile" className='name'>{user.firstName}</Link></span>
+					<span className='navbar-text mr-2'><Link to="/profile" className='name'>Profile</Link></span>
 				)}
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
@@ -75,6 +76,7 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 					filterProblems={handleFilter}
 					searchVal={search} 
 					searchChange={handleSearch}
+					
 				/>
 				</Link>
 			</Nav.Link>

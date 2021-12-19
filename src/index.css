@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
 /* <---------- MULTIPLE FILES ----------> */
 #root{
@@ -15,6 +16,12 @@ body {
 
 #cardBtn, #formBtn {
   background-color:#055861;
+  border-color: #055861;
+}
+
+#cardBtn:hover {
+  background-color:  #099DAD;
+  border: 2px solid #099DAD;
 }
 
 * {
@@ -23,7 +30,7 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 li {
@@ -32,9 +39,44 @@ li {
 
 .name {
   text-transform: capitalize;
+  margin-top: 5px;
+
+}
+
+#root {
+  background-color: #212529;
+}
+
+/* <---------- HOME.JS ----------> */
+#homePage {
+  text-align: center;
+  color: white;
+  margin-top: 250px;
+  font-size: 35px;
+}
+
+#homeHeader {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  justify-content: center;
+  font-size: 100px;
+}
+
+#welcome  {
+  font-size: 85px;
+}
+#appTitle {
+  font-size: 85px;
+  font-weight: bold;
+  color: #099DAD;
 }
 
 /* <---------- PROBLEM.JS ----------> */
+#momentPill {
+  margin-left: 5px;
+}
+
 #probCard {
   max-width: 85%;
   margin: auto;
@@ -47,9 +89,25 @@ li {
   justify-content: space-between;
 }
 
-/* .cardProblem {
-  max-width: 95%;
-} */
+#cardProbFooter {
+  padding-top: 10px;
+}
+
+/* <---------- SIGNIN.JS ----------> */
+#signInForm, #signUpForm {
+  max-width: 50%;
+}
+
+#signUpBtn {
+  margin: auto;
+}
+
+/* <---------- SHOWPROBLEM.JS ----------> */
+#showProblemBtn {
+  display: flex;
+  flex-direction: row;
+  column-gap: 3px;
+}
 
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
@@ -66,6 +124,7 @@ li {
 /* <---------- SHOWANSWER.JS ----------> */
 #answerContainer {
   margin: auto;
+  margin-top: 20px;
 }
 
 /* <---------- FOOTER.JS ----------> */
@@ -75,4 +134,10 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%; */
+}
+
+#showProblemBody {
+  /* background-color: darkgray; */
+  padding-top: 20px;
+  margin: 0 50px 0 50px;
 }

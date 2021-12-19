@@ -1,16 +1,23 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { Button } from "react-bootstrap"
+
 import { destroyProblem } from '../../api/problems'
 import { getProbAnswers, postAnswer } from '../../api/answers'
+
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
+<<<<<<< HEAD
 import { Button } from "react-bootstrap"
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
 
+=======
+>>>>>>> ae17d0f5d0e0daeb4013225cc5ad37cf7803ea5e
 
 function ShowProblem(props) {
+
     const [newSolution, setNewSolution] = useState('')
     const [probAnswers, setProbAnswers] = useState([])
     const [modalShow, setModalShow] = useState(false)
@@ -18,12 +25,14 @@ function ShowProblem(props) {
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
     // console.log('this is the problem id:', problemId)
+    const navigate = useNavigate()
 
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
 
     let lastNameInit = currentProblem && currentProblem.owner.lastName.charAt(0)
 
+<<<<<<< HEAD
     let modules = {
         syntax: true,
         toolbar: [
@@ -37,6 +46,8 @@ function ShowProblem(props) {
 
     const navigate = useNavigate()
 
+=======
+>>>>>>> ae17d0f5d0e0daeb4013225cc5ad37cf7803ea5e
     // helper method attached to delete button
     const deleteProblem = () => {
         // axios call to delete problem from db
@@ -72,7 +83,8 @@ function ShowProblem(props) {
             .catch(err => console.error(err))
     }
 
-    const getAllProbAnswers = probAnswers.map((answer, i) => {
+    // display all answers of a problem from newest to oldest
+    const getAllProbAnswers = probAnswers.reverse().map((answer, i) => {
         return (
             <li key={i}>
                 <ShowAnswer
@@ -86,8 +98,6 @@ function ShowProblem(props) {
 
         )
     })
-    // display them from newest to oldest
-    getAllProbAnswers.reverse()
 
     // passed down as a prop to NewAnswer
     const handleAnswerChange = (e) => {
@@ -108,8 +118,9 @@ function ShowProblem(props) {
     }
 
     return (
-        <>
+        <body id='showProblemBody'>
             {!currentProblem ? <h1>Loading...</h1> : (
+<<<<<<< HEAD
                 <div style={{width: '800px'}}>
                     <h3>{currentProblem.title}</h3>
                     <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
@@ -120,24 +131,39 @@ function ShowProblem(props) {
                         theme={"bubble"}
                         modules= {modules}
                     />
+=======
+                <>
+                    {/* <----- CURRENT PROBLEM -----> */}
+                    {/* <----- Jumbotron -----> */}
+                    <div class='container-fluid bg-dark text-light p-5'>
+                        <h3 class='mb-3'>{currentProblem.title}</h3>
+                    </div>
+                    {/* <div>
+                        <h3>{currentProblem.title}</h3>
+                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+                    </div> */}
+>>>>>>> ae17d0f5d0e0daeb4013225cc5ad37cf7803ea5e
                     {props.user && props.user._id == currentProblem.owner._id &&
-                        <>
-                            <Button className="mr-1" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
-                            {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
-                            <>
-                                <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
+                        // <----- EDIT/DELETE BUTTONS -----> //
+                        <div id='showProblemBtn'>
+                            <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
 
-                                <EditProblem
-                                    show={modalShow}
-                                    onHide={() => setModalShow(false)}
-                                    currentProb={currentProblem}
-                                    currUser={props.user}
-                                    refreshProb={props.refreshProblems}
-                                />
-                            </>
-                        </>
+                            <EditProblem
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                                currentProb={currentProblem}
+                                currUser={props.user}
+                                refreshProb={props.refreshProblems}
+                            />
+                            <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+                        </div>
                     }
+                    <div>
 
+                    </div>
+                    {/* <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p> */}
+                    <p>{currentProblem.description}</p>
+                    {/* <----- NEW ANSWER -----> */}
                     <NewAnswer
                         handleAnswer={handleAnswerChange}
                         newSolution={newSolution}
@@ -145,15 +171,13 @@ function ShowProblem(props) {
                         user={props.user}
                         currentProblem={currentProblem}
                     />
-
-                    <hr />
-
+                    {/* <----- ALL ANSWERS -----> */}
                     <ol>
                         {getAllProbAnswers}
                     </ol>
                 </div>
             )}
-        </>
+        </body>
     )
 }
 
