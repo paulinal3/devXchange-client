@@ -18,7 +18,7 @@ function ProfileProblems(props) {
     console.log('this is user problems', props.user.problems)
 
     const allProblems = props.user.problems.map((p, i) => {
-        let descSnippet = p.description.slice(0, 80) + "..."
+        // let descSnippet = p.description.slice(0, 80) + "..."
         return (
             <Card >
                 <Card.Header>Asked {moment(p.createdAt).fromNow()}</Card.Header>
