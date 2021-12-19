@@ -1,9 +1,22 @@
 import { Form, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
 import { useState } from 'react'
 import { updateAnswer } from '../../api/answers'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 
 export default function EditAnswer(props) {
     const [changeAnswer, setChangeAnswer] = useState(props.currentAnswer.solution)
+
+    let modules = {
+        syntax: true,
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote', 'code-block'],
+          [{'list': 'ordered'}, {'list': 'bullet'}],
+          ['link'],
+          ['clean']
+        ],
+      }
 
     const handleChange = (e) => {
         setChangeAnswer(e.target.value) 
@@ -33,9 +46,14 @@ export default function EditAnswer(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form>
-                    <InputGroup>
-                        <FormControl as="textarea" aria-label="With textarea" name='solution' value={changeAnswer} onChange={handleChange} />
-                    </InputGroup>
+                <ReactQuill
+                                theme="snow"
+                                modules={modules}
+                                value={changeAnswer}
+                                onChange={setChangeAnswer}
+                                name='solution'
+                                style={{"height": "90%"}} 
+                />
                 </Form>
             </Modal.Body>
             <Modal.Footer>

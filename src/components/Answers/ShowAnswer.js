@@ -2,37 +2,19 @@ import EditAnswer from "./EditAnswer"
 import { useState } from "react"
 import { Button, Form, Accordion } from "react-bootstrap"
 import moment from 'moment'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.bubble.css'
 
 export default function ShowAnswer(props) {
     const [modalShow, setModalShow] = useState(false)
 
+    let modules = {
+        syntax: true,
+    }
+
     let contribLastNameInit = props.answer.contributor.lastName.charAt(0)
     return (
         <>
-            {/* {!props.answer.solution ? <h1>Loading...</h1> : (
-                <div>
-                    {props.answer.solution}
-                    <div>
-                        <small>answered {moment(props.answer.updatedAt).fromNow()}</small>
-                    </div>
-                    <div>
-                        <small className='name'>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.</small>
-                    </div>
-                    <>
-                        <Button variant="primary" onClick={() => setModalShow(true)}>
-                            Edit Answer
-                        </Button>
-
-                        <EditAnswer
-                            show={modalShow}
-                            onHide={() => setModalShow(false)}
-                            currentAnswer={props.answer}
-                            currUser={props.currentUser}
-                            refreshAnswers={props.refreshProbAnswers}
-                        />
-                    </>
-                </div>
-            )} */}
             <div id='answerContainer'>
                 <Accordion id='newAnswer' defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
@@ -40,12 +22,19 @@ export default function ShowAnswer(props) {
                             <span id="momentPill" class='badge rounded-pill bg-dark'> {moment(props.answer.updatedAt).fromNow()} </span>
                         </Accordion.Header>
                         <Accordion.Body>
-                            {props.answer.solution}
+
+                        <ReactQuill
+                        value={props.answer.solution}
+                        readOnly={true}
+                        theme={"bubble"}
+                        modules= {modules}
+                    />
+                                                      {props.answer.solution}
                             {props.currentUser &&
-                                <>
-                                    <Button id="cardBtn" style={{ 'display': 'flex', 'margin-top': '20px' }} onClick={() => setModalShow(true)}>
-                                        Edit Answer
-                                    </Button>
+                            <>
+                                <Button id="cardBtn" style={{'display':'flex', 'margin-top':'20px'}} onClick={() => setModalShow(true)}>
+                                    Edit Answer
+                                </Button>
 
                                     <EditAnswer
                                         show={modalShow}

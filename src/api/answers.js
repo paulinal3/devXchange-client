@@ -8,7 +8,7 @@ export const getProbAnswers = (problemId) => {
     })
 }
 
-export const postAnswer = (user, problemId, newSolution) => {
+export const postAnswer = (user, problemId, value) => {
     return axios({
         method: 'POST',
         url: `${apiUrl}/${problemId}/answers`,
@@ -17,7 +17,7 @@ export const postAnswer = (user, problemId, newSolution) => {
         },
         data: {
             answer: {
-                solution: newSolution.solution
+                solution: value
             }
         }
     })

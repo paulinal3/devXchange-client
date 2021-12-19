@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { ListGroup, Badge } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import moment from 'moment'
@@ -6,11 +5,6 @@ import moment from 'moment'
 
 function ProfileDashboard(props) {
 
-    // const [currentProblem, setCurrentProblem] = useState({})
-
-    // const changeCurrent = problem => {
-    //     setCurrentProblem(problem)
-    // }
     let memberDate = props.user.createdAt
     let problemsPosted = props.user.problems.length
     let answersPosted = props.user.answers.length
@@ -27,21 +21,43 @@ function ProfileDashboard(props) {
                     <small>Problems Posted: </small>
                     <Badge variant="primary" pill>
                         {problemsPosted}
-                    </Badge>
 
-            </ListGroup.Item>
-            <ListGroup.Item as="li" disabled>
-                <small>Answers Posted: </small>
-                <Badge variant="primary" pill>
-                    {answersPosted}
-                </Badge>
+                        </Badge> 
+                    </div>
+                </ListGroup.Item>
+                <ListGroup.Item as="li" disabled>
+                    <small>Answers Posted: </small>
+                    <div>
+                        <Badge style={{'background-color':'white'}}variant="primary" pill>
+                        {answersPosted}
+                        </Badge> 
+                    </div>
+                
+                </ListGroup.Item>
+                <ListGroup.Item as="li"><Link to='../change-password' >
+				Change Password
+			</Link></ListGroup.Item>
+            </ListGroup>
 
-            </ListGroup.Item>
-            <ListGroup.Item as="li"><Link to='../change-password' >
-                Change Password
-            </Link></ListGroup.Item>
-        </ListGroup>
+        )
+    }
+
+//                     </Badge>
+
+//             </ListGroup.Item>
+//             <ListGroup.Item as="li" disabled>
+//                 <small>Answers Posted: </small>
+//                 <Badge variant="primary" pill>
+//                     {answersPosted}
+//                 </Badge>
+
+//             </ListGroup.Item>
+//             <ListGroup.Item as="li"><Link to='../change-password' >
+//                 Change Password
+//             </Link></ListGroup.Item>
+//         </ListGroup>
 
     )
 }
+
 export default ProfileDashboard
