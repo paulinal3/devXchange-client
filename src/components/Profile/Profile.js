@@ -1,7 +1,7 @@
+import { Row, Col, Container } from 'react-bootstrap'
 
 import ProfileProblems from './ProfileProblems'
 import ProfileDashboard from './ProfileDashboard'
-import { Row, Col, Container } from 'react-bootstrap'
 
 function Profile(props) {
 

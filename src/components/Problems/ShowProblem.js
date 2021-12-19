@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Button } from "react-bootstrap"
 
+import moment from 'moment'
+
 import { destroyProblem } from '../../api/problems'
 import { getProbAnswers, postAnswer } from '../../api/answers'
 
@@ -97,36 +99,34 @@ function ShowProblem(props) {
     return (
         <body id='showProblemBody'>
             {!currentProblem ? <h1>Loading...</h1> : (
-                <>
-                    {/* <----- CURRENT PROBLEM -----> */}
-                    {/* <----- Jumbotron -----> */}
-                    <div class='container-fluid bg-dark text-light p-5'>
-                        <h3 class='mb-3'>{currentProblem.title}</h3>
-                    </div>
-                    {/* <div>
-                        <h3>{currentProblem.title}</h3>
-                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-                    </div> */}
-                    {props.user && props.user._id == currentProblem.owner._id &&
-                        // <----- EDIT/DELETE BUTTONS -----> //
-                        <div id='showProblemBtn'>
-                            <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
+                <container>
+                    {/* <----- CURRENT PROBLEM JUMBOTRON -----> */}
+                    <header class='container-fluid bg-dark text-light p-5'>
+                        <div id='problemHeader'>
+                            <h3 class='mb-3'>{currentProblem.title}</h3>
+                            <div>
+                                {props.user && props.user._id == currentProblem.owner._id &&
+                                    // <----- EDIT/DELETE BUTTONS -----> //
+                                    <div id='showProblemBtn'>
+                                        <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
 
-                            <EditProblem
-                                show={modalShow}
-                                onHide={() => setModalShow(false)}
-                                currentProb={currentProblem}
-                                currUser={props.user}
-                                refreshProb={props.refreshProblems}
-                            />
-                            <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+                                        <EditProblem
+                                            show={modalShow}
+                                            onHide={() => setModalShow(false)}
+                                            currentProb={currentProblem}
+                                            currUser={props.user}
+                                            refreshProb={props.refreshProblems}
+                                        />
+                                        
+                                        <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+                                    </div>
+                                }
+                            </div>
                         </div>
-                    }
-                    <div>
+                        <p>{currentProblem.description}</p>
+                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>             <span id="showProblemPill" class='badge rounded-pill'> {moment(currentProblem.createdAt).fromNow()} </span>
+                    </header>
 
-                    </div>
-                    {/* <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p> */}
-                    <p>{currentProblem.description}</p>
                     {/* <----- NEW ANSWER -----> */}
                     <NewAnswer
                         handleAnswer={handleAnswerChange}
@@ -139,7 +139,8 @@ function ShowProblem(props) {
                     <ol>
                         {getAllProbAnswers}
                     </ol>
-                </>
+                    <div className='buffer'></div>
+                </container>
             )}
         </body>
     )

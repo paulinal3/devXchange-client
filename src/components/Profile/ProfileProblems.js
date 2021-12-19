@@ -18,7 +18,7 @@ function ProfileProblems(props) {
     const allProblems = props.user.problems.map((p, i) => {
         let descSnippet = p.description.slice(0, 80) + "..."
         return (
-            <Card style={{ 'margin-top': '20px' }}>
+            <Card id='profileProblem' style={{ 'margin-top': '20px' }}>
                 <Card.Header style={{ 'background-color': 'rgb(5, 88, 97)', 'color': 'white' }}>Asked {moment(p.createdAt).fromNow()}</Card.Header>
                 <Card.Body>
                     <Card.Title>{p.title}</Card.Title>

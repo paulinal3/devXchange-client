@@ -39,8 +39,7 @@ export default function EditAnswer(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button style={{'background-color':'#055861'}} onClick={() => editAnswer()}>Update Answer</Button>
-                {/* <Button onClick={props.onHide}>Cancel</Button> */}
+                <Button id='editAnswerBtn' style={{'background-color':'#055861'}} onClick={() => editAnswer()}>Update Answer</Button>
             </Modal.Footer>
         </Modal>
     )

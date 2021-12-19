@@ -79,7 +79,7 @@ export default function NewProblem(props) {
             {/* <----- Form to Create a New Problem -----> */}
             <Form id='newProbForm'>
                 <Form.Group className='mb-3' controlId='title'>
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label className='newProblemForm'>Title</Form.Label>
                     <Form.Control 
                         type='text' 
                         name='title' 

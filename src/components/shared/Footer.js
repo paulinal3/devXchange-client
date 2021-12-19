@@ -7,7 +7,7 @@ export default function Footer() {
                 {/* <!-- Section: Technologies and Database--> */}
                 <section class='mb-4'>
                     <div class='mb-4'>
-                        <h5 class='text-uppercase'>Technologies</h5>
+                        <h5 class='text-uppercase' style={{ 'margin-top': '-15px' }}>Technologies</h5>
                         <li style={{ 'font-size': '25px' }}>
                             <i class='fab fa-react'></i>
                             <i style={{ 'margin-left': '5px' }} class='fab fa-css3'></i>
