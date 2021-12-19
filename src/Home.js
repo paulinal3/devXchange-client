@@ -1,6 +1,5 @@
 import Problem from './components/Problems/Problem'
 import Typewriter from 'typewriter-effect'
-import FilterProblem from './components/Problems/FilterProblem'
 
 const Home = (props) => {
 	console.log('props in home', props)

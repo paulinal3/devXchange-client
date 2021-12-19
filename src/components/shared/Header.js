@@ -4,11 +4,11 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 import FilterProblem from '../Problems/FilterProblem'
 
-
 const linkStyle = {
 	color: 'white',
 	textDecoration: 'none'
 }
+
 const authenticatedOptions = (
 	<>
 		<Nav.Link>
@@ -46,16 +46,18 @@ const alwaysOptions = (
 	</>
 )
 
-const Header = ({user , handleFilter, search, handleSearch}) => (
+const Header = ({ user, handleFilter, search, handleSearch }) => (
 	<Navbar bg='dark' variant='dark' expand='md' id='navBar'>
+		{/* <----- APP NAME -----> */}
 		<Navbar.Brand className='mx-4'>
 			<Link to='/' style={linkStyle}>
-				<img src='/favicon-16x16.png' alt='' />
+				<img src="/favicon-16x16.png" alt="DevXchange Logo" />
 				DevXchange
 			</Link>
 		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
+			{/* <----- USER PROFILE -----> */}
 			<Nav className='ml-auto'>
 				{user && (
 					<span className='navbar-text mr-2'><Link to='/profile' className='name'>Profile</Link></span>
@@ -64,15 +66,16 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
-			<Nav.Link className='mx-4'>
-				<Link to='/problems'>
-				<FilterProblem 
+		<Nav.Link className='mx-4'>
+			{/* <----- SEARCH BAR -----> */}
+			<Link to="/problems">
+				<FilterProblem
 					filterProblems={handleFilter}
-					searchVal={search} 
+					searchVal={search}
 					searchChange={handleSearch}
 				/>
-				</Link>
-			</Nav.Link>
+			</Link>
+		</Nav.Link>
 	</Navbar>
 )
 
