@@ -10,12 +10,14 @@ import { getProbAnswers, postAnswer } from '../../api/answers'
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
+import DeleteProblemModal from './DeleteProblemModal'
 
 function ShowProblem(props) {
 
     const [newSolution, setNewSolution] = useState('')
     const [probAnswers, setProbAnswers] = useState([])
     const [modalShow, setModalShow] = useState(false)
+
 
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
@@ -117,8 +119,18 @@ function ShowProblem(props) {
                                             currUser={props.user}
                                             refreshProb={props.refreshProblems}
                                         />
-                                        
+
                                         <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+
+                                        {/* <Button className="mr-1" variant="danger" size='sm' onClick={() => setModalShow(true)}>Delete</Button>
+
+                                        <DeleteProblemModal
+                                            show={modalShow}
+                                            onHide={() => setModalShow(false)}
+                                            currentUser={props.user}
+                                            currentProb={props.currentProblem}
+                                            deleteProblem={deleteProblem}
+                                        /> */}
                                     </div>
                                 }
                             </div>
