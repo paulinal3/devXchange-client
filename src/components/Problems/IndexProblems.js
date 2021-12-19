@@ -41,7 +41,7 @@ export default function IndexProblems(props) {
         <div>
             {/* <----- Jumbotron -----> */}
             <div class='container-fluid bg-dark text-light p-5'>
-                <h1 class='mb-3'>All Problems</h1>
+                <h1 class='mb-3'>All Posted Problems</h1>
             </div>
             {/* <----- Jumbotron -----> */}
             {/* <FilterProblem 
