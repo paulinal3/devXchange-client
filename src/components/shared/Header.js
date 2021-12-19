@@ -56,6 +56,7 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 	<Navbar bg='dark' variant='dark' expand='md' id='navBar'>
 		<Navbar.Brand className='mx-4'>
 			<Link to='/' style={linkStyle}>
+				<img src="/favicon-16x16.png" alt="" />
 				DevXchange
 			</Link>
 		</Navbar.Brand>
