@@ -38,6 +38,14 @@ li {
   background-color: #212529;
 }
 
+/* <---------- HOME.JS ----------> */
+#homePage {
+  text-align: center;
+  color: white;
+  margin-top: 150px;
+  font-size: 35px;
+}
+
 /* <---------- PROBLEM.JS ----------> */
 #momentPill {
   margin-left: 5px;

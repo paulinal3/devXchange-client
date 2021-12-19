@@ -99,25 +99,29 @@ function ShowProblem(props) {
             {!currentProblem ? <h1>Loading...</h1> : (
                 <>
                     {/* <----- CURRENT PROBLEM -----> */}
-                    <div>
+                    {/* <----- Jumbotron -----> */}
+                    <div class='container-fluid bg-dark text-light p-5'>
+                        <h3 class='mb-3'>{currentProblem.title}</h3>
+                    </div>
+                    {/* <div>
                         <h3>{currentProblem.title}</h3>
                         <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-                    </div>
-                        {props.user && props.user._id == currentProblem.owner._id &&
-                            // <----- EDIT/DELETE BUTTONS -----> //
-                            <div id='showProblemBtn'>
-                                <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
+                    </div> */}
+                    {props.user && props.user._id == currentProblem.owner._id &&
+                        // <----- EDIT/DELETE BUTTONS -----> //
+                        <div id='showProblemBtn'>
+                            <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
 
-                                <EditProblem
-                                    show={modalShow}
-                                    onHide={() => setModalShow(false)}
-                                    currentProb={currentProblem}
-                                    currUser={props.user}
-                                    refreshProb={props.refreshProblems}
-                                />
-                                <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
-                            </div>
-                        }
+                            <EditProblem
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                                currentProb={currentProblem}
+                                currUser={props.user}
+                                refreshProb={props.refreshProblems}
+                            />
+                            <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+                        </div>
+                    }
                     <div>
 
                     </div>
