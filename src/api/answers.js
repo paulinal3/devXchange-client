@@ -38,13 +38,3 @@ export const updateAnswer = (user, answerId, changeAnswer) => {
         }
     })
 }
-
-export const destroyAnswer = (user, answerId) => {
-    return axios({
-        method: 'DELETE',
-        url: `${apiUrl}/answers/${answerId}`,
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
-    })
-}
