@@ -18,16 +18,16 @@ export default function NewProblem(props) {
 
     
 
-     let modules = {
+    let modules = {
         syntax: true,
         toolbar: [
-          [{ 'header': [1, 2, false] }],
-          ['bold', 'italic', 'underline','strike', 'blockquote', 'code-block'],
-          [{'list': 'ordered'}, {'list': 'bullet'}],
-          ['link'],
-          ['clean']
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link'],
+            ['clean']
         ],
-      }
+    }
 
     const navigate = useNavigate()
 

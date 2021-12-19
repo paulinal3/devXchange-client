@@ -2,9 +2,17 @@ import EditAnswer from "./EditAnswer"
 import { useState } from "react"
 import { Button, Form, Accordion } from "react-bootstrap"
 import moment from 'moment'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.bubble.css'
+
 
 export default function ShowAnswer(props) {
     const [modalShow, setModalShow] = useState(false)
+
+    let modules = {
+        syntax: true,
+    }
+
     
     let contribLastNameInit = props.answer.contributor.lastName.charAt(0)
     return (
@@ -16,7 +24,12 @@ export default function ShowAnswer(props) {
                             <span id="momentPill" class='badge rounded-pill bg-dark'> {moment(props.answer.updatedAt).fromNow()} </span>
                         </Accordion.Header>
                         <Accordion.Body>
-                            {props.answer.solution}
+                        <ReactQuill
+                        value={props.answer.solution}
+                        readOnly={true}
+                        theme={"bubble"}
+                        modules= {modules}
+                    />
                             <>
                                 <Button id="cardBtn" style={{'display':'flex', 'margin-top':'20px'}} onClick={() => setModalShow(true)}>
                                     Edit Answer

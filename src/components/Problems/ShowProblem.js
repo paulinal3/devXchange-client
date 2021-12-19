@@ -57,7 +57,7 @@ function ShowProblem(props) {
             .then(answers => {
                 console.log('these are all the problems answers\n', answers.data.foundAnswers)
                 // set the found answers in db to state
-                setProbAnswers(answers.data.foundAnswers)
+                setProbAnswers(answers.data.foundAnswers || [])
             })
             .catch(err => console.error(err))
     }, [])
@@ -94,18 +94,18 @@ function ShowProblem(props) {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
     }
 
-    // helper method passed down as a prop to NewAnswer
-    const createAnswer = () => {
-        // axios call to create a new answer in db
-        postAnswer(props.user, currentProblem._id, newSolution)
-            .then(() => {
-                refreshProbAnswers()
-                setNewSolution('')
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    }
+    // // helper method passed down as a prop to NewAnswer
+    // const createAnswer = () => {
+    //     // axios call to create a new answer in db
+    //     postAnswer(props.user, currentProblem._id, newSolution)
+    //         .then(() => {
+    //             refreshProbAnswers()
+    //             setNewSolution('')
+    //         })
+    //         .catch(err => {
+    //             console.error(err)
+    //         })
+    // }
 
     return (
         <>
@@ -141,11 +141,9 @@ function ShowProblem(props) {
                         </>
                     }
                     <NewAnswer
-                        handleAnswer={handleAnswerChange}
-                        newSolution={newSolution}
-                        createAnswer={createAnswer}
                         user={props.user}
                         currentProblem={currentProblem}
+                        refreshProbAnswers={refreshProbAnswers}
                     />
 
                     <hr />
