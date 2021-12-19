@@ -28,11 +28,7 @@ function ProfileProblems(props) {
                         <p>{descSnippet}</p>
                     </Card.Text>
                     <Link to={`/problems/${p._id}`}
-<<<<<<< HEAD
                         currProblem={props.currentProblem}><Button className="float-end" size="small" variant="primary" onClick={() => changeCurrent(p)} key={i}>Go to problem</Button></Link>
-=======
-                        currProblem={props.currentProblem}><Button className="float-end" size="sm" id="cardBtn" onClick={() => changeCurrent(p)} key={i}>Go to problem</Button></Link>
->>>>>>> ae17d0f5d0e0daeb4013225cc5ad37cf7803ea5e
                 </Card.Body>
             </Card>
 
