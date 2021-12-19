@@ -37,7 +37,6 @@ export default function IndexProblems(props) {
     //         <Pagination>{items}</Pagination>
     //     </div>
     // )
-
     return (
         <div>
             <h1>Problems Page</h1>

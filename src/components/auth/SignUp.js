@@ -1,4 +1,3 @@
-// import React, { Component } from 'react'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -62,7 +61,7 @@ const SignUp = (props) => {
 
             <div className='row'>
                 <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    <h3>Sign Up</h3>
+                    {/* <h3>Sign Up</h3> */}
                     <Form onSubmit={onSignUp}>
                         <Form.Group controlId='firstName'>
                             <Form.Label>First name</Form.Label>
@@ -120,7 +119,7 @@ const SignUp = (props) => {
                             />
                         </Form.Group>
                         <Button variant='primary' type='submit'>
-                            Submit
+                            Sign Up
                         </Button>
                     </Form>
                 </div>

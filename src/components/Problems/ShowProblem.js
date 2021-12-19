@@ -1,130 +1,3 @@
-// import { useLocation, useNavigate, Link } from 'react-router-dom'
-// import { destroyProblem } from '../../api/problems'
-// import apiUrl from '../../apiConfig'
-
-// function ShowProblem(props) {
-//     // const [newSolution, setNewSolution] = useState('')
-
-//     const { pathname } = useLocation()
-//     const problemId = pathname.split('/')[2]
-//     console.log('this is the problem id:', problemId)
-//     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
-//     console.log('this is the current problem\n', currentProblem)
-//     let lastNameInit = currentProblem.owner.lastName.charAt(0)
-//     const navigate = useNavigate()
-
-//     const deleteProblem = () => {
-//         destroyProblem(props.user, currentProblem._id)
-//             // console.log('THIS IS:', `${apiUrl}/problems/${itemId}`)
-//             .then(() => {
-//                 props.refreshProblems()
-//                 navigate('/problems')
-//             })
-//             .catch(err => {
-//                 console.error(err)
-//             })
-//     }
-    
-//     useEffect(() => {
-//         // axios call to find all answers connected to current problem's id
-//         getProbAnswers(currentProblem._id)
-//             .then(answers => {
-//                 console.log('these are all the problems answers\n', answers.data.foundAnswers)
-//                 // set the found answers in db to state
-//                 setProbAnswers(answers.data.foundAnswers)
-//             })
-//             .catch(err => console.error(err))
-//     }, [])
-
-//     // refresh answers to include posted and updated answers
-//     const refreshProbAnswers = () => {
-//         getProbAnswers(currentProblem._id)
-//             .then(answers => {
-//                 console.log('these are all the problems answers\n', answers.data.foundAnswers)
-//                 setProbAnswers(answers.data.foundAnswers)
-//             })
-//             .catch(err => console.error(err))
-//     }
-
-//     const getAllProbAnswers = probAnswers.map((answer, i) => {
-//         return (
-//             <li key={i}>
-//                 <ShowAnswer
-//                     answer={answer}
-//                     key={i}
-//                     currentProblemId={currentProblem._id}
-//                     refreshProbAnswers={refreshProbAnswers}
-//                     currentUser={props.user}
-//                 />
-//             </li>
-
-//         )
-//     })
-
-//     // passed down as a prop to NewAnswer
-//     const handleAnswerChange = (e) => {
-//         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
-//     }
-
-//     // helper method passed down as a prop to NewAnswer
-//     const createAnswer = () => {
-//         // axios call to create a new answer in db
-//         postAnswer(props.user, currentProblem._id, newSolution)
-//             .then(() => {
-//                 refreshProbAnswers()
-//                 setNewSolution('')
-//             })
-//             .catch(err => {
-//                 console.error(err)
-//             })
-//     }
-
-//     return (
-//         <>
-//             {!currentProblem ? <h1>Loading...</h1> : (
-//                 <>
-//                     <h3>{currentProblem.title}</h3>
-//                     <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-//                     <hr />
-//                     <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p>
-//                     {props.user && props.user._id == currentProblem.owner._id &&
-//                         <>
-//                             <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
-//                             {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
-//                             <>
-//                                 <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
-
-//                                 <EditProblem
-//                                     show={modalShow}
-//                                     onHide={() => setModalShow(false)}
-//                                     currentProb={currentProblem}
-//                                     currUser={props.user}
-//                                     refreshProb={props.refreshProblems}
-//                                 />
-//                             </>
-//                         </>
-//                     }
-
-//                     <NewAnswer
-//                         handleAnswer={handleAnswerChange}
-//                         newSolution={newSolution}
-//                         createAnswer={createAnswer}
-//                     />
-
-//                     <hr />
-
-//                     <ol>
-//                         {getAllProbAnswers}
-//                     </ol>
-//                 </>
-//             )}
-
-//         </>
-//     )
-// }
-
-// export default ShowProblem
-
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { destroyProblem } from '../../api/problems'
@@ -199,9 +72,9 @@ function ShowProblem(props) {
 
         )
     })
-    
     // display them from newest to oldest
     getAllProbAnswers.reverse()
+
     // passed down as a prop to NewAnswer
     const handleAnswerChange = (e) => {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
@@ -230,7 +103,7 @@ function ShowProblem(props) {
                     <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p>
                     {props.user && props.user._id == currentProblem.owner._id &&
                         <>
-                            <button onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</button>
+                            <Button className="mr-1" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
                             {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
                             <>
                                 <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
@@ -250,6 +123,8 @@ function ShowProblem(props) {
                         handleAnswer={handleAnswerChange}
                         newSolution={newSolution}
                         createAnswer={createAnswer}
+                        user={props.user}
+                        currentProblem={currentProblem}
                     />
 
                     <hr />

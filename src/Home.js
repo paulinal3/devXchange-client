@@ -1,5 +1,7 @@
-import { InputGroup } from 'react-bootstrap'
 import Problem from './components/Problems/Problem'
+import { Link } from 'react-router-dom'
+import FilterProblem from './components/Problems/FilterProblem'
+
 
 const Home = (props) => {
 	console.log('props in home', props)
@@ -22,11 +24,7 @@ const Home = (props) => {
 				<div class="container-fluid bg-dark text-light p-5">
 					<div class="container bg-dark p-5">
 						<h1 class="display-4">Welcome to DevXChange</h1>
-						<p>Learn more</p>
-						<div class="input-container">
-							<input class="input-field" type="text"></input>
-						</div>
-						<a href="#" class="btn btn-primary">search</a>
+						<a href="/problems" class="btn btn-primary">see all problems</a>
 					</div>
 				</div>
 			</div>

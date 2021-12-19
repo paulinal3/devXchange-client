@@ -60,9 +60,6 @@ export default function Footer() {
 
                             <ul class='list-unstyled mb-0'>
                                 <li>
-                                    cmiltiad@gmail.com
-                                </li>
-                                <li>
                                     <a href='https://www.linkedin.com/in/christos-miltiadou/' class='text-white' target='_blank' rel='noopener noreferrer'>Linkedin</a>
                                 </li>
                                 <li>
@@ -70,6 +67,9 @@ export default function Footer() {
                                 </li>
                                 <li>
                                     <a href='#!' class='text-white' target='_blank' rel='noopener noreferrer'>Portfolio</a>
+                                </li>
+                                <li>
+                                    cmiltiad@gmail.com
                                 </li>
                             </ul>
                         </div>
@@ -81,9 +81,6 @@ export default function Footer() {
 
                             <ul class='list-unstyled mb-0'>
                                 <li>
-                                    galyverasi@gmail.com
-                                </li>
-                                <li>
                                     <a href='https://www.linkedin.com/in/galyverasi/' class='text-white' target='_blank' rel='noopener noreferrer'>Linkedin</a>
                                 </li>
                                 <li>
@@ -91,6 +88,9 @@ export default function Footer() {
                                 </li>
                                 <li>
                                     <a href='#!' class='text-white' target='_blank' rel='noopener noreferrer'>Portfolio</a>
+                                </li>
+                                <li>
+                                    galyverasi@gmail.com
                                 </li>
                             </ul>
                         </div>
@@ -102,9 +102,6 @@ export default function Footer() {
 
                             <ul class='list-unstyled mb-0'>
                                 <li>
-                                    paulinal3@outlook.com
-                                </li>
-                                <li>
                                     <a href='https://www.linkedin.com/in/paulinal3/' class='text-white' target='_blank' rel='noopener noreferrer'>Linkedin</a>
                                 </li>
                                 <li>
@@ -112,6 +109,9 @@ export default function Footer() {
                                 </li>
                                 <li>
                                     <a href='#!' class='text-white' target='_blank' rel='noopener noreferrer'>Portfolio</a>
+                                </li>
+                                <li>
+                                    paulinal3@outlook.com
                                 </li>
                             </ul>
                         </div>
@@ -125,7 +125,7 @@ export default function Footer() {
             <hr />
             <div class='text-center p-3' styles='background-color: rgba(0, 0, 0, 0);'>
                 Built By: Solo Tres
-                {/* <a class='text-white' href='https://mdbootstrap.com/'> Solo Tres</a> */}
+                <a class='text-white' href='https://mdbootstrap.com/'> Solo Tres</a>
             </div>
         </footer>
     )

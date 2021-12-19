@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import FilterProblem from '../Problems/FilterProblem'
 
 
@@ -14,11 +14,6 @@ const authenticatedOptions = (
 		<Nav.Link>
 			<Link to='/problems/new' style={linkStyle}>
 				Post a Problem
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='change-password' style={linkStyle}>
-				Change Password
 			</Link>
 		</Nav.Link>
 		<Nav.Link>

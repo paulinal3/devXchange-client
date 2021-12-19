@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { Card, Button } from 'react-bootstrap'
 import { useState } from 'react'
@@ -26,9 +25,9 @@ export default function Problem(props) {
                     </Card.Body>
                     <Card.Footer className='cardFooter'>
                         <p className='name'>Asked by: {firstName} {lastNameInit}.
-                            <span class="badge rounded-pill bg-dark"> {moment(props.problem.createdAt).fromNow()} </span>
+                            <span class='badge rounded-pill bg-dark'> {moment(props.problem.createdAt).fromNow()} </span>
                         </p>
-                        <Button variant='primary' onClick={() => setModalShow(true)}>
+                        <Button id='cardBtn' onClick={() => setModalShow(true)}>
                             Preview Problem
                         </Button>
                     </Card.Footer>
@@ -39,7 +38,6 @@ export default function Problem(props) {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
                 currentProblem={props.problem}
-
             />
         </>
     )
