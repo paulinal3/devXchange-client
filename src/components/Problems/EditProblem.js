@@ -64,7 +64,6 @@ export default function EditProblem(props) {
                             /> */}
                             <ReactQuill
                                 theme="snow"
-                                name='description'
                                 modules={modules}
                                 value={changeProblem}
                                 onChange={setChangeProblem}
