@@ -2,9 +2,15 @@ import moment from 'moment'
 import { Card, Button } from 'react-bootstrap'
 import { useState } from 'react'
 import ModalProblem from './ModalProblem'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.bubble.css'
 
 export default function Problem(props) {
     const [modalShow, setModalShow] = useState(false)
+
+    let modules = {
+        syntax: true
+    }
 
     let firstName = props.problem.owner.firstName
     let lastNameInit = props.problem.owner.lastName.charAt(0)
@@ -19,9 +25,16 @@ export default function Problem(props) {
 
                     <Card.Body className='cardProblem'>
                         <h3>{props.problem.title}</h3>
-                        <Card.Text>
-                            {props.problem.description.slice(0, 500)}...
-                        </Card.Text>
+                        
+                        {/* <div dangerouslySetInnerHTML={{__html: props.problem.description.slice(0, 500)}} /> */}
+                        <ReactQuill
+                        value={props.problem.description.slice(0, 500)}
+                        readOnly={true}
+                        theme={"bubble"}
+                        modules={modules}
+                        />
+
+                        
                     </Card.Body>
                     <Card.Footer className='cardFooter'>
                         <p className='name'>Asked by: {firstName} {lastNameInit}.

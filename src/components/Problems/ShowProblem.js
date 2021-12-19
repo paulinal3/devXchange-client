@@ -6,6 +6,9 @@ import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
 import { Button } from "react-bootstrap"
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.bubble.css'
+
 
 function ShowProblem(props) {
     const [newSolution, setNewSolution] = useState('')
@@ -20,6 +23,17 @@ function ShowProblem(props) {
     console.log('this is the current problem\n', currentProblem)
 
     let lastNameInit = currentProblem && currentProblem.owner.lastName.charAt(0)
+
+    let modules = {
+        syntax: true,
+        toolbar: [
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link'],
+            ['clean']
+        ],
+    }
 
     const navigate = useNavigate()
 
@@ -96,11 +110,16 @@ function ShowProblem(props) {
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
-                <>
+                <div style={{width: '800px'}}>
                     <h3>{currentProblem.title}</h3>
                     <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
                     <hr />
-                    <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p>
+                    <ReactQuill
+                        value={currentProblem.description}
+                        readOnly={true}
+                        theme={"bubble"}
+                        modules= {modules}
+                    />
                     {props.user && props.user._id == currentProblem.owner._id &&
                         <>
                             <Button className="mr-1" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
@@ -132,7 +151,7 @@ function ShowProblem(props) {
                     <ol>
                         {getAllProbAnswers}
                     </ol>
-                </>
+                </div>
             )}
         </>
     )

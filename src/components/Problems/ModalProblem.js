@@ -1,7 +1,15 @@
 import { Modal, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.bubble.css'
+
 export default function ModalProblem(props) {
+
+
+    let modules = {
+        syntax: true
+    }
 
     return (
         <>
@@ -18,9 +26,14 @@ export default function ModalProblem(props) {
                 </Modal.Header>
                 <Modal.Body>
                     {/* <h4>Centered Modal</h4> */}
-                    <p>
-                        {props.currentProblem.description}
-                    </p>
+                    {/* <div dangerouslySetInnerHTML={{__html:props.currentProblem.description}} /> */}
+                    <ReactQuill
+                        value={props.currentProblem.description}
+                        readOnly={true}
+                        theme={"bubble"}
+                        modules={modules}
+                        />
+                    
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.onHide}>Close</Button>

@@ -1,13 +1,26 @@
 import { Form, Modal, Button, InputGroup, FormControl } from "react-bootstrap"
 import { updateProblem } from "../../api/problems"
 import { useState } from "react"
+import ReactQuill from "react-quill"
 
 export default function EditProblem(props) {
+
     const [changeProblem, setChangeProblem] = useState(props.currentProb.description)
 
-    const handleProblemChange = (e) => {
-        setChangeProblem(e.target.value)
-    }
+    let modules = {
+        syntax: true,
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote', 'code-block'],
+          [{'list': 'ordered'}, {'list': 'bullet'}],
+          ['link'],
+          ['clean']
+        ],
+      }
+
+    // const handleProblemChange = (e) => {
+    //     setChangeProblem(e.target.value)
+    // }
 
     // helper method attached to button
     const editProblem = () => {
@@ -43,11 +56,19 @@ export default function EditProblem(props) {
                     <h3>{props.currentProb.title}</h3>
                     <Form>
                         <InputGroup>
-                            <FormControl 
+                            {/* <FormControl 
                                 as="textarea" aria-label="With textarea" 
                                 name='description' 
                                 value={changeProblem} 
                                 onChange={handleProblemChange} 
+                            /> */}
+                            <ReactQuill
+                                theme="snow"
+                                name='description'
+                                modules={modules}
+                                value={changeProblem}
+                                onChange={setChangeProblem}
+                                name='description' 
                             />
                         </InputGroup>
                     </Form>

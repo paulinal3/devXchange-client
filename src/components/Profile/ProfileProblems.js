@@ -18,7 +18,7 @@ function ProfileProblems(props) {
     console.log('this is user problems', props.user.problems)
 
     const allProblems = props.user.problems.map((p, i) => {
-        // let descSnippet = p.description.slice(0, 80) + "..."
+        let descSnippet = p.description.slice(0, 80) + "..."
         return (
             <Card >
                 <Card.Header>Asked {moment(p.createdAt).fromNow()}</Card.Header>
@@ -28,7 +28,7 @@ function ProfileProblems(props) {
                         <p>{descSnippet}</p>
                     </Card.Text>
                     <Link to={`/problems/${p._id}`}
-                        currProblem={props.currentProblem}><Button className="float-end" size="sm" variant="primary" onClick={() => changeCurrent(p)} key={i}>Go to problem</Button></Link>
+                        currProblem={props.currentProblem}><Button className="float-end" size="small" variant="primary" onClick={() => changeCurrent(p)} key={i}>Go to problem</Button></Link>
                 </Card.Body>
             </Card>
 
