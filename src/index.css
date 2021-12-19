@@ -10,12 +10,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#cardBtn, #formBtn {
+#cardBtn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn {
   background-color:#055861;
   border-color: #055861;
 }
 
-#cardBtn:hover {
+#cardBtn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover {
   background-color:  #099DAD;
   border: 2px solid #099DAD;
 }
@@ -41,6 +41,10 @@ li {
 
 #root {
   background-color: #212529;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 /* <---------- HOME.JS ----------> */

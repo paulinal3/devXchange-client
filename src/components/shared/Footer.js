@@ -104,9 +104,12 @@ export default function Footer() {
                 </section>
             </div>
             {/* <!-- Grid container --> */}
+
+            {/* <hr />
             <div class='text-center p-3' styles='background-color: rgba(0, 0, 0, 0);'>
-                <p>Created by Solo Tres <i class="far fa-copyright"></i> 2021</p>
-            </div>
+                Built By: Solo Tres
+                <a class='text-white' href='https://mdbootstrap.com/'> Solo Tres</a>
+            </div> */}
         </footer>
     )
 }

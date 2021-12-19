@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import FilterProblem from '../Problems/FilterProblem'
-
 
 const linkStyle = {
 	color: 'white',
@@ -38,30 +37,27 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		{/* <Nav.Link>
-			<Link to='/' style={linkStyle}>
-				Home
-			</Link>
-		</Nav.Link> */}
 		<Nav.Link>
 			<Link to='/problems' style={linkStyle}>
 				Problems
 			</Link>
 		</Nav.Link>
-		
+
 	</>
 )
 
-const Header = ({user , handleFilter, search, handleSearch}) => (
+const Header = ({ user, handleFilter, search, handleSearch }) => (
 	<Navbar bg='dark' variant='dark' expand='md' id='navBar'>
+		{/* <----- APP NAME -----> */}
 		<Navbar.Brand className='mx-4'>
 			<Link to='/' style={linkStyle}>
-				<img src="/favicon-16x16.png" alt="" />
+				<img src="/favicon-16x16.png" alt="DevXchange Logo" />
 				DevXchange
 			</Link>
 		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse style={{'padding-top':'5px', 'justify-content':'right'}} id='basic-navbar-nav'>
+			{/* <----- USER PROFILE -----> */}
 			<Nav className='ml-auto'>
 				{user && (
 					<span className='navbar-text mr-2'><Link to="/profile" style={{'text-decoration':'none'}} className='name'>Profile</Link></span>
@@ -70,16 +66,16 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
-			<Nav.Link>
-				<Link style={{'text-decoration':'none'}} to="/problems">
-				<FilterProblem 
+		<Nav.Link className='mx-4'>
+			{/* <----- SEARCH BAR -----> */}
+			<Link style={{'text-decoration':'none'}} to="/problems">
+				<FilterProblem
 					filterProblems={handleFilter}
-					searchVal={search} 
+					searchVal={search}
 					searchChange={handleSearch}
-					
 				/>
-				</Link>
-			</Nav.Link>
+			</Link>
+		</Nav.Link>
 	</Navbar>
 )
 
