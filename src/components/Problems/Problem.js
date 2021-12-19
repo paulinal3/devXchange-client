@@ -11,12 +11,7 @@ export default function Problem(props) {
     return (
         <>
             <Card id='probCard'>
-                {/* <Card.Header className='name'>Asked by: {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</Card.Header>
-                <Card.Header>
-                    <h3>{props.problem.title}</h3>
-                </Card.Header> */}
                 <div className='cardBody'>
-
                     <Card.Body className='cardProblem'>
                         <h3>{props.problem.title}</h3>
                         <Card.Text>

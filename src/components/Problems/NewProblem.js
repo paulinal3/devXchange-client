@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
+import axios from 'axios'
 
 export default function NewProblem(props) {
     // console.log('this is props\n', props)
@@ -12,6 +13,8 @@ export default function NewProblem(props) {
         solved: false,
         img: ''
     })
+    const [fileData, setFileData] = useState('')
+    const [image, setImage] = useState('')
 
     const navigate = useNavigate()
 
@@ -40,37 +43,53 @@ export default function NewProblem(props) {
             })
     }
 
+    // const uploadImg = (files) => {
+    //     console.log('this is the img file', files[0])
+    //     const formData = new FormData()
+    //     formData.append('file', files[0])
+    //     formData.append('upload_preset', 'm3xdo5kt')
+
+    //     axios.post('https://api.cloudinary.com/v1_1/paulinal3/image/upload', formData)
+    //         .then(res => console.log(res))
+    // }
+
+    const handleFileChange = ({ target }) => {
+        console.log('this is the img file', target.files[0])
+        setFileData(target.files[0])
+        setImage(target.value)
+    }
+
+
     return (
         <div>
             {/* <----- Jumbotron -----> */}
             <div class='container-fluid bg-dark text-light p-5'>
                 <h1 class='mb-3'>Tips on posting a problem</h1>
                 <h4 class='mb-3'>
-                    <ol>
-                        <li>Summarize the problem</li>
-                        <li>Describe what you've tried</li>
-                        <li>When appropriate, show some code</li>
-                    </ol>
+                    <div id='problemTips'>
+                        <p>Summarize the problem</p>
+                        <p>•</p> 
+                        <p>Describe what you've tried</p>
+                        <p>•</p>
+                        <p>When appropriate, show some code</p>
+                    </div>
                 </h4>
             </div>
-            {/* <----- Jumbotron -----> */}
 
             {/* <----- Form to Create a New Problem -----> */}
-            <Form id='newProbForm' style={{'margin-top':'20px'}}>
-                <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-                    <Form.Label htmlFor='title'>Title</Form.Label>
+            <Form id='newProbForm'>
+                <Form.Group className='mb-3' controlId='title'>
+                    <Form.Label>Title</Form.Label>
                     <Form.Control 
-                        id='title'
                         type='text' 
                         name='title' 
                         value={newProblem.title} 
                         onChange={handleChange} 
                     />
                 </Form.Group>
-                <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
-                    <Form.Label htmlFor='description'>Description</Form.Label>
+                <Form.Group className='mb-3' controlId='description'>
+                    <Form.Label>Description</Form.Label>
                     <Form.Control
-                        id='description' 
                         as='textarea' rows={3} 
                         type='text' 
                         name='description' 
@@ -78,9 +97,19 @@ export default function NewProblem(props) {
                         onChange={handleChange} 
                     />
                 </Form.Group>
+                <Form.Group className='mb-3' controlId='img'>
+                    <Form.Label>Upload a screenshot: </Form.Label>
+                    <Form.Control
+                        type='file' 
+                        name='img'
+                        accept='image/*'
+                        value={newProblem.img} 
+                        // onChange={(e) => uploadImg(e.target.files)} 
+                        onChange={handleFileChange}
+                    />
+                </Form.Group>
                 <Button id='formBtn' onClick={() => createNewProblem()}>Post Problem</Button>
             </Form>
-            {/* <----- Form to Create a New Problem -----> */}
         </div>
     )
 }
