@@ -72,7 +72,6 @@ function ShowProblem(props) {
                     currentUser={props.user}
                 />
             </li>
-
         )
     })
 
