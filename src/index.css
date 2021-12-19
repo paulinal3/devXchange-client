@@ -153,6 +153,6 @@ footer {
 
 #showProblemBody {
   /* background-color: darkgray; */
-  padding-top: 20px;
+  padding: 20px 20px 20px 20px;
   margin: 0 50px 0 50px;
 }

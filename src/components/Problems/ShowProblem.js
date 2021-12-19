@@ -83,7 +83,6 @@ function ShowProblem(props) {
                     currentUser={props.user}
                 />
             </li>
-
         )
     })
     // display them from newest to oldest
@@ -110,6 +109,7 @@ function ShowProblem(props) {
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
+
                 <div style={{width: '800px'}}>
                 <div style={{width: '800px', 'background-color': "white"}} className='mx-4 my-3'>
                     <h3>{currentProblem.title}</h3>
@@ -130,6 +130,18 @@ function ShowProblem(props) {
                             <>
                                 <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
 
+                <>
+                    {/* <----- CURRENT PROBLEM -----> */}
+                    <div>
+                        <h3>{currentProblem.title}</h3>
+                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+                    </div>
+                        {props.user && props.user._id == currentProblem.owner._id &&
+                            // <----- EDIT/DELETE BUTTONS -----> //
+                            <div id='showProblemBtn'>
+                                <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
+
+
                                 <EditProblem
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}
@@ -137,9 +149,20 @@ function ShowProblem(props) {
                                     currUser={props.user}
                                     refreshProb={props.refreshProblems}
                                 />
+
                             </>
                         </>
                     }
+
+                                <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+                            </div>
+                        }
+                    <div>
+
+                    </div>
+                    <p>{currentProblem.description}</p>
+                    {/* <----- NEW ANSWER -----> */}
+
                     <NewAnswer
                         user={props.user}
                         currentProblem={currentProblem}
