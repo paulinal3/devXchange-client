@@ -39,7 +39,7 @@ export default function IndexProblems(props) {
     // )
     return (
         <div>
-            <h1>Problems Page</h1>
+            <h2>All Problems</h2>
             {/* <FilterProblem 
                 filterProblems={props.handleFilter}
                 searchVal={props.search} 

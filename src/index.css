@@ -11,7 +11,9 @@ body {
 
 #cardBtn, #formBtn {
   background-color:#055861;
+  border-color: #055861;
 }
+
 
 * {
   font-family: 'Fira Sans Condensed', sans-serif;
@@ -19,7 +21,7 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 li {
@@ -31,6 +33,10 @@ li {
 }
 
 /* <---------- PROBLEM.JS ----------> */
+#momentPill {
+  margin-left: 5px;
+}
+
 #probCard {
   max-width: 85%;
   margin: auto;
