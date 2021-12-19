@@ -28,10 +28,10 @@ const Home = (props) => {
 					</div>
 				</div>
 			</div>
-			<h2 style={{'margin-left':'50px', 'margin-top':'5px'}}>Latest Problems</h2>
+			{/* <h2 style={{'margin-left':'50px', 'margin-top':'5px'}}>Latest Problems</h2>
 			<ol>
 				{recentProblems}
-			</ol>
+			</ol> */}
 		</>
 	)
 }

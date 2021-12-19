@@ -34,6 +34,10 @@ li {
 
 }
 
+#root {
+  background-color: #212529;
+}
+
 /* <---------- PROBLEM.JS ----------> */
 #momentPill {
   margin-left: 5px;
