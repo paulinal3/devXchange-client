@@ -39,7 +39,11 @@ export default function IndexProblems(props) {
     // )
     return (
         <div>
-            <h2>All Problems</h2>
+            {/* <----- Jumbotron -----> */}
+            <div class='container-fluid bg-dark text-light p-5'>
+                <h1 class='mb-3'>All Problems</h1>
+            </div>
+            {/* <----- Jumbotron -----> */}
             {/* <FilterProblem 
                 filterProblems={props.handleFilter}
                 searchVal={props.search} 

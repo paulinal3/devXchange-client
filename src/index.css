@@ -49,9 +49,9 @@ li {
   justify-content: space-between;
 }
 
-/* .cardProblem {
-  max-width: 95%;
-} */
+#cardProbFooter {
+  padding-top: 10px;
+}
 
 /* <---------- SIGNIN.JS ----------> */
 #signInForm, #signUpForm {

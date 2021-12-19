@@ -38,11 +38,11 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+		{/* <Nav.Link>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Link>
+		</Nav.Link> */}
 		<Nav.Link>
 			<Link to='/problems' style={linkStyle}>
 				Problems
@@ -64,7 +64,7 @@ const Header = ({user , handleFilter, search, handleSearch}) => (
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='navbar-text mr-2'>Welcome, <Link to="/profile" className='name'>{user.firstName}</Link></span>
+					<span className='navbar-text mr-2'><Link to="/profile" className='name'>Profile</Link></span>
 				)}
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}

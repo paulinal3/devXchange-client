@@ -23,7 +23,7 @@ const Home = (props) => {
 			<div>
 				<div class="container-fluid bg-dark text-light p-5">
 					<div class="container bg-dark p-5">
-						<h1 class="display-4">Welcome to DevXChange</h1>
+						<h1 class="display-4">Welcome to DevXchange</h1>
 						<a id="cardBtn" href="/problems" class="btn btn-primary">see all problems</a>
 					</div>
 				</div>
