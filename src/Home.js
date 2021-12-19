@@ -21,11 +21,20 @@ const Home = (props) => {
 
 	return (
 		<main id='homePage'>
-			{/* <h2>Welcome</h2>
-			 	<h4>to</h4>
-		 	<h1>DevXchange</h1>
-			<a id="cardBtn" href="/problems" class="btn btn-primary">Search Problems</a> */}
-			<div class="container-fluid bg-dark text-light p-5">
+			<header id='homeHeader'>
+				<h1 id='welcome'>Welcome to</h1>
+				<h1 id='appTitle'>DevXchange</h1>
+			</header>
+			<Typewriter
+						options={{
+							strings: ['An open forum', 'Post coding questions', 'Offer your expertise', 'Connect with other devs'],
+							autoStart: true,
+							loop: true,
+						}}
+						id='homeTypewriter'
+					/>
+			<a id="cardBtn" href="/problems" class="btn btn-primary">Search Problems</a>
+			{/* <div class="container-fluid bg-dark text-light p-5">
 				<div class="container bg-dark p-5">
 					<h1 class="display-4">Welcome to DevXchange</h1>
 					<Typewriter
@@ -38,7 +47,7 @@ const Home = (props) => {
 					/>
 					<a id="cardBtn" href="/problems" class="btn btn-primary">Search Problems</a>
 				</div>
-			</div>
+			</div> */}
 		</main>
 	)
 }
