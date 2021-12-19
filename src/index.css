@@ -56,6 +56,13 @@ li {
   margin: auto;
 }
 
+/* <---------- SHOWPROBLEM.JS ----------> */
+#showProblemBtn {
+  display: flex;
+  flex-direction: row;
+  column-gap: 3px;
+}
+
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
   max-width: 50%;
@@ -81,3 +88,8 @@ footer {
   bottom: 0;
   width: 100%; */
 }
+
+/* #showProblemBody {
+  background-color: darkgray;
+  padding-top: 10%;
+} */

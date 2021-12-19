@@ -1,13 +1,16 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { Button } from "react-bootstrap"
+
 import { destroyProblem } from '../../api/problems'
 import { getProbAnswers, postAnswer } from '../../api/answers'
+
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
-import { Button } from "react-bootstrap"
 
 function ShowProblem(props) {
+
     const [newSolution, setNewSolution] = useState('')
     const [probAnswers, setProbAnswers] = useState([])
     const [modalShow, setModalShow] = useState(false)
@@ -15,13 +18,12 @@ function ShowProblem(props) {
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
     // console.log('this is the problem id:', problemId)
+    const navigate = useNavigate()
 
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
 
     let lastNameInit = currentProblem && currentProblem.owner.lastName.charAt(0)
-
-    const navigate = useNavigate()
 
     // helper method attached to delete button
     const deleteProblem = () => {
@@ -58,7 +60,8 @@ function ShowProblem(props) {
             .catch(err => console.error(err))
     }
 
-    const getAllProbAnswers = probAnswers.map((answer, i) => {
+    // display all answers of a problem from newest to oldest
+    const getAllProbAnswers = probAnswers.reverse().map((answer, i) => {
         return (
             <li key={i}>
                 <ShowAnswer
@@ -72,8 +75,6 @@ function ShowProblem(props) {
 
         )
     })
-    // display them from newest to oldest
-    getAllProbAnswers.reverse()
 
     // passed down as a prop to NewAnswer
     const handleAnswerChange = (e) => {
@@ -94,19 +95,18 @@ function ShowProblem(props) {
     }
 
     return (
-        <>
+        <body id='showProblemBody'>
             {!currentProblem ? <h1>Loading...</h1> : (
                 <>
-                    <h3>{currentProblem.title}</h3>
-                    <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-                    <hr />
-                    <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p>
-                    {props.user && props.user._id == currentProblem.owner._id &&
-                        <>
-                            <Button className="mr-1" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
-                            {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
-                            <>
-                                <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
+                    {/* <----- CURRENT PROBLEM -----> */}
+                    <div>
+                        <h3>{currentProblem.title}</h3>
+                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+                    </div>
+                        {props.user && props.user._id == currentProblem.owner._id &&
+                            // <----- EDIT/DELETE BUTTONS -----> //
+                            <div id='showProblemBtn'>
+                                <Button variant="primary" size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
 
                                 <EditProblem
                                     show={modalShow}
@@ -115,10 +115,15 @@ function ShowProblem(props) {
                                     currUser={props.user}
                                     refreshProb={props.refreshProblems}
                                 />
-                            </>
-                        </>
-                    }
+                                <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+                            </div>
+                        }
+                    <div>
 
+                    </div>
+                    {/* <p style={{'white-space':'pre-wrap', width:'400px'}}>{currentProblem.description}</p> */}
+                    <p>{currentProblem.description}</p>
+                    {/* <----- NEW ANSWER -----> */}
                     <NewAnswer
                         handleAnswer={handleAnswerChange}
                         newSolution={newSolution}
@@ -126,15 +131,13 @@ function ShowProblem(props) {
                         user={props.user}
                         currentProblem={currentProblem}
                     />
-
-                    <hr />
-
+                    {/* <----- ALL ANSWERS -----> */}
                     <ol>
                         {getAllProbAnswers}
                     </ol>
                 </>
             )}
-        </>
+        </body>
     )
 }
 
