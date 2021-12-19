@@ -56,7 +56,7 @@ export default function NewProblem(props) {
             {/* <----- Jumbotron -----> */}
 
             {/* <----- Form to Create a New Problem -----> */}
-            <Form id='newProbForm'>
+            <Form id='newProbForm' style={{'margin-top':'20px'}}>
                 <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
                     <Form.Label htmlFor='title'>Title</Form.Label>
                     <Form.Control 

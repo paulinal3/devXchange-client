@@ -106,7 +106,7 @@ function ShowProblem(props) {
                         {props.user && props.user._id == currentProblem.owner._id &&
                             // <----- EDIT/DELETE BUTTONS -----> //
                             <div id='showProblemBtn'>
-                                <Button variant="primary" size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
+                                <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
 
                                 <EditProblem
                                     show={modalShow}

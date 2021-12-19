@@ -30,6 +30,8 @@ li {
 
 .name {
   text-transform: capitalize;
+  margin-top: 5px;
+
 }
 
 /* <---------- PROBLEM.JS ----------> */
@@ -84,6 +86,7 @@ li {
 /* <---------- SHOWANSWER.JS ----------> */
 #answerContainer {
   margin: auto;
+  margin-top: 20px;
 }
 
 /* <---------- FOOTER.JS ----------> */
@@ -95,7 +98,8 @@ footer {
   width: 100%; */
 }
 
-/* #showProblemBody {
-  background-color: darkgray;
-  padding-top: 10%;
-} */
+#showProblemBody {
+  /* background-color: darkgray; */
+  padding-top: 20px;
+  margin: 0 50px 0 50px;
+}
