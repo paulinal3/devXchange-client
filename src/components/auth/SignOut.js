@@ -42,7 +42,7 @@ const SignOut = (props) => {
                         <Button variant='danger' onClick={onSignOut}>
                             Sign Out
                         </Button>
-                        <Button style={{'margin-left':'5px'}}variant='warning' onClick={onCancel}>
+                        <Button style={{'margin-left':'5px'}} id='signOutBtn' onClick={onCancel}>
                             Cancel
                         </Button>
                     </ButtonGroup>

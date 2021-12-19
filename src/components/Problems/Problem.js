@@ -1,6 +1,8 @@
-import moment from 'moment'
 import { Card, Button } from 'react-bootstrap'
 import { useState } from 'react'
+
+import moment from 'moment'
+
 import ModalProblem from './ModalProblem'
 
 export default function Problem(props) {
@@ -8,15 +10,11 @@ export default function Problem(props) {
 
     let firstName = props.problem.owner.firstName
     let lastNameInit = props.problem.owner.lastName.charAt(0)
+
     return (
         <>
             <Card id='probCard'>
-                {/* <Card.Header className='name'>Asked by: {firstName} {lastNameInit}. {moment(props.problem.createdAt).fromNow()}</Card.Header>
-                <Card.Header>
-                    <h3>{props.problem.title}</h3>
-                </Card.Header> */}
                 <div className='cardBody'>
-
                     <Card.Body className='cardProblem'>
                         <h3>{props.problem.title}</h3>
                         <Card.Text>
@@ -31,7 +29,6 @@ export default function Problem(props) {
                             Preview Problem
                         </Button>
                     </Card.Footer>
-
                 </div>
             </Card>
             <ModalProblem
