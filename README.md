@@ -7,6 +7,8 @@ https://devxchange.herokuapp.com/
 ## Server Repo
 https://github.com/paulinal3/devXchange-api
 
+![RESTful Routes](devXchange_routes.png)
+
 ## Install
 
 Requirements
