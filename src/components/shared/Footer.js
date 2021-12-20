@@ -82,6 +82,7 @@ export default function Footer() {
                 </section>
             </div>
             {/* <!-- Grid container --> */}
+
             {/* <hr />
             <div class='text-center p-3' styles='background-color: rgba(0, 0, 0, 0);'>
                 Built By: Solo Tres

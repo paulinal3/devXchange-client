@@ -6,14 +6,15 @@ import moment from 'moment'
 
 import { destroyProblem } from '../../api/problems'
 import { getProbAnswers, postAnswer } from '../../api/answers'
-
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
 import DeleteProblemModal from './DeleteProblemModal'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.bubble.css'
+
 
 function ShowProblem(props) {
-
     const [newSolution, setNewSolution] = useState('')
     const [probAnswers, setProbAnswers] = useState([])
     const [modalShow, setModalShow] = useState(false)
@@ -22,12 +23,24 @@ function ShowProblem(props) {
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
     // console.log('this is the problem id:', problemId)
-    const navigate = useNavigate()
 
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
 
     let lastNameInit = currentProblem && currentProblem.owner.lastName.charAt(0)
+
+    let modules = {
+        syntax: true,
+        toolbar: [
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link'],
+            ['clean']
+        ],
+    }
+
+    const navigate = useNavigate()
 
     // helper method attached to delete button
     const deleteProblem = () => {
@@ -49,7 +62,7 @@ function ShowProblem(props) {
             .then(answers => {
                 console.log('these are all the problems answers\n', answers.data.foundAnswers)
                 // set the found answers in db to state
-                setProbAnswers(answers.data.foundAnswers)
+                setProbAnswers(answers.data.foundAnswers || [])
             })
             .catch(err => console.error(err))
     }, [])
@@ -64,8 +77,7 @@ function ShowProblem(props) {
             .catch(err => console.error(err))
     }
 
-    // display all answers of a problem from newest to oldest
-    const getAllProbAnswers = probAnswers.reverse().map((answer, i) => {
+    const getAllProbAnswers = probAnswers.map((answer, i) => {
         return (
             <li key={i}>
                 <ShowAnswer
@@ -76,30 +88,18 @@ function ShowProblem(props) {
                     currentUser={props.user}
                 />
             </li>
-
         )
     })
+    // display them from newest to oldest
+    getAllProbAnswers.reverse()
 
     // passed down as a prop to NewAnswer
     const handleAnswerChange = (e) => {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
     }
 
-    // helper method passed down as a prop to NewAnswer
-    const createAnswer = () => {
-        // axios call to create a new answer in db
-        postAnswer(props.user, currentProblem._id, newSolution)
-            .then(() => {
-                refreshProbAnswers()
-                setNewSolution('')
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    }
-
     return (
-        <body id='showProblemBody'>
+        <>
             {!currentProblem ? <h1>Loading...</h1> : (
                 <container>
                     {/* <----- CURRENT PROBLEM JUMBOTRON -----> */}
@@ -136,26 +136,32 @@ function ShowProblem(props) {
                                 }
                             </div>
                         </div>
-                        <p>{currentProblem.description}</p>
+                        <div style={{ width: '1000px', 'background-color': "#212529" }} className='mx-4 my-3'>
+                            <ReactQuill
+                                value={currentProblem.description}
+                                readOnly={true}
+                                theme={"bubble"}
+                                modules={modules}
+                            />
+                        </div>
                         <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>             <span id="showProblemPill" class='badge rounded-pill'> {moment(currentProblem.createdAt).fromNow()} </span>
                     </header>
 
                     {/* <----- NEW ANSWER -----> */}
-                    <NewAnswer
-                        handleAnswer={handleAnswerChange}
-                        newSolution={newSolution}
-                        createAnswer={createAnswer}
-                        user={props.user}
-                        currentProblem={currentProblem}
-                    />
-                    {/* <----- ALL ANSWERS -----> */}
-                    <ol>
-                        {getAllProbAnswers}
-                    </ol>
-                    <div className='buffer'></div>
+                    <div style={{ width: '800px' }}>
+                        <NewAnswer
+                            user={props.user}
+                            currentProblem={currentProblem}
+                            refreshProbAnswers={refreshProbAnswers}
+                        />
+                        <hr />
+                        <ol>
+                            {getAllProbAnswers}
+                        </ol>
+                    </div>
                 </container>
             )}
-        </body>
+        </>
     )
 }
 

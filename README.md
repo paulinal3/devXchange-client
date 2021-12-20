@@ -1,6 +1,9 @@
 # DevXchange - Client App
 Our goal is to create an app that allows developers of all ranges to debug, solve, and collaborate on coding problems.
 
+## Deployed App
+https://devxchange.herokuapp.com/
+
 ## RESTful Routes
 
 ## Install
@@ -24,7 +27,8 @@ Our goal is to create an app that allows developers of all ranges to debug, solv
 
 
 ## Potential Roadblocks
-
+* Finding a code block editor
+* Using cloudinary if needed
 
 # Getting Started with Create React App
 

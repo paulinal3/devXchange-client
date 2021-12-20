@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
 /* <---------- MULTIPLE FILES ----------> */
+#root{
+  background-color: #212529;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,12 +14,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#cardBtn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn {
+#cardBtn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill {
   background-color:#055861;
   border-color: #055861;
 }
 
-#cardBtn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover {
+#cardBtn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover {
   background-color:  #099DAD;
   border: 2px solid #099DAD;
 }
@@ -46,11 +50,6 @@ li {
 a:link {
   text-decoration: none;
 }
-
-/* .buffer {
-  height: 100px;
-  background-color: #212529;
-} */
 
 /* <---------- HOME.JS ----------> */
 #homePage {
@@ -131,19 +130,20 @@ a:link {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  column-gap: 20px;
 }
 
 #problemBtns {
   display: flex;
   flex-direction: row;
   column-gap: 5px;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 }
 
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
-  max-width: 50%;
+  max-width: 60%;
   margin: auto;
   background-color: #212529;
 }
@@ -157,6 +157,16 @@ a:link {
 
 #newProblemForm {
   color: white;
+}
+
+#textEditor{
+  background-color: whitesmoke;
+  color: black;
+  min-height: 100%;
+}
+
+.ql-container {
+  font-size: inherit !important
 }
 
 /* <---------- NEWANSWER.JS ----------> */
@@ -184,6 +194,6 @@ footer {
 
 #showProblemBody {
   background-color: #212529;
-  padding-top: 20px;
+  padding: 20px 20px 20px 20px;
   margin: 0 50px 0 50px;
 }

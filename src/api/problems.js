@@ -13,7 +13,7 @@ export const getOneProblem = (problemId) => {
         url: apiUrl + '/problems/' + problemId
     })
 }
-export const postProblem = (user, newProblem) => {
+export const postProblem = (user, newProblem, value) => {
     return axios({
         method: 'POST',
         url: apiUrl + '/problems',
@@ -23,7 +23,7 @@ export const postProblem = (user, newProblem) => {
         data: {
             problem: {
                 title: newProblem.title,
-                description: newProblem.description,
+                description: value,
                 img: newProblem.img
             }
         }
