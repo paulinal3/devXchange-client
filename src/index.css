@@ -14,12 +14,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#cardBtn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn {
+#cardBtn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn {
   background-color:#055861;
   border-color: #055861;
 }
 
-#cardBtn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover {
+#cardBtn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover {
   background-color:  #099DAD;
   border: 2px solid #099DAD;
 }
@@ -51,6 +51,11 @@ a:link {
   text-decoration: none;
 }
 
+/* .buffer {
+  height: 100px;
+  background-color: #212529;
+} */
+
 /* <---------- HOME.JS ----------> */
 #homePage {
   text-align: center;
@@ -79,12 +84,14 @@ a:link {
 /* <---------- PROBLEM.JS ----------> */
 #momentPill {
   margin-left: 5px;
+  text-transform: lowercase;
 }
 
 #probCard {
   max-width: 85%;
   margin: auto;
   margin-top: 2%;
+  border: 5px solid #099DAD;
 }
 
 .cardFooter {
@@ -94,7 +101,7 @@ a:link {
 }
 
 #cardProbFooter {
-  padding-top: 10px;
+  padding-top: 50px;
 }
 
 /* <---------- SIGNIN.JS ----------> */
@@ -106,6 +113,11 @@ a:link {
   margin: auto;
 }
 
+/* <---------- PROFILE.JS ----------> */
+#profileProblem{
+  border: 5px solid #099DAD;
+}
+
 /* <---------- SHOWPROBLEM.JS ----------> */
 #showProblemBtn {
   display: flex;
@@ -113,10 +125,41 @@ a:link {
   column-gap: 3px;
 }
 
+#showProblemPill {
+  margin-left: 5px;
+  text-transform: lowercase;
+  background-color: #055861;
+}
+
+#problemHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+#problemBtns {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+  justify-content: flex-end;
+}
+
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
   max-width: 60%;
   margin: auto;
+  background-color: #212529;
+}
+
+#problemTips {
+  display: flex;
+  flex-direction: row;
+  column-gap: 25px;
+  margin-left: 25px;
+}
+
+#newProblemForm {
   color: white;
 }
 
@@ -142,13 +185,15 @@ a:link {
   margin-top: 20px;
 }
 
+/* <---------- EDITANSWER.JS ----------> */
+#editAnswerBtn {
+  display: flex;
+  justify-content: end;
+}
+
 /* <---------- FOOTER.JS ----------> */
 footer {
   margin-top: 20%;
-  /* position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%; */
 }
 
 #showProblemBody {

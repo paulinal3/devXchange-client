@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 import { Card, Button } from 'react-bootstrap'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
+
+import moment from 'moment'
 
 function ProfileProblems(props) {
 
@@ -12,14 +13,10 @@ function ProfileProblems(props) {
     let modules = {
         syntax: true
     }
-    
 
     const changeCurrent = problem => {
         setCurrentProblem(problem)
     }
-    // props.refreshProblems()
-
-    
 
     console.log('this is user problems', props.user.problems)
 
@@ -28,8 +25,8 @@ function ProfileProblems(props) {
         const descriptionSnippet = p.description.split('</p>')[0]
 
         return (
-            <Card style={{'margin-top':'20px'}}>
-                <Card.Header style={{'background-color':'rgb(5, 88, 97)', 'color':'white'}}>Asked {moment(p.createdAt).fromNow()}</Card.Header>
+            <Card id='profileProblem' style={{ 'margin-top': '20px' }}>
+                <Card.Header style={{ 'background-color': 'rgb(5, 88, 97)', 'color': 'white' }}>Asked {moment(p.createdAt).fromNow()}</Card.Header>
                 <Card.Body>
                     <Card.Title>{p.title}</Card.Title>
                     <Card.Text>
@@ -52,9 +49,9 @@ function ProfileProblems(props) {
                     </Link>
                 </Card.Body>
             </Card>
-
         )
     })
+    
     return (
         <div>
             {allProblems}

@@ -25,6 +25,7 @@ export default function ModalProblem(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
                     {/* <h4>Centered Modal</h4> */}
                     {/* <div dangerouslySetInnerHTML={{__html:props.currentProblem.description}} /> */}
                     <ReactQuill
@@ -33,7 +34,7 @@ export default function ModalProblem(props) {
                         theme={"bubble"}
                         modules={modules}
                         />
-                    
+                 
                 </Modal.Body>
                 <Modal.Footer>
                     {/* <Button onClick={props.onHide}>Close</Button> */}

@@ -18,7 +18,7 @@ export default function ShowAnswer(props) {
             <div id='answerContainer'>
                 <Accordion id='newAnswer' defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header >Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.
+                        <Accordion.Header>Submitted by: {props.answer.contributor.firstName} {contribLastNameInit}.
                             <span id="momentPill" class='badge rounded-pill bg-dark'> {moment(props.answer.updatedAt).fromNow()} </span>
                         </Accordion.Header>
                         <Accordion.Body>

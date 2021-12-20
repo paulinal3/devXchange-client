@@ -8,8 +8,14 @@ const linkStyle = {
 	color: 'white',
 	textDecoration: 'none'
 }
+
 const authenticatedOptions = (
 	<>
+		<Nav.Link>
+			<Link to='/problems' style={linkStyle}>
+				Problems
+			</Link>
+		</Nav.Link>
 		<Nav.Link>
 			<Link to='/problems/new' style={linkStyle}>
 				Post a Problem
@@ -35,17 +41,6 @@ const unauthenticatedOptions = (
 	</>
 )
 
-const alwaysOptions = (
-	<>
-		<Nav.Link>
-			<Link to='/problems' style={linkStyle}>
-				Problems
-			</Link>
-		</Nav.Link>
-
-	</>
-)
-
 const Header = ({ user, handleFilter, search, handleSearch }) => (
 	<Navbar bg='dark' variant='dark' expand='md' id='navBar'>
 		{/* <----- APP NAME -----> */}
@@ -60,9 +55,10 @@ const Header = ({ user, handleFilter, search, handleSearch }) => (
 			{/* <----- USER PROFILE -----> */}
 			<Nav className='ml-auto'>
 				{user && (
+
 					<span className='navbar-text mr-2'><Link to="/profile" style={{'text-decoration':'none'}} className='name'>Profile</Link></span>
+
 				)}
-				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>

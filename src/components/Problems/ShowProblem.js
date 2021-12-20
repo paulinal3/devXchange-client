@@ -1,19 +1,24 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { Button } from "react-bootstrap"
+
+import moment from 'moment'
+
 import { destroyProblem } from '../../api/problems'
 import { getProbAnswers, postAnswer } from '../../api/answers'
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
-import { Button } from "react-bootstrap"
+
+import DeleteProblemModal from './DeleteProblemModal'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
-
 
 function ShowProblem(props) {
     const [newSolution, setNewSolution] = useState('')
     const [probAnswers, setProbAnswers] = useState([])
     const [modalShow, setModalShow] = useState(false)
+
 
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
@@ -109,6 +114,43 @@ function ShowProblem(props) {
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
+                <container>
+                    {/* <----- CURRENT PROBLEM JUMBOTRON -----> */}
+                    <header class='container-fluid bg-dark text-light p-5'>
+                        <div id='problemHeader'>
+                            <h3 class='mb-3'>{currentProblem.title}</h3>
+                            <div>
+                                {props.user && props.user._id == currentProblem.owner._id &&
+                                    // <----- EDIT/DELETE BUTTONS -----> //
+                                    <div id='showProblemBtn'>
+                                        <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
+
+                                        <EditProblem
+                                            show={modalShow}
+                                            onHide={() => setModalShow(false)}
+                                            currentProb={currentProblem}
+                                            currUser={props.user}
+                                            refreshProb={props.refreshProblems}
+                                        />
+
+                                        <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+
+                                        {/* <Button className="mr-1" variant="danger" size='sm' onClick={() => setModalShow(true)}>Delete</Button>
+
+                                        <DeleteProblemModal
+                                            show={modalShow}
+                                            onHide={() => setModalShow(false)}
+                                            currentUser={props.user}
+                                            currentProb={props.currentProblem}
+                                            deleteProblem={deleteProblem}
+                                        /> */}
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <p>{currentProblem.description}</p>
+                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>             <span id="showProblemPill" class='badge rounded-pill'> {moment(currentProblem.createdAt).fromNow()} </span>
+                    </header>
 
                 <div style={{width: '800px'}}>
                 <div style={{width: '800px', 'background-color': "white"}} className='mx-4 my-3'>
@@ -174,7 +216,11 @@ function ShowProblem(props) {
                     <ol>
                         {getAllProbAnswers}
                     </ol>
-                </div>
+
+                    <div className='buffer'></div>
+                </container>
+
+               </div>
             )}
         </>
     )
