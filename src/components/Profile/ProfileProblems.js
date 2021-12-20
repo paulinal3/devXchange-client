@@ -40,6 +40,7 @@ function ProfileProblems(props) {
                     <Link to={`/problems/${p._id}`}
                         currProblem={props.currentProblem}>
                         <Button 
+                            id='profileProblemBtn'
                             className="float-end" 
                             size="small" 
                             variant="primary" 

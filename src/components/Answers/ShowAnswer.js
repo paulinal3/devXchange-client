@@ -13,6 +13,7 @@ export default function ShowAnswer(props) {
     }
 
     let contribLastNameInit = props.answer.contributor.lastName.charAt(0)
+
     return (
         <>
             <div id='answerContainer'>
@@ -23,18 +24,18 @@ export default function ShowAnswer(props) {
                         </Accordion.Header>
                         <Accordion.Body>
 
-                        <ReactQuill
-                        value={props.answer.solution}
-                        readOnly={true}
-                        theme={"bubble"}
-                        modules= {modules}
-                    />
-                                                      {props.answer.solution}
-                            {props.currentUser &&
-                            <>
-                                <Button id="cardBtn" style={{'display':'flex', 'margin-top':'20px'}} onClick={() => setModalShow(true)}>
-                                    Edit Answer
-                                </Button>
+                            <ReactQuill
+                                value={props.answer.solution}
+                                readOnly={true}
+                                theme={"bubble"}
+                                modules={modules}
+                            />
+                            {props.answer.solution}
+                            {props.currentUser._id === props.answer.contributor._id ?
+                                <>
+                                    <Button id="cardBtn" style={{ 'display': 'flex', 'margin-top': '20px' }} onClick={() => setModalShow(true)}>
+                                        Edit Answer
+                                    </Button>
 
                                     <EditAnswer
                                         show={modalShow}
@@ -43,7 +44,7 @@ export default function ShowAnswer(props) {
                                         currUser={props.currentUser}
                                         refreshAnswers={props.refreshProbAnswers}
                                     />
-                                </>
+                                </> : <span></span>
                             }
                         </Accordion.Body>
                     </Accordion.Item>

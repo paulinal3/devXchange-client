@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Form , Button, Container} from 'react-bootstrap'
+import { Form , Button, FloatingLabel} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
 import ReactQuill from 'react-quill'
@@ -73,17 +73,25 @@ export default function NewProblem(props) {
             {/* <----- Jumbotron -----> */}
 
             {/* <----- Form to Create a New Problem -----> */}
-            <Form id='newProbForm' style={{'margin-top':'20px'}}>
-                <Form.Group className='mb-3'>
+            <Form id='newProbForm'>
+
+                <Form.Group className='mb-3' controlId='title' style={{'margin-top':'20px'}}>
+                    <FloatingLabel
+                        controlId='floatingInput'
+                        label='Title'
+                        className='mb-3'
+                    >
                     <Form.Control 
-                        id='title'
                         type='text' 
                         name='title' 
-                        placeholder='Title'
                         value={newProblem.title} 
-                        onChange={handleChange} 
+                        onChange={handleChange}
+                        placeholder='Title' 
                     />
+                    </FloatingLabel>
+
                 </Form.Group>
+
                 <Form.Group className='mb-3'>
                     <ReactQuill 
                     style={{'height':'100%'}}
@@ -94,7 +102,17 @@ export default function NewProblem(props) {
                     value={value} 
                     onChange={setValue}
                     placeholder='describe your problem...'
-
+                    />
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='img'>
+                    <Form.Label>Upload a screenshot: </Form.Label>
+                    <Form.Control
+                        type='file' 
+                        name='img'
+                        accept='image/*'
+                        value={newProblem.img} 
+                        // onChange={(e) => uploadImg(e.target.files)} 
+                        onChange={handleFileChange}
                     />
 
                 </Form.Group>
