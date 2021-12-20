@@ -106,16 +106,88 @@ function ShowProblem(props) {
     //         })
     // }
 
+    // return (
+    //     <>
+    //         {!currentProblem ? <h1>Loading...</h1> : (
+
+    //             <div style={{ width: '800px' }}>
+    //                 <div style={{ width: '800px', 'background-color': "white" }} className='mx-4 my-3'>
+    //                     <h3>{currentProblem.title}</h3>
+    //                     <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+    //                     <hr />
+
+    //                     <ReactQuill
+    //                         value={currentProblem.description}
+    //                         readOnly={true}
+    //                         theme={"bubble"}
+    //                         modules={modules}
+    //                     />
+    //                 </div>
+    //                 {props.user && props.user._id == currentProblem.owner._id &&
+    //                     <>
+    //                         <Button className="mx-4 my-2" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+    //                         {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
+    //                         <>
+    //                             <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
+
+    //                             <>
+    //                                 {/* <----- CURRENT PROBLEM -----> */}
+    //                                 <div>
+    //                                     <h3>{currentProblem.title}</h3>
+    //                                     <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+    //                                 </div>
+    //                                 {props.user && props.user._id == currentProblem.owner._id &&
+    //                                     // <----- EDIT/DELETE BUTTONS -----> //
+    //                                     <div id='showProblemBtn'>
+    //                                         <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
+
+
+    //                                         <EditProblem
+    //                                             show={modalShow}
+    //                                             onHide={() => setModalShow(false)}
+    //                                             currentProb={currentProblem}
+    //                                             currUser={props.user}
+    //                                             refreshProb={props.refreshProblems}
+    //                                         />
+
+    //                                     </>
+    //                     </>
+    //                 }
+
+    //                             <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
+    //                         </div>
+    //                     }
+    //                         <div>
+
+    //                         </div>
+    //                         <p>{currentProblem.description}</p>
+    //                         {/* <----- NEW ANSWER -----> */}
+
+    //                         <NewAnswer
+    //                             user={props.user}
+    //                             currentProblem={currentProblem}
+    //                             refreshProbAnswers={refreshProbAnswers}
+    //                         />
+
+    //                         <hr />
+
+    //                         <ol>
+    //                             {getAllProbAnswers}
+    //                         </ol>
+    //                     </div>
+    //         )}
+    //             </>
+    //         )
+    //         }
+
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
-
                 <div style={{width: '800px'}}>
                 <div style={{width: '800px', 'background-color': "white"}} className='mx-4 my-3'>
                     <h3>{currentProblem.title}</h3>
                     <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
                     <hr />
-
                     <ReactQuill
                         value={currentProblem.description}
                         readOnly={true}
@@ -129,19 +201,6 @@ function ShowProblem(props) {
                             {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
                             <>
                                 <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
-
-                <>
-                    {/* <----- CURRENT PROBLEM -----> */}
-                    <div>
-                        <h3>{currentProblem.title}</h3>
-                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-                    </div>
-                        {props.user && props.user._id == currentProblem.owner._id &&
-                            // <----- EDIT/DELETE BUTTONS -----> //
-                            <div id='showProblemBtn'>
-                                <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
-
-
                                 <EditProblem
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}
@@ -149,28 +208,15 @@ function ShowProblem(props) {
                                     currUser={props.user}
                                     refreshProb={props.refreshProblems}
                                 />
-
                             </>
                         </>
                     }
-
-                                <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
-                            </div>
-                        }
-                    <div>
-
-                    </div>
-                    <p>{currentProblem.description}</p>
-                    {/* <----- NEW ANSWER -----> */}
-
                     <NewAnswer
                         user={props.user}
                         currentProblem={currentProblem}
                         refreshProbAnswers={refreshProbAnswers}
                     />
-
                     <hr />
-
                     <ol>
                         {getAllProbAnswers}
                     </ol>
@@ -180,4 +226,4 @@ function ShowProblem(props) {
     )
 }
 
-export default ShowProblem
+    export default ShowProblem
