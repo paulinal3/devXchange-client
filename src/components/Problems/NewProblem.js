@@ -1,10 +1,18 @@
 import { useState } from 'react'
 import { Form , Button, FloatingLabel} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+<<<<<<< HEAD
 import { postProblem } from '../../api/problems'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
+=======
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
+import { postProblem } from '../../api/problems'
+
+>>>>>>> 1a8d85e5d439181c17c8c3d61b9ca9352c579125
 export default function NewProblem(props) {
     // console.log('this is props\n', props)
     // console.log('here is the current user id:', props.user._id)
@@ -104,6 +112,7 @@ export default function NewProblem(props) {
                     placeholder='describe your problem...'
                     />
                 </Form.Group>
+<<<<<<< HEAD
                 <Form.Group className='mb-3' controlId='img'>
                     <Form.Label>Upload a screenshot: </Form.Label>
                     <Form.Control
@@ -116,6 +125,8 @@ export default function NewProblem(props) {
                     />
 
                 </Form.Group>
+=======
+>>>>>>> 1a8d85e5d439181c17c8c3d61b9ca9352c579125
                 <Button id='formBtn' onClick={() => createNewProblem()}>Post Problem</Button>
             </Form>
             {/* <----- Form to Create a New Problem -----> */}
