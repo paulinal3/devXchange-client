@@ -64,15 +64,14 @@ export default function NewProblem(props) {
             <div class='container-fluid bg-dark text-light p-5'>
                 <h1 class='mb-3'>Tips on posting a problem</h1>
                 <h4 class='mb-3'>
-                    <div id='problemTips'>
-                        <p>Summarize the problem</p>
-                        <p>•</p> 
-                        <p>Describe what you've tried</p>
-                        <p>•</p>
-                        <p>When appropriate, show some code</p>
-                    </div>
+                    <ol>
+                        <li>Summarize the problem</li>
+                        <li>Describe what you've tried</li>
+                        <li>When appropriate, show some code</li>
+                    </ol>
                 </h4>
             </div>
+            {/* <----- Jumbotron -----> */}
 
             {/* <----- Form to Create a New Problem -----> */}
             <Form id='newProbForm'>
@@ -108,6 +107,7 @@ export default function NewProblem(props) {
                 </Form.Group>
                 <Button id='formBtn' onClick={() => createNewProblem()}>Post Problem</Button>
             </Form>
+            {/* <----- Form to Create a New Problem -----> */}
         </div>
     )
 }
