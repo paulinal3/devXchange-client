@@ -30,7 +30,7 @@ function ProfileProblems(props) {
                 <Card.Body>
                     <Card.Title>{p.title}</Card.Title>
                     <Card.Text>
-                    <ReactQuill
+                    <ReactQuill 
                         value={descriptionSnippet}
                         readOnly={true}
                         theme={"bubble"}
