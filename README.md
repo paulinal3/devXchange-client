@@ -1,5 +1,5 @@
-# DevXchange Client
-Our goal is to create an app that allows developers of all ranges to debug, solve, and collaborate on coding problems.
+# DevXchange - Client App
+Our goal is to create an app that allows developers of all skill ranges to debug, solve, and collaborate on coding problems.
 
 ## Deployed App
 https://devxchange.herokuapp.com/
@@ -37,7 +37,10 @@ Install procedure:
 ![Collections](devXchange_collections.png)
 
 ## MVP
-
+* Create a single page MERN application using ReactJS
+* Create a database using MongoDB/Mongoose
+* A user is able to post, edit, delete a problem
+* A user is able to answer another user’s problem
 
 ## Stretch Goals
 * Implementing a text editor that could include code snippets and screenshots
@@ -45,8 +48,8 @@ Install procedure:
 * Adding a tags collection to use as another way to filter through questions
 
 ## Potential Roadblocks
-* Finding a code block editor
-* Using cloudinary if needed
+* Implement a rich-text editor
+* Use Cloudinary API if needed
 
 # Getting Started with Create React App
 
