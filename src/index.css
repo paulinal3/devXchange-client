@@ -51,11 +51,6 @@ a:link {
   text-decoration: none;
 }
 
-/* .buffer {
-  height: 100px;
-  background-color: #212529;
-} */
-
 /* <---------- HOME.JS ----------> */
 #homePage {
   text-align: center;
@@ -174,14 +169,38 @@ a:link {
 
 /* <---------- NEWANSWER.JS ----------> */
 #newAnswer {
-  max-width: 85%;
-  margin: auto;
+  max-width: 100%;
+
+}
+
+#postAnswerHeader {
+  color: #099DAD;
+  background-color: #055861;
+}
+
+#cardBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0 -5px 0;
 }
 
 /* <---------- SHOWANSWER.JS ----------> */
 #answerContainer {
   margin: auto;
   margin-top: 20px;
+}
+
+#editBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -20px;
+}
+
+#newAnswerContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
+  max-width: 80%;
 }
 
 /* <---------- EDITANSWER.JS ----------> */
