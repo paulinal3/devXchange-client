@@ -85,6 +85,7 @@ const App = () => {
 		})
 	}
 
+
 	return (
 		<Fragment>
 			<Header user={user} search={search} handleSearch={handleSearchChange} />
