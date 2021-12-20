@@ -1,8 +1,11 @@
-# DevXchange - Client App
+# DevXchange Client
 Our goal is to create an app that allows developers of all ranges to debug, solve, and collaborate on coding problems.
 
 ## Deployed App
 https://devxchange.herokuapp.com/
+
+## Server Repo
+https://github.com/paulinal3/devXchange-api
 
 ## Install
 
