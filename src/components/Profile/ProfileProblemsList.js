@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function ProfileProblemsList(props) {
 
-    const allUsersProblems = props.userProblems.map((p, i) => {
+    const allUsersProblems = props.userProblems.reverse().map((p, i) => {
         return (
             <li>
                 <Link to={`/problems/${p._id}`}>{p.title}</Link>

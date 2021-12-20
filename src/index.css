@@ -50,6 +50,9 @@ a:link {
   text-decoration: none;
 }
 
+Link{
+  color: #055861;
+}
 /* <---------- HOME.JS ----------> */
 #homePage {
   text-align: center;
