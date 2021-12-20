@@ -105,6 +105,7 @@ function ShowProblem(props) {
                     {/* <----- CURRENT PROBLEM JUMBOTRON -----> */}
                     <header class='container-fluid bg-dark text-light p-5'>
                         <div id='problemHeader'>
+
                             <h3 class='mb-3'>{currentProblem.title}</h3>
                             <div>
                                 {props.user && props.user._id == currentProblem.owner._id &&
