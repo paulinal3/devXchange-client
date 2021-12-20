@@ -8,6 +8,21 @@ https://devxchange.herokuapp.com/
 
 ## Install
 
+Requirements
+* MongoDB
+* NPM
+* <a href="https://github.com/paulinal3/devXchange-api">DevXchange API </a>
+
+Install procedure:
+
+1. In the directory of your DevXChange API, run the following commands
+    * ```npm install``` to install necessary npm packages
+    * ```npm start``` to instantiate the server, and leave it running
+2. Once the API is up and running, move to the directory where you've saved the DevXchange client and run the following commands
+    * ```npm install``` to install necessary npm packages
+    *  ```npm start``` to launch the DevXchange react app
+3. Jump right in and make a user account and start posting questions!
+
 ## Tech Stack
 * React
 * MongoDB
