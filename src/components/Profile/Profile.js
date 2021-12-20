@@ -30,7 +30,7 @@ export default function Profile(props) {
                 </Row>
                 <Row >
                     <Col sm={6} md={6} lg={6} xs={5}>
-                        <ProfileProblems user={props.user} />
+                        <ProfileProblems user={props.user} userProblems={userProblems} />
                     </Col>
                     <Col md={{ span: 4, offset: 2 }} sm={{ span: 4, offset: 1 }} xs={{ span: 4, offset: 0 }} >
                         <ProfileDashboard user={props.user} />

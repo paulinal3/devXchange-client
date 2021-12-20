@@ -24,7 +24,7 @@ function ProfileProblems(props) {
 
     //     const descriptionSnippet = p.description.split('</p>')[0]
 
-    const allProblems = props.user.problems.filter((p, i) => i > props.user.problems.length - 5).reverse().map((p, i) => {
+    const allProblems = props.userProblems.filter((p, i) => i > props.userProblems.length - 5).reverse().map((p, i) => {
 
         const descriptionSnippet = p.description.split('</p>')[0]
 
