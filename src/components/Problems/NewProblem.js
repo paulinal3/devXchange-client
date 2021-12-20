@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { Form , Button, FloatingLabel} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { postProblem } from '../../api/problems'
-
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
+import { postProblem } from '../../api/problems'
 
 export default function NewProblem(props) {
     // console.log('this is props\n', props)
@@ -17,8 +16,6 @@ export default function NewProblem(props) {
         solved: false,
         img: ''
     })
-    const [fileData, setFileData] = useState('')
-    const [image, setImage] = useState('')
 
     
 
@@ -60,23 +57,6 @@ export default function NewProblem(props) {
                 console.error(err)
             }) 
     }
-
-    // const uploadImg = (files) => {
-    //     console.log('this is the img file', files[0])
-    //     const formData = new FormData()
-    //     formData.append('file', files[0])
-    //     formData.append('upload_preset', 'm3xdo5kt')
-
-    //     axios.post('https://api.cloudinary.com/v1_1/paulinal3/image/upload', formData)
-    //         .then(res => console.log(res))
-    // }
-
-    const handleFileChange = ({ target }) => {
-        console.log('this is the img file', target.files[0])
-        setFileData(target.files[0])
-        setImage(target.value)
-    }
-
 
     return (
         <div>
@@ -124,17 +104,6 @@ export default function NewProblem(props) {
                     value={value} 
                     onChange={setValue}
                     placeholder='describe your problem...'
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='img'>
-                    <Form.Label>Upload a screenshot: </Form.Label>
-                    <Form.Control
-                        type='file' 
-                        name='img'
-                        accept='image/*'
-                        value={newProblem.img} 
-                        // onChange={(e) => uploadImg(e.target.files)} 
-                        onChange={handleFileChange}
                     />
                 </Form.Group>
                 <Button id='formBtn' onClick={() => createNewProblem()}>Post Problem</Button>
