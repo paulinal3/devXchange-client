@@ -63,7 +63,9 @@ function ShowProblem(props) {
             })
             .catch(err => console.error(err))
     }
-    const getAllProbAnswers = probAnswers.map((answer, i) => {
+
+    // display them from newest to oldest
+    const getAllProbAnswers = probAnswers.reverse().map((answer, i) => {
         return (
             <li key={i}>
                 <ShowAnswer
@@ -76,8 +78,7 @@ function ShowProblem(props) {
             </li>
         )
     })
-    // display them from newest to oldest
-    getAllProbAnswers.reverse()
+
     // passed down as a prop to NewAnswer
     const handleAnswerChange = (e) => {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
@@ -126,7 +127,7 @@ function ShowProblem(props) {
                         <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>             <span id="showProblemPill" class='badge rounded-pill'> {moment(currentProblem.createdAt).fromNow()} </span>
                     </header>
                     {/* <----- NEW ANSWER -----> */}
-                    <div style={{ width: '800px' }}>
+                    <div id='newAnswerContainer' style={{ 'max-width': '75%' }}>
                         <NewAnswer
                             user={props.user}
                             currentProblem={currentProblem}

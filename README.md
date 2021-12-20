@@ -1,10 +1,11 @@
-# DevXchange - Client App
+# DevXchange Client
 Our goal is to create an app that allows developers of all ranges to debug, solve, and collaborate on coding problems.
 
 ## Deployed App
 https://devxchange.herokuapp.com/
 
-## RESTful Routes
+## Server Repo
+https://github.com/paulinal3/devXchange-api
 
 ## Install
 
@@ -33,13 +34,15 @@ Install procedure:
 ![Wireframes](public/wireframes.png)
 
 ## Collections
-
+![Collections](devXchange_collections.png)
 
 ## MVP
 
 
 ## Stretch Goals
-
+* Implementing a text editor that could include code snippets and screenshots
+    * Using cloudinary as a backup for only screenshots
+* Adding a tags collection to use as another way to filter through questions
 
 ## Potential Roadblocks
 * Finding a code block editor
