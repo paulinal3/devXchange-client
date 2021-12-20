@@ -98,19 +98,6 @@ function ShowProblem(props) {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
     }
 
-    // // helper method passed down as a prop to NewAnswer
-    // const createAnswer = () => {
-    //     // axios call to create a new answer in db
-    //     postAnswer(props.user, currentProblem._id, newSolution)
-    //         .then(() => {
-    //             refreshProbAnswers()
-    //             setNewSolution('')
-    //         })
-    //         .catch(err => {
-    //             console.error(err)
-    //         })
-    // }
-
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
@@ -118,6 +105,7 @@ function ShowProblem(props) {
                     {/* <----- CURRENT PROBLEM JUMBOTRON -----> */}
                     <header class='container-fluid bg-dark text-light p-5'>
                         <div id='problemHeader'>
+
                             <h3 class='mb-3'>{currentProblem.title}</h3>
                             <div>
                                 {props.user && props.user._id == currentProblem.owner._id &&
@@ -148,79 +136,30 @@ function ShowProblem(props) {
                                 }
                             </div>
                         </div>
-                        <p>{currentProblem.description}</p>
+                        <div style={{ width: '1000px', 'background-color': "#212529" }} className='mx-4 my-3'>
+                            <ReactQuill
+                                value={currentProblem.description}
+                                readOnly={true}
+                                theme={"bubble"}
+                                modules={modules}
+                            />
+                        </div>
                         <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>             <span id="showProblemPill" class='badge rounded-pill'> {moment(currentProblem.createdAt).fromNow()} </span>
                     </header>
 
-                <div style={{width: '800px'}}>
-                <div style={{width: '800px', 'background-color': "white"}} className='mx-4 my-3'>
-                    <h3>{currentProblem.title}</h3>
-                    <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-                    <hr />
-
-                    <ReactQuill
-                        value={currentProblem.description}
-                        readOnly={true}
-                        theme={"bubble"}
-                        modules= {modules}
-                    />
-                </div>
-                    {props.user && props.user._id == currentProblem.owner._id &&
-                        <>
-                            <Button className="mx-4 my-2" variant="danger" onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
-                            {/* <Link to={`/problems/edit/${currentProblem._id}`}><button>Edit</button></Link> */}
-                            <>
-                                <Button variant="primary" onClick={() => setModalShow(true)}>Edit Problem</Button>
-
-                <>
-                    {/* <----- CURRENT PROBLEM -----> */}
-                    <div>
-                        <h3>{currentProblem.title}</h3>
-                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
-                    </div>
-                        {props.user && props.user._id == currentProblem.owner._id &&
-                            // <----- EDIT/DELETE BUTTONS -----> //
-                            <div id='showProblemBtn'>
-                                <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>Edit Problem</Button>
-
-
-                                <EditProblem
-                                    show={modalShow}
-                                    onHide={() => setModalShow(false)}
-                                    currentProb={currentProblem}
-                                    currUser={props.user}
-                                    refreshProb={props.refreshProblems}
-                                />
-
-                            </>
-                        </>
-                    }
-
-                                <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
-                            </div>
-                        }
-                    <div>
-
-                    </div>
-                    <p>{currentProblem.description}</p>
                     {/* <----- NEW ANSWER -----> */}
-
-                    <NewAnswer
-                        user={props.user}
-                        currentProblem={currentProblem}
-                        refreshProbAnswers={refreshProbAnswers}
-                    />
-
-                    <hr />
-
-                    <ol>
-                        {getAllProbAnswers}
-                    </ol>
-
-                    <div className='buffer'></div>
+                    <div style={{ width: '800px' }}>
+                        <NewAnswer
+                            user={props.user}
+                            currentProblem={currentProblem}
+                            refreshProbAnswers={refreshProbAnswers}
+                        />
+                        <hr />
+                        <ol>
+                            {getAllProbAnswers}
+                        </ol>
+                    </div>
                 </container>
-
-               </div>
             )}
         </>
     )

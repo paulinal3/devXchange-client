@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Form , Button, Container} from 'react-bootstrap'
+import { Form , Button, FloatingLabel} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
 
@@ -96,20 +96,23 @@ export default function NewProblem(props) {
 
             {/* <----- Form to Create a New Problem -----> */}
             <Form id='newProbForm'>
-                <Form.Group className='mb-3' controlId='title'>
-                    <Form.Label className='newProblemForm'>Title</Form.Label>
 
-//             <Form id='newProbForm' style={{'margin-top':'20px'}}>
-//                 <Form.Group className='mb-3'>
+                <Form.Group className='mb-3' controlId='title' style={{'margin-top':'20px'}}>
+                    <FloatingLabel
+                        controlId='floatingInput'
+                        label='Title'
+                        className='mb-3'
+                    >
+                    <Form.Control 
+                        type='text' 
+                        name='title' 
+                        value={newProblem.title} 
+                        onChange={handleChange}
+                        placeholder='Title' 
+                    />
+                    </FloatingLabel>
 
-//                     <Form.Control 
-//                         type='text' 
-//                         name='title' 
-//                         placeholder='Title'
-//                         value={newProblem.title} 
-//                         onChange={handleChange} 
-//                     />
-//                 </Form.Group>
+                </Form.Group>
 
                 <Form.Group className='mb-3'>
                     <ReactQuill 
@@ -122,7 +125,6 @@ export default function NewProblem(props) {
                     onChange={setValue}
                     placeholder='describe your problem...'
                     />
-
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='img'>
                     <Form.Label>Upload a screenshot: </Form.Label>
