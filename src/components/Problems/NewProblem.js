@@ -1,20 +1,37 @@
 import { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form , Button, Container} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
-import axios from 'axios'
+
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
 
 export default function NewProblem(props) {
     // console.log('this is props\n', props)
     // console.log('here is the current user id:', props.user._id)
+    const [value, setValue] = useState('')
+
     const [newProblem, setNewProblem] = useState({
         title: '',
-        description: '',
         solved: false,
         img: ''
     })
     const [fileData, setFileData] = useState('')
     const [image, setImage] = useState('')
+
+    
+
+    let modules = {
+        syntax: true,
+        toolbar: [
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link'],
+            ['clean']
+        ],
+    }
 
     const navigate = useNavigate()
 
@@ -24,15 +41,16 @@ export default function NewProblem(props) {
 
     // helper method attached to button
     const createNewProblem = () => {
+        
         // axios call to create the new problem in the db
-        postProblem(props.user, newProblem)
+        postProblem(props.user, newProblem, value)
             // console.log('this is the current user id:', user._id)
             // console.log('this is the new problem\n', newProblem)
             .then(() => {
                 props.refreshProblems()
                 setNewProblem({
                     title: '',
-                    description: '',
+                    description: value,
                     solved: false,
                     img: ''
                 })
@@ -40,7 +58,7 @@ export default function NewProblem(props) {
             .then(() => navigate('/problems'))
             .catch(err => {
                 console.error(err)
-            })
+            }) 
     }
 
     // const uploadImg = (files) => {
@@ -80,22 +98,31 @@ export default function NewProblem(props) {
             <Form id='newProbForm'>
                 <Form.Group className='mb-3' controlId='title'>
                     <Form.Label className='newProblemForm'>Title</Form.Label>
-                    <Form.Control 
-                        type='text' 
-                        name='title' 
-                        value={newProblem.title} 
-                        onChange={handleChange} 
+
+//             <Form id='newProbForm' style={{'margin-top':'20px'}}>
+//                 <Form.Group className='mb-3'>
+
+//                     <Form.Control 
+//                         type='text' 
+//                         name='title' 
+//                         placeholder='Title'
+//                         value={newProblem.title} 
+//                         onChange={handleChange} 
+//                     />
+//                 </Form.Group>
+
+                <Form.Group className='mb-3'>
+                    <ReactQuill 
+                    style={{'height':'100%'}}
+                    id = "textEditor"
+                    theme="snow" 
+                    name='description' 
+                    modules = {modules}
+                    value={value} 
+                    onChange={setValue}
+                    placeholder='describe your problem...'
                     />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='description'>
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control
-                        as='textarea' rows={3} 
-                        type='text' 
-                        name='description' 
-                        value={newProblem.description} 
-                        onChange={handleChange} 
-                    />
+
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='img'>
                     <Form.Label>Upload a screenshot: </Form.Label>

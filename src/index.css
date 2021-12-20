@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
 /* <---------- MULTIPLE FILES ----------> */
+#root{
+  background-color: #212529;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -143,7 +147,7 @@ a:link {
 
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
-  max-width: 50%;
+  max-width: 60%;
   margin: auto;
   background-color: #212529;
 }
@@ -157,6 +161,16 @@ a:link {
 
 #newProblemForm {
   color: white;
+}
+
+#textEditor{
+  background-color: whitesmoke;
+  color: black;
+  min-height: 100%;
+}
+
+.ql-container {
+  font-size: inherit !important
 }
 
 /* <---------- NEWANSWER.JS ----------> */
@@ -184,6 +198,6 @@ footer {
 
 #showProblemBody {
   /* background-color: darkgray; */
-  padding-top: 20px;
+  padding: 20px 20px 20px 20px;
   margin: 0 50px 0 50px;
 }
