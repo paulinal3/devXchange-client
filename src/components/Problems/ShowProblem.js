@@ -1,25 +1,33 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Button } from "react-bootstrap"
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.bubble.css'
+
 import moment from 'moment'
+
 import { destroyProblem } from '../../api/problems'
 import { getProbAnswers, postAnswer } from '../../api/answers'
+
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
+
 import DeleteProblemModal from './DeleteProblemModal'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.bubble.css'
+
 function ShowProblem(props) {
+
     const [newSolution, setNewSolution] = useState('')
     const [probAnswers, setProbAnswers] = useState([])
     const [modalShow, setModalShow] = useState(false)
+
     const { pathname } = useLocation()
     const problemId = pathname.split('/')[2]
     // console.log('this is the problem id:', problemId)
     let currentProblem = props.problems && props.problems.find(x => x._id == problemId)
     console.log('this is the current problem\n', currentProblem)
     let lastNameInit = currentProblem && currentProblem.owner.lastName.charAt(0)
+
     let modules = {
         syntax: true,
         toolbar: [
@@ -30,7 +38,9 @@ function ShowProblem(props) {
             ['clean']
         ],
     }
+
     const navigate = useNavigate()
+
     // helper method attached to delete button
     const deleteProblem = () => {
         // axios call to delete problem from db
@@ -44,6 +54,7 @@ function ShowProblem(props) {
                 console.error(err)
             })
     }
+
     useEffect(() => {
         // axios call to find all answers connected to current problem's id
         getProbAnswers(currentProblem._id)
@@ -54,6 +65,7 @@ function ShowProblem(props) {
             })
             .catch(err => console.error(err))
     }, [])
+
     // refresh answers to include posted and updated answers
     const refreshProbAnswers = () => {
         getProbAnswers(currentProblem._id)
@@ -83,6 +95,7 @@ function ShowProblem(props) {
     const handleAnswerChange = (e) => {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
     }
+
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
@@ -124,7 +137,8 @@ function ShowProblem(props) {
                                 modules={modules}
                             />
                         </div>
-                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>             <span id="showProblemPill" class='badge rounded-pill'> {moment(currentProblem.createdAt).fromNow()} </span>
+                        <small className='name'>Asked by: {currentProblem.owner.firstName} {lastNameInit}.</small>
+                        <span id="showProblemPill" class='badge rounded-pill'> {moment(currentProblem.createdAt).fromNow()} </span>
                     </header>
                     {/* <----- NEW ANSWER -----> */}
                     <div id='newAnswerContainer' style={{ 'max-width': '75%' }}>
