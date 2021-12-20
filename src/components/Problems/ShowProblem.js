@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Button } from "react-bootstrap"
+import { Button, Popover, OverlayTrigger } from "react-bootstrap"
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
 
@@ -12,8 +12,6 @@ import { getProbAnswers, postAnswer } from '../../api/answers'
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
-
-import DeleteProblemModal from './DeleteProblemModal'
 
 function ShowProblem(props) {
 
@@ -96,6 +94,21 @@ function ShowProblem(props) {
         setNewSolution({ ...newSolution, [e.target.name]: e.target.value })
     }
 
+    const popover = (
+        <Popover id="popover-basic">
+            <Popover.Header as="h3">Are you sure?</Popover.Header>
+            <Popover.Body>
+                <Button variant='danger' size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Confirm Delete</Button>
+            </Popover.Body>
+        </Popover>
+    );
+
+    const DeletePopover = () => (
+        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+            <Button size='sm' variant="danger">Delete</Button>
+        </OverlayTrigger>
+    );
+
     return (
         <>
             {!currentProblem ? <h1>Loading...</h1> : (
@@ -116,15 +129,8 @@ function ShowProblem(props) {
                                             currUser={props.user}
                                             refreshProb={props.refreshProblems}
                                         />
-                                        <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button>
-                                        {/* <Button className="mr-1" variant="danger" size='sm' onClick={() => setModalShow(true)}>Delete</Button>
-                                        <DeleteProblemModal
-                                            show={modalShow}
-                                            onHide={() => setModalShow(false)}
-                                            currentUser={props.user}
-                                            currentProb={props.currentProblem}
-                                            deleteProblem={deleteProblem}
-                                        /> */}
+                                        {/* <Button className="mr-1" variant="danger" size='sm' onClick={() => deleteProblem(props.user, currentProblem._id)}>Delete</Button> */}
+                                        <DeletePopover />
                                     </div>
                                 }
                             </div>

@@ -1,11 +1,14 @@
-import EditAnswer from "./EditAnswer"
 import { useState } from "react"
-import { Button, Form, Accordion } from "react-bootstrap"
-import moment from 'moment'
+import { Button, Accordion } from "react-bootstrap"
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
 
+import moment from 'moment'
+
+import EditAnswer from "./EditAnswer"
+
 export default function ShowAnswer(props) {
+
     const [modalShow, setModalShow] = useState(false)
 
     let modules = {
@@ -21,7 +24,6 @@ export default function ShowAnswer(props) {
                     <span id="momentPill" class='badge rounded-pill bg-dark'> {moment(props.answer.updatedAt).fromNow()} </span>
                 </Accordion.Header>
                 <Accordion.Body>
-
                     <ReactQuill
                         value={props.answer.solution}
                         readOnly={true}
@@ -33,7 +35,6 @@ export default function ShowAnswer(props) {
                             <Button id="cardBtn" size='sm' style={{ 'display': 'flex', 'margin-top': '20px' }} onClick={() => setModalShow(true)}>
                                 Edit Answer
                             </Button>
-
                             <EditAnswer
                                 show={modalShow}
                                 onHide={() => setModalShow(false)}

@@ -1,35 +1,37 @@
-import { Form, Modal, Button, InputGroup, FormControl } from 'react-bootstrap'
+import { Form, Modal, Button } from 'react-bootstrap'
 import { useState } from 'react'
-import { updateAnswer } from '../../api/answers'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
+import { updateAnswer } from '../../api/answers'
+
 export default function EditAnswer(props) {
+
     const [changeAnswer, setChangeAnswer] = useState(props.currentAnswer.solution)
 
     let modules = {
         syntax: true,
         toolbar: [
-          [{ 'header': [1, 2, false] }],
-          ['bold', 'italic', 'underline','strike', 'blockquote', 'code-block'],
-          [{'list': 'ordered'}, {'list': 'bullet'}],
-          ['link'],
-          ['clean']
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code-block'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            ['link'],
+            ['clean']
         ],
-      }
+    }
 
     const handleChange = (e) => {
-        setChangeAnswer(e.target.value) 
+        setChangeAnswer(e.target.value)
     }
 
     const editAnswer = () => {
         updateAnswer(props.currUser, props.currentAnswer._id, changeAnswer)
-        .then(() => {
-            props.refreshAnswers()
-            props.onHide()
-            setChangeAnswer(changeAnswer)
-        })
-        .catch(err => console.error(err))
+            .then(() => {
+                props.refreshAnswers()
+                props.onHide()
+                setChangeAnswer(changeAnswer)
+            })
+            .catch(err => console.error(err))
     }
 
     return (
@@ -46,18 +48,18 @@ export default function EditAnswer(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form>
-                <ReactQuill
-                                theme="snow"
-                                modules={modules}
-                                value={changeAnswer}
-                                onChange={setChangeAnswer}
-                                name='solution'
-                                style={{"height": "90%"}} 
-                />
+                    <ReactQuill
+                        theme="snow"
+                        modules={modules}
+                        value={changeAnswer}
+                        onChange={setChangeAnswer}
+                        name='solution'
+                        style={{ "height": "90%" }}
+                    />
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button id='editAnswerBtn' size='sm' style={{'background-color':'#055861'}} onClick={() => editAnswer()}>Update Answer</Button>
+                <Button id='editAnswerBtn' size='sm' style={{ 'background-color': '#055861' }} onClick={() => editAnswer()}>Update Answer</Button>
             </Modal.Footer>
         </Modal>
     )

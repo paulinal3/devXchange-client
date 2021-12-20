@@ -30,29 +30,29 @@ function ProfileProblems(props) {
                 <Card.Body>
                     <Card.Title>{p.title}</Card.Title>
                     <Card.Text>
-                    <ReactQuill 
-                        value={descriptionSnippet}
-                        readOnly={true}
-                        theme={"bubble"}
-                        modules={modules}
+                        <ReactQuill
+                            value={descriptionSnippet}
+                            readOnly={true}
+                            theme={"bubble"}
+                            modules={modules}
                         />
                     </Card.Text>
                     <Link to={`/problems/${p._id}`}
                         currProblem={props.currentProblem}>
-                        <Button 
+                        <Button
                             id='profileProblemBtn'
-                            className="float-end" 
-                            size="small" 
-                            variant="primary" 
+                            className="float-end"
+                            size="small"
+                            variant="primary"
                             onClick={() => changeCurrent(p)} key={i}>
-                                Go to problem
+                            Go to problem
                         </Button>
                     </Link>
                 </Card.Body>
             </Card>
         )
     })
-    
+
     return (
         <div>
             {allProblems}

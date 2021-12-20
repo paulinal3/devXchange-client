@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Form, Accordion, Button } from 'react-bootstrap'
-import { postAnswer } from '../../api/answers'
+import { Accordion, Button } from 'react-bootstrap'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
+import { postAnswer } from '../../api/answers'
 
 export default function NewAnswer(props) {
+
     const [value, setValue] = useState('')
 
     const createAnswer = () => {
@@ -19,7 +20,6 @@ export default function NewAnswer(props) {
                 console.error(err)
             })
     }
-
 
     let modules = {
         syntax: true,
@@ -37,23 +37,23 @@ export default function NewAnswer(props) {
             {props.user && props.user._id != props.currentProblem.owner._id &&
                 <Accordion id='newAnswer' defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
-                            <Accordion.Header id='postAnswerHeader' style={{ 'background-color': '#055861' }}>Post Your Answer</Accordion.Header>
-                            <Accordion.Body>
-                                <ReactQuill
-                                    style={{ 'height': '100%' }}
-                                    id="textEditor"
-                                    theme="snow"
-                                    name='solution'
-                                    modules={modules}
-                                    value={value || ''}
-                                    onChange={setValue}
-                                    placeholder='describe your solution...'
+                        <Accordion.Header id='postAnswerHeader' style={{ 'background-color': '#055861' }}>Post Your Answer</Accordion.Header>
+                        <Accordion.Body>
+                            <ReactQuill
+                                style={{ 'height': '100%' }}
+                                id="textEditor"
+                                theme="snow"
+                                name='solution'
+                                modules={modules}
+                                value={value || ''}
+                                onChange={setValue}
+                                placeholder='describe your solution...'
 
-                                />
-                                <div id='cardBtnContainer'>
+                            />
+                            <div id='cardBtnContainer'>
                                 <Button id="cardBtn" size='sm' onClick={() => createAnswer()}>Post Answer</Button>
-                                </div>
-                            </Accordion.Body>
+                            </div>
+                        </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
             }
