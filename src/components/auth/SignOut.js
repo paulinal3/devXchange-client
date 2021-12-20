@@ -38,7 +38,7 @@ const SignOut = (props) => {
             </div>
             <div className='row'>
                 <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    <ButtonGroup>
+                    <ButtonGroup id='signOutBtns'>
                         <Button variant='danger' onClick={onSignOut}>
                             Sign Out
                         </Button>

@@ -19,7 +19,7 @@ export default function NewAnswer(props) {
                 console.error(err)
             })
     }
-    
+
 
     let modules = {
         syntax: true,
@@ -33,30 +33,30 @@ export default function NewAnswer(props) {
     }
 
     return (
-        <div style={{'margin-left':'32px'}}>
-        {props.user && props.user._id != props.currentProblem.owner._id &&
-            <Accordion id='newAnswer' defaultActiveKey="0" flush>
-                <Accordion.Item eventKey="0">
-                        <>
-                            <Accordion.Header>Post Your Answer</Accordion.Header>
+        <div id='newAnswerContainer' style={{ 'margin-left': '32px' }}>
+            {props.user && props.user._id != props.currentProblem.owner._id &&
+                <Accordion id='newAnswer' defaultActiveKey="0">
+                    <Accordion.Item eventKey="0">
+                            <Accordion.Header id='postAnswerHeader' style={{ 'background-color': '#055861' }}>Post Your Answer</Accordion.Header>
                             <Accordion.Body>
-                                        <ReactQuill
-                                            style={{ 'height': '100%' }}
-                                            id="textEditor"
-                                            theme="snow"
-                                            name='solution'
-                                            modules={modules}
-                                            value={value || ''}
-                                            onChange={setValue}
-                                            placeholder='describe your solution...'
+                                <ReactQuill
+                                    style={{ 'height': '100%' }}
+                                    id="textEditor"
+                                    theme="snow"
+                                    name='solution'
+                                    modules={modules}
+                                    value={value || ''}
+                                    onChange={setValue}
+                                    placeholder='describe your solution...'
 
-                                        />
-                                    <Button id="cardBtn" onClick={() => createAnswer()}>Post Answer</Button>
+                                />
+                                <div id='cardBtnContainer'>
+                                <Button id="cardBtn" size='sm' onClick={() => createAnswer()}>Post Answer</Button>
+                                </div>
                             </Accordion.Body>
-                        </>
-                </Accordion.Item>
-            </Accordion>
-                    }
+                    </Accordion.Item>
+                </Accordion>
+            }
         </div>
     )
 }
