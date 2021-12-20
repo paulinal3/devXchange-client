@@ -13,12 +13,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#cardBtn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill {
+#cardBtn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill, #changePwBtn {
   background-color:#055861;
   border-color: #055861;
 }
 
-#cardBtn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover {
+#cardBtn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover, #changePwBtn:hover {
   background-color:  #099DAD;
   border: 2px solid #099DAD;
 }
@@ -102,7 +102,7 @@ Link{
 }
 
 /* <---------- SIGNIN.JS ----------> */
-#signInForm, #signUpForm {
+#signInForm, #signUpForm, #changePwForm {
   max-width: 50%;
 }
 

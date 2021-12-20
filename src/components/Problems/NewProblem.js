@@ -87,7 +87,6 @@ export default function NewProblem(props) {
                             placeholder='Title'
                         />
                     </FloatingLabel>
-
                 </Form.Group>
                 <Form.Group className='mb-3'>
                     <ReactQuill
