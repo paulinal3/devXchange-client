@@ -15,8 +15,12 @@ export default function Profile(props) {
                     <Col>   </Col>
                 </Row>
                 <Row >
-                    <Col sm={6} md={6} lg={6} xs={5}><ProfileProblems user={props.user} /></Col>
-                    <Col md={{ span: 4, offset: 2 }} sm={{ span: 4, offset: 1 }} xs={{ span: 4, offset: 0 }} ><ProfileDashboard user={props.user} /></Col>
+                    <Col sm={6} md={6} lg={6} xs={5}>
+                        <ProfileProblems user={props.user} refreshProbs={props.refreshProblems} />
+                    </Col>
+                    <Col md={{ span: 4, offset: 2 }} sm={{ span: 4, offset: 1 }} xs={{ span: 4, offset: 0 }} >
+                        <ProfileDashboard user={props.user} />
+                    </Col>
                 </Row>
             </Container>
         </div>
