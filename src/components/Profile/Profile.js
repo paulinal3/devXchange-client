@@ -3,7 +3,7 @@ import { Row, Col, Container } from 'react-bootstrap'
 import ProfileProblems from './ProfileProblems'
 import ProfileDashboard from './ProfileDashboard'
 
-function Profile(props) {
+export default function Profile(props) {
 
     return (
         <div>
@@ -22,5 +22,3 @@ function Profile(props) {
         </div>
     )
 }
-
-export default Profile

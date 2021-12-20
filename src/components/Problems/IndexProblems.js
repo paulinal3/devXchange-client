@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Pagination } from 'react-bootstrap'
+
 import Problem from './Problem'
 
 export default function IndexProblems(props) {
+
     const [currentProblem, setCurrentProblem] = useState({})
 
     const changeCurrent = problem => {
@@ -21,23 +22,18 @@ export default function IndexProblems(props) {
             </li>
         )
     })
+
     return (
         <div>
             {/* <----- Jumbotron -----> */}
             <div class='container-fluid bg-dark text-light p-5'>
                 <h1 class='mb-3'>All Posted Problems</h1>
             </div>
-            {/* <FilterProblem 
-                filterProblems={props.handleFilter}
-                searchVal={props.search} 
-                searchChange={props.handleSearch}
-            /> */}
             <div className='problemCard'>
                 <ol>
                     {allProblems}
                 </ol>
             </div>
-            {/* {paginationBasic} */}
         </div>
     )
 }
