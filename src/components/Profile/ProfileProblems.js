@@ -13,7 +13,7 @@ function ProfileProblems(props) {
     let modules = {
         syntax: true
     }
-    
+
     const changeCurrent = problem => {
         setCurrentProblem(problem)
     }

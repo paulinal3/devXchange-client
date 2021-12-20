@@ -25,13 +25,14 @@ export default function ModalProblem(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
                     <ReactQuill
                         value={props.currentProblem.description}
                         readOnly={true}
                         theme={"bubble"}
                         modules={modules}
                         />
-                    
+                 
                 </Modal.Body>
                 <Modal.Footer>
                     <Link to={`/problems/${props.currentProblem._id}`}

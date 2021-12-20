@@ -9,10 +9,10 @@ import { getProbAnswers, postAnswer } from '../../api/answers'
 import NewAnswer from '../Answers/NewAnswer'
 import ShowAnswer from '../Answers/ShowAnswer'
 import EditProblem from './EditProblem'
+
 import DeleteProblemModal from './DeleteProblemModal'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.bubble.css'
-
 
 function ShowProblem(props) {
     const [newSolution, setNewSolution] = useState('')

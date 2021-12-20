@@ -51,6 +51,11 @@ a:link {
   text-decoration: none;
 }
 
+/* .buffer {
+  height: 100px;
+  background-color: #212529;
+} */
+
 /* <---------- HOME.JS ----------> */
 #homePage {
   text-align: center;
@@ -130,7 +135,6 @@ a:link {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  /* justify-content: space-between; */
   column-gap: 20px;
 }
 
@@ -138,7 +142,6 @@ a:link {
   display: flex;
   flex-direction: row;
   column-gap: 5px;
-  /* justify-content: flex-end; */
 }
 
 /* <---------- NEWPROBBLEM.JS ----------> */

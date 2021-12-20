@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { Form , Button, FloatingLabel} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { postProblem } from '../../api/problems'
+
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+
 
 export default function NewProblem(props) {
     // console.log('this is props\n', props)
@@ -94,6 +96,7 @@ export default function NewProblem(props) {
 
             {/* <----- Form to Create a New Problem -----> */}
             <Form id='newProbForm'>
+
                 <Form.Group className='mb-3' controlId='title' style={{'margin-top':'20px'}}>
                     <FloatingLabel
                         controlId='floatingInput'
@@ -110,6 +113,7 @@ export default function NewProblem(props) {
                     </FloatingLabel>
 
                 </Form.Group>
+
                 <Form.Group className='mb-3'>
                     <ReactQuill 
                     style={{'height':'100%'}}
@@ -120,6 +124,17 @@ export default function NewProblem(props) {
                     value={value} 
                     onChange={setValue}
                     placeholder='describe your problem...'
+                    />
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='img'>
+                    <Form.Label>Upload a screenshot: </Form.Label>
+                    <Form.Control
+                        type='file' 
+                        name='img'
+                        accept='image/*'
+                        value={newProblem.img} 
+                        // onChange={(e) => uploadImg(e.target.files)} 
+                        onChange={handleFileChange}
                     />
                 </Form.Group>
                 <Button id='formBtn' onClick={() => createNewProblem()}>Post Problem</Button>

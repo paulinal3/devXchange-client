@@ -55,7 +55,9 @@ const Header = ({ user, handleFilter, search, handleSearch }) => (
 			{/* <----- USER PROFILE -----> */}
 			<Nav className='ml-auto'>
 				{user && (
+
 					<span className='navbar-text mr-2'><Link to="/profile" style={{'text-decoration':'none'}} className='name'>Profile</Link></span>
+
 				)}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
