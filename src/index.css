@@ -209,6 +209,11 @@ a:link {
   justify-content: end;
 }
 
+/* <---------- SIGNOUT.JS ----------> */
+#signOutBtns {
+  margin-top: -250px;
+}
+
 /* <---------- FOOTER.JS ----------> */
 footer {
   margin-top: 20%;
