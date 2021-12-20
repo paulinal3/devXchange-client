@@ -85,6 +85,7 @@ const App = () => {
 		})
 	}
 
+
 	return (
 		<Fragment>
 			<Header user={user} search={search} handleSearch={handleSearchChange} />
@@ -119,7 +120,7 @@ const App = () => {
 					path='/profile'
 					element={
 						<RequireAuth user={user}>
-							<Profile msgAlert={msgAlert} user={user} refreshProblems={refreshProblems} />
+							<Profile msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 				/>
 				{/* <--------------- PROBLEM ROUTES ---------------> */}

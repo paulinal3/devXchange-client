@@ -20,7 +20,11 @@ function ProfileProblems(props) {
 
     console.log('this is user problems', props.user.problems)
 
-    const allProblems = props.user.problems.map((p, i) => {
+    // const allProblems = props.user.problems.map((p, i) => {
+
+    //     const descriptionSnippet = p.description.split('</p>')[0]
+
+    const allProblems = props.user.problems.filter((p, i) => i > props.user.problems.length - 5).reverse().map((p, i) => {
 
         const descriptionSnippet = p.description.split('</p>')[0]
 
@@ -51,13 +55,14 @@ function ProfileProblems(props) {
                 </Card.Body>
             </Card>
         )
+
     })
 
-    return (
-        <div>
-            {allProblems}
-        </div>
-    )
+return (
+    <div>
+        {allProblems}
+    </div>
+)
 }
 
 export default ProfileProblems

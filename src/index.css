@@ -208,6 +208,33 @@ a:link {
   justify-content: end;
 }
 
+/* <---------- PROFILE.JS ----------> */
+#mainProfile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#profileProbCards {
+  max-width: 100%;
+  
+}
+
+#profileListContainer {
+  height: 250px;
+  border-color: #055861;
+  margin-top: 30px;
+}
+
+#profileListHeader {
+  background-color: #055861;
+  color: white;
+}
+
+#profileListBody{
+  overflow: scroll;
+}
+
 /* <---------- SIGNOUT.JS ----------> */
 #signOutBtns {
   margin-top: -250px;
