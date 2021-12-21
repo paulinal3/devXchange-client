@@ -59,8 +59,8 @@ export default function EditProblem(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={() => editProblem()}>Update Problem</Button>
-                <Button onClick={props.onHide}>Cancel</Button>
+                <Button id='editProbBtn' onClick={() => editProblem()}>Update Problem</Button>
+                <Button id='cancelEditBtn' onClick={props.onHide}>Cancel</Button>
             </Modal.Footer>
         </Modal>
     )
