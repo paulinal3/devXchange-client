@@ -36,7 +36,7 @@ export default function Problem(props) {
                         <p id='probCardFooter' className='name'>Asked by: {firstName} {lastNameInit}.
                             <span id="momentPill" class='badge rounded-pill bg-dark'> {moment(props.problem.createdAt).fromNow()} </span>
                         </p>
-                        <Button id='cardBtn' size='sm' onClick={() => setModalShow(true)}>
+                        <Button id='preview-btn' size='sm' onClick={() => setModalShow(true)}>
                             Preview Problem
                         </Button>
                     </Card.Footer>

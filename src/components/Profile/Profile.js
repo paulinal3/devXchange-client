@@ -22,17 +22,17 @@ export default function Profile(props) {
     return (
         <div>
             <div class='container-fluid bg-dark text-light p-5'>
-                <h1 class='mb-3' className='name'>Welcome, {props.user.firstName}</h1>
+                <h1 class='mb-3' className='name' id="welcome-user">Welcome, {props.user.firstName}</h1>
             </div>
             <Container fluid="md">
                 <Row>
                     <Col></Col>
                 </Row>
-                <Row >
-                    <Col sm={6} md={6} lg={6} xs={5}>
+                <Row id="user-profile">
+                    <Col sm={6} md={6} lg={6} xs={5} id="profile-problems">
                         <ProfileProblems user={props.user} userProblems={userProblems} />
                     </Col>
-                    <Col md={{ span: 4, offset: 2 }} sm={{ span: 4, offset: 1 }} xs={{ span: 4, offset: 0 }} >
+                    <Col id="profile-dashboard" md={{ span: 4, offset: 2 }} sm={{ span: 4, offset: 1 }} xs={{ span: 4, offset: 0 }} >
                         <ProfileDashboard user={props.user} />
                         <ProfileProblemsList userProblems={userProblems} />
                     </Col>

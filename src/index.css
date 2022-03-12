@@ -44,12 +44,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#search-btn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill, #changePwBtn, #editProbBtn, #cancelEditBtn {
+#search-btn, #preview-btn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill, #changePwBtn, #editProbBtn, #cancelEditBtn {
   background-color:#055861;
   border-color: #055861;
 }
 
-#search-btn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover, #changePwBtn:hover, #editProbBtn:hover, #cancelEditBtn:hover {
+#search-btn:hover, #preview-btn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover, #changePwBtn:hover, #editProbBtn:hover, #cancelEditBtn:hover {
   background-color:  #099DAD;
   border: 2px solid #099DAD;
 
@@ -324,31 +324,96 @@ body {
   justify-content: end;
 }
 
-/* <---------- PROFILE.JS ----------> */
-#mainProfile {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+/* <-------------------- PROFILE.JS --------------------> */
+#welcome-user {
+    text-align: center;
 }
 
-#profileProbCards {
-  max-width: 100%;
-  
+#user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-#profileListContainer {
-  height: 250px;
-  border-color: #055861;
-  margin-top: 30px;
+#profile-problems {
+    order: 2;
+    width: 90%;
 }
 
-#profileListHeader {
-  background-color: #055861;
-  color: white;
+#profile-dashboard {
+    order: 1;
+    width: 90%;
+    margin-top: -40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
-#profileListBody{
-  overflow: scroll;
+@media (min-width: 768px) {
+    #profile-problems {
+        margin-left: 0px;
+    }
+
+    #profile-dashboard {
+        margin-left: 0px;
+        gap: 0px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #welcome-user {
+        text-align: left;
+    }
+
+    #user-profile {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 100px
+    }
+
+    #profile-problems {
+        order: 1;
+        width: 60%;
+    }
+    
+    #profile-dashboard {
+        order: 2;
+        width: 30%;
+        /* margin-top: -40px; */
+        display: flex;
+        flex-direction: column;
+        /* gap: 25px; */
+    }
+}
+
+@media (min-width: 768px) {
+    #mainProfile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+    
+    #profileProbCards {
+      max-width: 100%;
+      
+    }
+    
+    #profileListContainer {
+      height: 250px;
+      border-color: #055861;
+      margin-top: 30px;
+    }
+    
+    #profileListHeader {
+      background-color: #055861;
+      color: white;
+    }
+    
+    #profileListBody{
+      overflow: scroll;
+    }
 }
 
 /* <---------- SIGNOUT.JS ----------> */
