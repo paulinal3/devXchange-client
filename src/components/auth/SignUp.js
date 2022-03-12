@@ -52,7 +52,7 @@ const SignUp = (props) => {
             <div>
                 {/* <----- JUMBOTRON -----> */}
                 <div class='container-fluid bg-dark text-light p-5'>
-                    <h1 class='mb-3'>Join the DevXChange community </h1>
+                    <h1 class='mb-3'>Join the DevXchange community </h1>
                     <h4 class='mb-3'>Collaborate and share knowledge for free</h4>
                 </div>
             </div>
@@ -135,7 +135,7 @@ const SignUp = (props) => {
                                 onChange={e => setPasswordConfirmation(e.target.value)}
                             />
                         </FloatingLabel>
-                        <Button id='signUpBtn' variant='primary' type='submit'>
+                        <Button id='signup-btn' type='submit'>
                             Sign Up
                         </Button>
                     </Form>

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState } from "react"
 
-import Problem from './Problem'
+import Problem from "./Problem"
 
 export default function IndexProblems(props) {
 
@@ -26,11 +26,11 @@ export default function IndexProblems(props) {
     return (
         <div>
             {/* <----- Jumbotron -----> */}
-            <div class='container-fluid bg-dark text-light p-5'>
-                <h1 class='mb-3'>All Posted Problems</h1>
+            <div class="container-fluid bg-dark text-light p-5">
+                <h1 className="hero-title" class="mb-3">All Posted Problems</h1>
             </div>
-            <div className='problemCard'>
-                <ol>
+            <div className="all-problems-list-container">
+                <ol className="all-problems-list">
                     {allProblems}
                 </ol>
             </div>

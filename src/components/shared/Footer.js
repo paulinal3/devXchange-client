@@ -26,7 +26,7 @@ export default function Footer() {
                     <p style={{ 'padding-left': '100px', 'padding-right': '100px', 'margin-top': '-15px' }}>
                         Launched in 2021, DevXchange was built by three software engineers who came together
                         to develop a full-stack CRUD application and provide a public platform for users
-                        to share their knowledge and collaborate on coding problems. Visit <a style={{ 'text-decoration': 'none', 'color': '#055861' }} id='gitHubLink' href='https://github.com/paulinal3/devXchange-client'>GitHub</a> to learn more about it.
+                        to share their knowledge and collaborate on coding problems. Visit <a style={{ 'text-decoration': 'none', 'color': '#055861' }} id='gitHubLink' href='https://github.com/paulinal3/devXchange-client' target='_blank' rel='noopener noreferrer'>GitHub</a> to learn more about it.
                     </p>
                 </section>
                 {/* <!-- Section: Contributors --> */}

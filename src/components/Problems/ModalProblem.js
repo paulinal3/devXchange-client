@@ -32,7 +32,7 @@ export default function ModalProblem(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Link to={`/problems/${props.currentProblem._id}`}
-                        currProblem={props.currentProblem}><Button id="cardBtn" onClick={props.onHide}>View Problem</Button></Link>
+                        currProblem={props.currentProblem}><Button id="view-btn" onClick={props.onHide}>View Problem</Button></Link>
                 </Modal.Footer>
             </Modal>
         </>
