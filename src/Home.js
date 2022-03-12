@@ -1,8 +1,8 @@
-import Problem from './components/Problems/Problem'
-import Typewriter from 'typewriter-effect'
+import Problem from "./components/Problems/Problem"
+import Typewriter from "typewriter-effect"
 
 const Home = (props) => {
-	console.log('props in home', props)
+	console.log("props in home", props)
 
 	// filter through five most recent problems
 	const recentProblems = props.problems && props.problems
@@ -17,20 +17,19 @@ const Home = (props) => {
 	recentProblems.reverse()
 
 	return (
-		<main id='homePage'>
-			<header id='homeHeader'>
-				<h1 id='welcome'>Welcome to</h1>
-				<h1 id='appTitle'>DevXchange</h1>
+		<main className="page-container" id="home-page">
+			<header className="home-header">
+				<h1 className="header-text" id="welcome">Welcome to</h1>
+				<h1 className="header-text" id="app-title">DevXchange</h1>
 			</header>
 			<Typewriter
 				options={{
-					strings: ['An open forum', 'Post coding questions', 'Offer your expertise', 'Connect with other developers'],
+					strings: ["An open forum", "Post coding questions", "Offer your expertise", "Connect with other developers"],
 					autoStart: true,
 					loop: true,
 				}}
-				id='homeTypewriter'
 			/>
-			<a id="cardBtn" href="/problems" class="btn btn-primary">Search Problems</a>
+			<a id="search-btn" href="/problems" class="btn btn-primary">Search Problems</a>
 		</main>
 	)
 }

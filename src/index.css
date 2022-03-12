@@ -1,8 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300&display=swap');
 
 /* <---------- MULTIPLE FILES ----------> */
-#root{
+#root {
   background-color: #212529;
+}
+
+* {
+    font-family: 'Fira Sans Condensed', sans-serif;
+  }
+  
+code {
+font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+monospace;
+}
+
+li {
+list-style: none;
+}
+
+.name {
+text-transform: capitalize;
+margin-top: 5px;
+
+}
+
+a:link {
+text-decoration: none;
+}
+
+Link{
+color: #055861;
+}
+
+.page-container {
+    height: 100vh;
 }
 
 body {
@@ -13,70 +44,152 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#cardBtn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill, #changePwBtn, #editProbBtn, #cancelEditBtn {
+#search-btn, #formBtn, #signInBtn, #signUpBtn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill, #changePwBtn, #editProbBtn, #cancelEditBtn {
   background-color:#055861;
   border-color: #055861;
 }
 
-#cardBtn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover, #changePwBtn:hover, #editProbBtn:hover, #cancelEditBtn:hover {
+#search-btn:hover, #formBtn:hover, #signInBtn:hover, #signUpBtn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover, #changePwBtn:hover, #editProbBtn:hover, #cancelEditBtn:hover {
   background-color:  #099DAD;
   border: 2px solid #099DAD;
-}
-
-* {
-  font-family: 'Fira Sans Condensed', sans-serif;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
-}
-
-li {
-  list-style: none;
-}
-
-.name {
-  text-transform: capitalize;
-  margin-top: 5px;
 
 }
-
-#root {
-  background-color: #212529;
+/* <-------------------- HEADER.JS --------------------> */
+#nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-a:link {
-  text-decoration: none;
+#nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 25px;
+    padding-top: 15px;
 }
 
-Link{
-  color: #055861;
-}
-/* <---------- HOME.JS ----------> */
-#homePage {
-  text-align: center;
-  color: white;
-  margin-top: 250px;
-  font-size: 35px;
+#basic-navbar-nav {
+    padding-left: 25px;
 }
 
-#homeHeader {
-  display: flex;
-  flex-direction: row;
-  column-gap: 15px;
-  justify-content: center;
-  font-size: 100px;
+#non-user-links {
+    display: flex;
+    /* gap: 50px; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    padding-top: 15px;
 }
 
-#welcome  {
-  font-size: 85px;
+#user-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 15px;
 }
-#appTitle {
-  font-size: 85px;
+
+#app-logo-nav {
+    display: flex;
+    gap: 5px;
+}
+
+@media (min-width: 768px) {
+    #nav-bar {
+        padding-right: 0px;
+    }
+
+    #basic-navbar-nav {
+        padding-left: 0px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    #non-user-links {
+        flex-direction: row;
+        padding-top: 0px;
+        margin-right: -20px;
+    }
+
+    #user-links {
+        flex-direction: row;
+        margin-right: -20px;
+        padding-top: 0px;
+    }
+}
+
+/* <-------------------- HOME.JS --------------------> */
+#home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    top: 50%;
+    margin-top: -10px;
+    text-align: center;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+}
+
+#home-page .home-header {
+    display: flex;
+    flex-direction: column;
+}
+
+#home-page .home-header .header-text {
+    font-size: 50px;
+}
+
+#home-page .home-header #app-title {
   font-weight: bold;
   color: #099DAD;
+  font-size: 65px;
 }
+
+@media (min-width: 768px) {
+    #home-page {
+        font-size: 35px;
+        gap: 20px;
+    }
+
+    #home-page .home-header {
+        flex-direction: row;
+        column-gap: 15px;
+        justify-content: center;
+        font-size: 100px;
+      }
+
+      #home-page .home-header .header-text {
+        font-size: 70px;
+    }
+
+    #home-page .home-header #app-title {
+        font-size: 70px;
+    }
+
+    #home-page #search-btn {
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #home-page {
+        font-size: 35px;
+    }
+
+    #home-page .home-header .header-text {
+        font-size: 85px;
+    }
+
+    #home-page .home-header #app-title {
+        font-size: 85px;
+    }
+}
+
 
 /* <---------- PROBLEM.JS ----------> */
 #momentPill {

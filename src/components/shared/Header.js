@@ -5,74 +5,81 @@ import { Link } from 'react-router-dom'
 import FilterProblem from '../Problems/FilterProblem'
 
 const linkStyle = {
-	color: 'white',
-	textDecoration: 'none'
+    color: 'white',
+    textDecoration: 'none'
 }
 
 const authenticatedOptions = (
-	<>
-		<Nav.Link>
-			<Link to='/problems' style={linkStyle}>
-				Problems
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='/problems/new' style={linkStyle}>
-				Post a Problem
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='sign-out' style={linkStyle}>
-				Sign Out
-			</Link>
-		</Nav.Link>
-	</>
+    <div className="nav-links" id="user-links">
+        <Nav.Link>
+            <Link to='/profile' style={linkStyle}>
+                Profile
+            </Link>
+        </Nav.Link>
+        <Nav.Link>
+            <Link to='/problems' style={linkStyle}>
+                Problems
+            </Link>
+        </Nav.Link>
+        <Nav.Link>
+            <Link to='/problems/new' style={linkStyle}>
+                Post a Problem
+            </Link>
+        </Nav.Link>
+        <Nav.Link>
+            <Link to='sign-out' style={linkStyle}>
+                Sign Out
+            </Link>
+        </Nav.Link>
+    </div>
 )
 
 const unauthenticatedOptions = (
-	<>
-		<Nav.Link>
-			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='sign-in' style={linkStyle}>Sign In</Link>
-		</Nav.Link>
+    <div className="nav-links" id="non-user-links">
+        <Nav.Link>
+            <Link to='sign-up' style={linkStyle}>Sign Up</Link>
+        </Nav.Link>
+        <Nav.Link>
+            <Link to='sign-in' style={linkStyle}>Sign In</Link>
+        </Nav.Link>
 
-	</>
+    </div>
 )
 
 const Header = ({ user, handleFilter, search, handleSearch }) => (
-	<Navbar bg='dark' variant='dark' expand='md' id='navBar'>
-		{/* <----- APP NAME -----> */}
-		<Navbar.Brand className='mx-4'>
-			<Link to='/' style={linkStyle}>
-				<img src="/favicon-16x16.png" alt="DevXchange Logo" />
-				DevXchange
-			</Link>
-		</Navbar.Brand>
-		<Navbar.Toggle aria-controls='basic-navbar-nav' />
-		<Navbar.Collapse style={{'padding-top':'5px', 'justify-content':'right'}} id='basic-navbar-nav'>
-			{/* <----- USER PROFILE -----> */}
-			<Nav className='ml-auto'>
-				{user && (
+    // <div id="nav-container">
+    <Navbar bg='dark' variant='dark' expand='md' id='nav-bar'>
+        {/* <----- APP NAME -----> */}
+        <Navbar.Brand className='mx-4'>
+            <Link id="app-logo-nav" to='/' style={linkStyle}>
+                <img src="/favicon-16x16.png" alt="DevXchange Logo" />
+                DevXchange
+            </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+            {/* <----- USER PROFILE -----> */}
+            <Nav className='ml-auto'>
+                {/* {user && (
 
-					<span className='navbar-text mr-2'><Link to="/profile" style={{'text-decoration':'none'}} className='name'>Profile</Link></span>
+                    <span className='navbar-text mr-2 nav-links' id="profile-link"><Link to="/profile" style={{ 'text-decoration': 'none' }} className='name'>Profile</Link></span>
 
-				)}
-				{user ? authenticatedOptions : unauthenticatedOptions}
-			</Nav>
-		</Navbar.Collapse>
-		<Nav.Link className='mx-4'>
-			{/* <----- SEARCH BAR -----> */}
-			<Link style={{'text-decoration':'none'}} to="/problems">
-				<FilterProblem
-					filterProblems={handleFilter}
-					searchVal={search}
-					searchChange={handleSearch}
-				/>
-			</Link>
-		</Nav.Link>
-	</Navbar>
+                )} */}
+                {user ? authenticatedOptions : unauthenticatedOptions}
+            </Nav>
+            <Nav.Link className='mx-4'>
+                {/* <----- SEARCH BAR -----> */}
+                <Link style={{ 'text-decoration': 'none' }} to="/problems">
+                    <FilterProblem
+                        filterProblems={handleFilter}
+                        searchVal={search}
+                        searchChange={handleSearch}
+                    />
+                </Link>
+            </Nav.Link>
+        </Navbar.Collapse>
+    </Navbar>
+    // </div>
 )
 
 export default Header
