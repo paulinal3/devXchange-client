@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-import { changePassword } from '../../api/auth'
-import messages from '../shared/AutoDismissAlert/messages'
+import { changePassword } from "../../api/auth"
+import messages from "../shared/AutoDismissAlert/messages"
 
-import { Form, Button, FloatingLabel } from 'react-bootstrap'
+import { Form, Button, FloatingLabel } from "react-bootstrap"
 
 const ChangePassword = (props) => {
 
-    const [oldPassword, setOldPassword] = useState('')
-    const [newPassword, setNewPassword] = useState('')
+    const [oldPassword, setOldPassword] = useState("")
+    const [newPassword, setNewPassword] = useState("")
 
     const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ const ChangePassword = (props) => {
         event.preventDefault()
 
         const { msgAlert, user } = props
-        console.log('the user', user)
+        console.log("the user", user)
 
 
         const passwords = { oldPassword, newPassword }
@@ -25,61 +25,60 @@ const ChangePassword = (props) => {
         changePassword(passwords, user)
             .then(() =>
                 msgAlert({
-                    heading: 'Change Password Success',
+                    heading: "Change Password Success",
                     message: messages.changePasswordSuccess,
-                    variant: 'success',
+                    variant: "success",
                 })
             )
-            .then(() => navigate('/'))
+            .then(() => navigate("/"))
             .catch((error) => {
-                setOldPassword('')
-                setNewPassword('')
+                setOldPassword("")
+                setNewPassword("")
                 msgAlert({
-                    heading: 'Change Password Failed with error: ' + error.message,
+                    heading: "Change Password Failed with error: " + error.message,
                     message: messages.changePasswordFailure,
-                    variant: 'danger',
+                    variant: "danger",
                 })
             })
     }
 
     return (
-        <div className='row'>
-            <div id='changePwForm' className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Change Password</h3>
-                <Form id='changePwForm' onSubmit={onChangePassword}>
-                    <Form.Group controlId='oldPassword'>
+        <div className="row page-container" id="change-pw-container">
+            <div id="change-pw-form" className="col-sm-10 col-md-8 mx-auto mt-5">
+                <Form onSubmit={onChangePassword}>
+                    <Form.Group controlId="oldPassword">
                         <FloatingLabel
-                            controlId='floatingInput'
-                            label='Old Password'
-                            className='mb-3'
+                            controlId="floatingInput"
+                            label="Old Password"
+                            className="mb-3"
                         >
                             <Form.Control
                                 required
-                                name='oldPassword'
+                                name="oldPassword"
                                 value={oldPassword}
-                                type='password'
-                                placeholder='Old Password'
+                                type="password"
+                                placeholder="Old Password"
                                 onChange={e => setOldPassword(e.target.value)}
                             />
                         </FloatingLabel>
                     </Form.Group>
-                    <Form.Group controlId='newPassword'>
+                    <Form.Group controlId="newPassword">
                         <FloatingLabel
-                            controlId='floatingInput'
-                            label='New Password'
-                            className='mb-3'
+                            controlId="floatingInput"
+                            label="New Password"
+                            className="mb-3"
                         >
                             <Form.Control
                                 required
-                                name='newPassword'
+                                name="newPassword"
                                 value={newPassword}
-                                type='password'
-                                placeholder='New Password'
+                                type="password"
+                                placeholder="New Password"
                                 onChange={e => setNewPassword(e.target.value)}
                             />
                         </FloatingLabel>
                     </Form.Group>
-                    <Button id='changePwBtn' type='submit'>
+                    <Button id="change-pw-btn" type="submit">
                         Change Password
                     </Button>
                 </Form>

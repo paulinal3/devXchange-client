@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Form, Button, FloatingLabel } from 'react-bootstrap'
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { Form, Button, FloatingLabel } from "react-bootstrap"
+import "../../css/auth.css"
 
-import { signIn } from '../../api/auth'
-import messages from '../shared/AutoDismissAlert/messages'
+import { signIn } from "../../api/auth"
+import messages from "../shared/AutoDismissAlert/messages"
 
 const SignIn = (props) => {
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const navigate = useNavigate()
 
     const onSignIn = (event) => {
         event.preventDefault()
-        console.log('the props', props)
+        console.log("the props", props)
         const { msgAlert, setUser } = props
 
         const credentials = { email, password }
@@ -23,68 +24,68 @@ const SignIn = (props) => {
             .then((res) => setUser(res.data.user))
             .then(() =>
                 msgAlert({
-                    heading: 'Sign In Success',
+                    heading: "Sign In Success",
                     message: messages.signInSuccess,
-                    variant: 'success',
+                    variant: "success",
                 })
             )
-            .then(() => navigate('/'))
+            .then(() => navigate("/"))
             .catch((error) => {
-                setEmail('')
-                setPassword('')
+                setEmail("")
+                setPassword("")
                 msgAlert({
-                    heading: 'Sign In Failed with error: ' + error.message,
+                    heading: "Sign In Failed with error: " + error.message,
                     message: messages.signInFailure,
-                    variant: 'danger',
+                    variant: "danger",
                 })
             })
     }
 
     return (
-        <div>
+        <div className="page-container">
             <div>
                 {/* <----- JUMBOTRON -----> */}
-                <div class='container-fluid bg-dark text-light p-5'>
-                    <h1 class='mb-3'>Welcome back</h1>
-                    <h4 class='mb-3'>Collaborate and share knowledge for free</h4>
+                <div class="container-fluid bg-dark text-light p-5" id="signin-header">
+                    <h1 class="mb-3">Welcome back</h1>
+                    <h4 class="mb-3">Collaborate and share knowledge for free</h4>
                 </div>
             </div>
-            <div className='row'>
-                <div className='col-sm-10 col-md-8 mx-auto mt-5' id='signInForm'>
+            <div className="row">
+                <div className="col-sm-10 col-md-8 mx-auto mt-5" id="signin-form">
                     <Form onSubmit={onSignIn}>
                         <>
                             {/* <----- EMAIL -----> */}
                             <FloatingLabel
-                                controlId='floatingInput'
-                                label='Email address'
-                                className='mb-3'
+                                controlId="floatingEmail"
+                                label="Email address"
+                                className="mb-3"
                             >
-                                <Form.Control 
+                                <Form.Control
                                     required
-                                    type='email'
-                                    name='email'
+                                    type="email"
+                                    name="email"
                                     value={email}
-                                    placeholder='Email'
+                                    placeholder="Email"
                                     onChange={e => setEmail(e.target.value)}
                                 />
                             </FloatingLabel>
                             {/* <----- PASSWORD -----> */}
-                            <FloatingLabel 
-                                controlId='floatingPassword' 
-                                label='Password'  
-                                className='mb-3'
+                            <FloatingLabel
+                                controlId="floatingPassword"
+                                label="Password"
+                                className="mb-3"
                             >
                                 <Form.Control
                                     required
-                                    name='password'
+                                    name="password"
                                     value={password}
-                                    type='password'
-                                    placeholder='Password'
+                                    type="password"
+                                    placeholder="Password"
                                     onChange={e => setPassword(e.target.value)}
                                 />
                             </FloatingLabel>
                         </>
-                        <Button id='signin-btn' type='submit'>
+                        <Button id="signin-btn" type="submit">
                             Sign In
                         </Button>
                     </Form>

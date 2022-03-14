@@ -2,34 +2,34 @@
 
 /* <---------- MULTIPLE FILES ----------> */
 #root {
-  background-color: #212529;
+    background-color: #212529;
 }
 
 * {
     font-family: 'Fira Sans Condensed', sans-serif;
-  }
-  
+}
+
 code {
-font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
 }
 
 li {
-list-style: none;
+    list-style: none;
 }
 
 .name {
-text-transform: capitalize;
-margin-top: 5px;
+    text-transform: capitalize;
+    margin-top: 5px;
 
 }
 
 a:link {
-text-decoration: none;
+    text-decoration: none;
 }
 
-Link{
-color: #055861;
+Link {
+    color: #055861;
 }
 
 .page-container {
@@ -47,26 +47,23 @@ color: #055861;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-#search-btn, #preview-btn, #view-btn, #formBtn, #signin-btn, #signup-btn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill, #changePwBtn, #editProbBtn, #cancelEditBtn {
-  background-color:#055861;
-  border-color: #055861;
+#search-btn, #preview-btn, #view-btn, #formBtn, #signin-btn, #signup-btn, #signOutBtn, #editProblemBtn, #deleteProblemBtn, #profileProblemBtn, #dashboardPill, #change-pw-btn, #editProbBtn, #cancelEditBtn {
+    background-color: #055861;
+    border-color: #055861;
 }
 
-#search-btn:hover, #preview-btn:hover, #view-btn:hover, #formBtn:hover, #signin-btn:hover, #signup-btn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover, #changePwBtn:hover, #editProbBtn:hover, #cancelEditBtn:hover {
-  background-color:  #099DAD;
-  border: 2px solid #099DAD;
+#search-btn:hover, #preview-btn:hover, #view-btn:hover, #formBtn:hover, #signin-btn:hover, #signup-btn:hover, #signOutBtn:hover, #gitHubLink:hover, #editProblemBtn:hover, #deleteProblemBtn:hover, #profileProblemBtn:hover, #change-pw-btn:hover, #editProbBtn:hover, #cancelEditBtn:hover {
+    background-color: #099DAD;
+    border-color: #099DAD;
 }
 
-#signup-btn, #signin-btn {
-    width: 100%;
-}
 /* <-------------------- HEADER.JS --------------------> */
 #nav-container {
     display: flex;
@@ -118,7 +115,7 @@ body {
         display: flex;
         justify-content: flex-end;
     }
-    
+
     #non-user-links {
         flex-direction: row;
         padding-top: 0px;
@@ -158,9 +155,11 @@ body {
 }
 
 #home-page .home-header #app-title {
-  font-weight: bold;
-  color: #099DAD;
-  font-size: 65px;
+    font-weight: bold;
+    color: #099DAD;
+    /* color: #055861; */
+    font-size: 65px;
+    /* background-image: linear-gradient(92deg, #055861, #099DAD); */
 }
 
 @media (min-width: 768px) {
@@ -174,9 +173,9 @@ body {
         column-gap: 15px;
         justify-content: center;
         font-size: 100px;
-      }
+    }
 
-      #home-page .home-header .header-text {
+    #home-page .home-header .header-text {
         font-size: 70px;
     }
 
@@ -203,42 +202,52 @@ body {
     }
 }
 
-
-/* <---------- PROBLEM.JS ----------> */
-#momentPill {
-  margin-left: 5px;
-  text-transform: lowercase;
-}
-
-#probCard {
-  max-width: 85%;
-  margin: auto;
-  margin-top: 2%;
-  border: 5px solid #099DAD;
-}
-
-.cardFooter {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#cardProbFooter {
-  padding-top: 50px;
-}
-
 /* <---------- SIGNIN.JS ----------> */
-#signInForm, #signUpForm, #changePwForm {
-  max-width: 50%;
+/* #signInForm, #signUpForm, #changePwForm {
+    max-width: 50%;
 }
 
 #signUpBtn {
-  margin: auto;
+    margin: auto;
+} */
+
+/* <---------- SIGNOUT.JS ----------> */
+/* #signOutBtns {
+    margin-top: -250px;
+} */
+
+/* <---------- CHANGEPASSWORD.JS ----------> */
+/* #changePwForm {
+    padding-top: 75px;
+    margin: auto;
+} */
+
+/* <---------- PROBLEM.JS ----------> */
+#momentPill {
+    margin-left: 5px;
+    text-transform: lowercase;
+}
+
+#probCard {
+    max-width: 85%;
+    margin: auto;
+    margin-top: 2%;
+    border: 5px solid #099DAD;
+}
+
+.cardFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#cardProbFooter {
+    padding-top: 50px;
 }
 
 /* <-------------------- PROFILE.JS --------------------> */
-#profileProblem{
-  border: 5px solid #099DAD;
+#profileProblem {
+    border: 5px solid #099DAD;
 }
 
 .all-problems-list {
@@ -247,98 +256,98 @@ body {
 
 /* <---------- SHOWPROBLEM.JS ----------> */
 #showProblemBtn {
-  display: flex;
-  flex-direction: row;
-  column-gap: 3px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 3px;
 }
 
 #showProblemPill {
-  margin-left: 5px;
-  text-transform: lowercase;
-  background-color: #055861;
+    margin-left: 5px;
+    text-transform: lowercase;
+    background-color: #055861;
 }
 
 #problemHeader {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  column-gap: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 20px;
 }
 
 #problemBtns {
-  display: flex;
-  flex-direction: row;
-  column-gap: 5px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
 }
 
 /* <---------- NEWPROBBLEM.JS ----------> */
 #newProbForm {
-  max-width: 60%;
-  margin: auto;
-  background-color: #212529;
+    max-width: 60%;
+    margin: auto;
+    background-color: #212529;
 }
 
 #problemTips {
-  display: flex;
-  flex-direction: row;
-  column-gap: 25px;
-  margin-left: 25px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 25px;
+    margin-left: 25px;
 }
 
 #newProblemForm {
-  color: white;
+    color: white;
 }
 
-#textEditor{
-  background-color: whitesmoke;
-  color: black;
-  min-height: 100%;
+#textEditor {
+    background-color: whitesmoke;
+    color: black;
+    min-height: 100%;
 }
 
 .ql-container {
-  font-size: inherit !important
+    font-size: inherit !important
 }
 
 /* <---------- NEWANSWER.JS ----------> */
 #newAnswer {
-  max-width: 100%;
-  margin-bottom: 25px;
+    max-width: 100%;
+    margin-bottom: 25px;
 }
 
 #postAnswerHeader {
-  color: #099DAD;
-  background-color: #055861;
+    color: #099DAD;
+    background-color: #055861;
 }
 
 #cardBtnContainer {
-  display: flex;
-  justify-content: flex-end;
-  margin: 10px 0 -5px 0;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0 -5px 0;
 }
 
 /* <---------- SHOWANSWER.JS ----------> */
 #answerContainer {
-  margin: auto;
-  margin-top: 20px;
+    margin: auto;
+    margin-top: 20px;
 }
 
 #editBtnContainer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: -20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -20px;
 }
 
 #newAnswerContainer {
-  display: flex;
-  flex-direction: column;
-  margin-left: 60px;
-  max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    max-width: 80%;
 }
 
 /* <---------- EDITANSWER.JS ----------> */
 #editAnswerBtn {
-  display: flex;
-  justify-content: end;
+    display: flex;
+    justify-content: end;
 }
 
 /* <-------------------- PROFILE.JS --------------------> */
@@ -394,7 +403,7 @@ body {
         order: 1;
         width: 60%;
     }
-    
+
     #profile-dashboard {
         order: 2;
         width: 30%;
@@ -407,50 +416,39 @@ body {
 
 @media (min-width: 768px) {
     #mainProfile {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
     }
-    
-    #profileProbCards {
-      max-width: 100%;
-      
-    }
-    
-    #profileListContainer {
-      height: 250px;
-      border-color: #055861;
-      margin-top: 30px;
-    }
-    
-    #profileListHeader {
-      background-color: #055861;
-      color: white;
-    }
-    
-    #profileListBody{
-      overflow: scroll;
-    }
-}
 
-/* <---------- SIGNOUT.JS ----------> */
-#signOutBtns {
-  margin-top: -250px;
+    #profileProbCards {
+        max-width: 100%;
+
+    }
+
+    #profileListContainer {
+        height: 250px;
+        border-color: #055861;
+        margin-top: 30px;
+    }
+
+    #profileListHeader {
+        background-color: #055861;
+        color: white;
+    }
+
+    #profileListBody {
+        overflow: scroll;
+    }
 }
 
 /* <---------- FOOTER.JS ----------> */
 footer {
-  margin-top: 20%;
+    margin-top: 20%;
 }
 
 #showProblemBody {
-  background-color: #212529;
-  padding: 20px 20px 20px 20px;
-  margin: 0 50px 0 50px;
-}
-
-/* <---------- CHANGEPASSWORD.JS ----------> */
-#changePwForm {
-  padding-top: 75px;
-  margin: auto;
+    background-color: #212529;
+    padding: 20px 20px 20px 20px;
+    margin: 0 50px 0 50px;
 }

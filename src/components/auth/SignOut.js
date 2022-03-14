@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 
-import { Button, ButtonGroup, Container } from 'react-bootstrap'
+import { Button, ButtonGroup } from "react-bootstrap"
 
-import { signOut } from '../../api/auth'
-import messages from '../shared/AutoDismissAlert/messages'
+import { signOut } from "../../api/auth"
+import messages from "../shared/AutoDismissAlert/messages"
 
 const SignOut = (props) => {
     const { msgAlert, clearUser, user } = props
@@ -15,40 +15,40 @@ const SignOut = (props) => {
         signOut(user)
             .finally(() =>
                 msgAlert({
-                    heading: 'Signed Out Successfully',
+                    heading: "Signed Out Successfully",
                     message: messages.signOutSuccess,
-                    variant: 'success',
+                    variant: "success",
                 })
             )
-            .finally(() => navigate('/'))
+            .finally(() => navigate("/"))
             .finally(() => clearUser())
     }
 
     const onCancel = () => {
-        navigate('/')
+        navigate("/")
     }
 
     return (
-        <>
-            <div class="container-fluid bg-dark text-light p-5">
-                <div class="container bg-dark p-5">
+        <div className="page-container" id="signout-container">
+            <div class="container-fluid bg-dark text-light p-5" id="signout-header">
+                {/* <div class="container bg-dark p-5"> */}
                     <h1 class="display-4">Are you sure you want to sign out?</h1>
                     <h4>We hate to see you go...</h4>
-                </div>
+                {/* </div> */}
             </div>
-            <div className='row'>
-                <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                    <ButtonGroup id='signOutBtns'>
-                        <Button variant='danger' onClick={onSignOut}>
+            <div className="row">
+                <div className="col-sm-10 col-md-8 mx-auto mt-5" id="signout-btns-container">
+                    <ButtonGroup id="signout-btns">
+                        <Button variant="danger" onClick={onSignOut}>
                             Sign Out
                         </Button>
-                        <Button style={{'margin-left':'5px'}} id='signOutBtn' onClick={onCancel}>
+                        <Button style={{"margin-left":"5px"}} id="signOutBtn" onClick={onCancel}>
                             Cancel
                         </Button>
                     </ButtonGroup>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

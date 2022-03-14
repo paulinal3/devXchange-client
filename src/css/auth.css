@@ -1,0 +1,39 @@
+#signin-header, #signup-header, #signout-header {
+    text-align: center;
+}
+
+#signin-form, #signup-form, #change-pw-form {
+    max-width: 90%;
+    margin-right: 0px;
+}
+
+#change-pw-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signup-btn, #signin-btn, #change-pw-btn {
+    width: 100%;
+}
+
+#signout-btns-container {
+    width: 200px;
+}
+
+#signout-btns {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    #signin-header, #signup-header {
+        text-align: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    #signin-form, #signup-form, #change-pw-form {
+        max-width: 50%;
+    }
+}    
